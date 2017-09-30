@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import com.jwt.model.Employee;
 import com.jwt.service.EmployeeService;
-//author: Prannoy and Team
+//author: Prannoy and
 @Controller
 public class EmployeeController {
 

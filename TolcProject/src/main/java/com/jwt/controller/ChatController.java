@@ -111,7 +111,7 @@ public class ChatController {
 			} else {
 				model.addObject("currCourseLevel", 0);
 			}
-			model.addObject("Algorithms","Algorithms");
+			model.addObject("tickerCourse","Algorithms");
 			model.addObject("allNotifications",allNotifications);
 			model.addObject("employee", employee);
 			
@@ -160,7 +160,7 @@ public class ChatController {
 			} else {
 				model.addObject("currCourseLevel", 0);
 				}
-			model.addObject("algorithms","Algorithms");
+			model.addObject("tickerCourse","Algorithms");
 			model.addObject("allNotifications",allNotifications);
 			model.addObject("employee", employee);
 			return model;
@@ -193,7 +193,7 @@ public class ChatController {
 		} else {
 			model.addObject("currCourseLevel", 0);
 		}
-		model.addObject("databases","Databases");
+		model.addObject("tickerCourse","Databases");
 		model.addObject("allNotifications",allNotifications);
 		model.addObject("employee", employee);
 		return model;
@@ -240,7 +240,7 @@ public class ChatController {
 			model.addObject("currCourseLevel", 0);
 			}
 		}
-		model.addObject("databases","Databases");
+		model.addObject("tickerCourse","Databases");
 		model.addObject("allNotifications",allNotifications);
 		model.addObject("employee", employee);
 		return model;
@@ -271,7 +271,7 @@ public class ChatController {
 			} else {
 				model.addObject("currCourseLevel", 0);
 			}
-			model.addObject("operatingSystems","Operating Systems");
+			model.addObject("tickerCourse","Operating Systems");
 			model.addObject("allNotifications",allNotifications);
 			model.addObject("employee", employee);
 			return model;
@@ -320,7 +320,7 @@ public class ChatController {
 		} else {
 			model.addObject("currCourseLevel", 0);
 		}
-		model.addObject("operatingSystems","Operating Systems");
+		model.addObject("tickerCourse","Operating Systems");
 		model.addObject("allNotifications",allNotifications);
 		model.addObject("employee", employee);
 		return model;

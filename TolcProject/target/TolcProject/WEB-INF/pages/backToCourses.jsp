@@ -21,7 +21,7 @@ color: #2b8cbe;
     font-weight: 800;
     font-size: 0.8em;
     text-decoration: none;
-    margin: 130px 0px 0px -207px;
+    margin: 130px 0px 0px -186px;
 }
 </style>
 <title></title>

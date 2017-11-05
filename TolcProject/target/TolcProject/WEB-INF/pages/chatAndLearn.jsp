@@ -293,7 +293,9 @@ p { margin: 0; }
 		console.log(objectData)
 		var parsedMessage = objectData.message.replace(999, userId)
 		$('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
-		$('#chat-history').append('<hr><div class="chat-message clearfix"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="chat-message-content clearfix"><span class="chat-time">'+ objectData.timeStamp +'</span><h5>'+ objectData.employee.firstName +'</h5><p>'+ parsedMessage +'</p></div></div><hr>')
+		if(objectData.message != ""){
+			$('#chat-history').append('<hr><div class="chat-message clearfix"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="chat-message-content clearfix"><span class="chat-time">'+ objectData.timeStamp +'</span><h5>'+ objectData.employee.firstName +'</h5><p>'+ parsedMessage +'</p></div></div><hr>')
+		}
 		$('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
 	});
 

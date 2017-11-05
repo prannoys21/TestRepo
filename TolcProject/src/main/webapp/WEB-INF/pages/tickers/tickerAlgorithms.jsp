@@ -210,6 +210,10 @@ p { margin: 0; }
 	margin: 0 0 0 80px;
 }
 
+.clickableFirstName{
+    font-size: 11px;
+    color: #2b8cbe;
+    float:left;
 }
 </style>
 <title></title>
@@ -235,20 +239,22 @@ p { margin: 0; }
 			<div class="notification-history" id="notification-history">
 				<c:forEach var="ticker" items="${allNotifications}">
 				<c:if test="${employee.id != ticker.employee.id }">
-				<c:if test="${ticker.courseName == algorithms}">
-				${ticker.courseName} == ${algorithms} 
-				<%-- <c:if test="${currCourseLevel <= ticker.courseLevel }"> --%>
+				<c:if test="${ticker.courseName == tickerCourse}">
+				<%-- <c:if test="${currCourseLevel <= ticker.courseLevel}"> --%>
 				<div class="notification-message clearfix">
 					<img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32">
-					<div class="notification-message-content clearfix">${ticker.employee.firstName}  completed ${ticker.topicName}  from the course  ${ticker.courseName}
+					<div class="notification-message-content clearfix">
+					<div class="clickableFirstName">
+					${ticker.employee.firstName} </div>	&nbsp;completed ${ticker.topicName}  from the course  ${ticker.courseName}
+					
 					</div>
 					<span class="notification-time">${ticker.timeStamp}</span>
 				</div>
 				<hr>
+				</c:if>
+				</c:if>
 				<%-- </c:if> --%>
-				</c:if>
-				</c:if>
-			</c:forEach>
+				</c:forEach>
 
 			</div> <!-- end notification-history -->
 
@@ -282,6 +288,7 @@ p { margin: 0; }
          $('.notification-history').scrollTop($('.notification-history')[0].scrollHeight);
 	 });
 	var userId = ${employee.id};
+	var courseNameObtainedHere = "${tickerCourse}";
 	var courseLevelOfCurrentEmployee = ${currCourseLevel};
 	  
 	var eventSource = new EventSource('http://localhost:7080/TolcProject/tickerNotification');
@@ -292,11 +299,13 @@ p { margin: 0; }
 		console.log(objectData)
 		console.log(courseLevelOfTickerUpdate)
 		if(userId != objectData.employee.id){
-			if(courseLevelOfCurrentEmployee <= courseLevelOfTickerUpdate){
-				setTimeout(function(){
-				var newNotification = '<div class="notification-message clearfix animated"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="notification-message-content clearfix">'+ objectData.employee.firstName + " completed "+ objectData.topicName + " from the course "+ objectData.courseName +'</div><span class="notification-time">'+ objectData.timeStamp +'</span></div><hr>'
-				$(newNotification).prependTo('.notification-history').hide().slideDown(250);
-				}, 50);
+				if(objectData.courseName == courseNameObtainedHere){
+					if(courseLevelOfCurrentEmployee <= courseLevelOfTickerUpdate){
+					setTimeout(function(){
+					var newNotification = '<div class="notification-message clearfix animated"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="notification-message-content clearfix">'+ objectData.employee.firstName + " completed "+ objectData.topicName + " from the course "+ objectData.courseName +'</div><span class="notification-time">'+ objectData.timeStamp +'</span></div><hr>'
+					$(newNotification).prependTo('.notification-history').hide().slideDown(250);
+					}, 50);
+				}
 			}
 		}
 	});

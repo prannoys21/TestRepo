@@ -34,6 +34,20 @@ div.feature-box div.feature-box-icon, .col-md-3 .course-box, li.heading, div.foo
 .ace_scroller{overflow: auto!important;}
 header {background: #e9e9e9;}
 input {border:2px;}
+.completedCourse {
+    background: #54278f;
+    width: 200px;
+    height: 39px;
+    border-radius: 4px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+    border: #756bb1 1px solid;
+    float: left;
+    font-weight: 800;
+    font-size: 12px;
+    margin: 50px 0px 0px 207px;
+}
 </style>
 <script>
 $(document).ready(function() {
@@ -108,26 +122,28 @@ $(document).ready(function() {
 <h1>Audience</h1>
 <p>This tutorial will especially help computer science graduates in understanding the basic-to-advanced concepts related to Database Management Systems.</p>
 <h1>Prerequisites</h1>
-<p>Before you start proceeding with this tutorial, it is recommended that you have a good understanding of basic computer concepts such as primary memory, secondary memory, and data structures and algorithms.</p>
 
-<p>Please enter your first name and accept the below line to finish this topic.<p>
-<br>
-<p>I hereby declare that I clearly understood the content and state that no changes are required for this content and I successfully  finished this topic.<p> 
+
 <form:form action="sendNotification?id=${employee.id}" method="post" modelAttribute="ticker" name="notificationAddition" id="notificationAddition"> 
-
-					<input type="text" name="notificationgenerator" path="notificationgenerator" placeholder="Enter your Firstname…" autofocus/>
+					<c:if test="${markAsCompleted == false}">
+					<input class="markAsComplete" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="Mark as Completed"/>
+					</c:if>
+					<c:if test="${markAsCompleted == true}">
+					<input class="completedCourse" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="You Completed This Topic"/>
+					</c:if>
 					<input type="hidden" name="courseName" path="courseName" value="Databases" />
-					<input type="hidden" name="courseName" path="courseLevel" value="1" />
+					<input type="hidden" name="courseLevel" path="courseLevel" value="1" />
 					<input type="hidden" name="topicName" path="topicName" value="Introduction to Databases" />
+					<input type="hidden" name="topicUrl" path="topicUrl" value="databases" />
 					
 </form:form>
 
 
 
 <div class="nxt-btn">
-<a href="http://localhost:7080/TolcProject/databases/databases_architecture?id=${employee.id}">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
+<a href="http://localhost:7080/TolcProject/databases/architecture?id=${employee.id}">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
 </div>
 <jsp:include page="../backToCourses.jsp" />
-<jsp:include page="../ticker.jsp" />
+<jsp:include page="../tickers/tickerDatabases.jsp" />
 </body>
 </html>

@@ -14,7 +14,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="author" content="tutorialspoint.com">
-<script type="text/javascript" src="0="></script>
+<script type="text/javascript" src=""></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 <link rel="stylesheet" href="https://www.tutorialspoint.com/theme/css/style-min.css">
 <!-- Head Libs -->
@@ -30,6 +30,23 @@ div.feature-box div.feature-box-icon, .col-md-3 .course-box, li.heading, div.foo
 .ace_scroller{overflow: auto!important;}
 header {background: #e9e9e9;}
 input {border:2px;}
+.completedCourse {
+    background: #54278f;
+    width: 200px;
+    height: 39px;
+    border-radius: 4px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+    border: #756bb1 1px solid;
+    float: left;
+    font-weight: 800;
+    font-size: 12px;
+    margin: 50px 0px 0px 207px;
+}
+.middle-col {
+min-height: 2171px;
+}
 </style>
 <script>
 $(document).ready(function() {
@@ -123,16 +140,20 @@ int main(){
 <a href='http://localhost:7080/TolcProject/algorithms/greedyApproach?id=${employee.id}'>Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
 </div>
 <form:form action="sendNotification?id=${employee.id}" method="post" modelAttribute="ticker" name="notificationAddition" id="notificationAddition"> 
-
+					<c:if test="${markAsCompleted == false}">
 					<input class="markAsComplete" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="Mark as Completed"/>
-					<!-- <input type="text" name="notificationgenerator" path="notificationgenerator" placeholder="Enter your Firstname…"  style="border:3px dashed #F7730E" autofocus/> -->
+					</c:if>
+					<c:if test="${markAsCompleted == true}">
+					<input class="completedCourse" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="You Completed This Topic"/>
+					</c:if>
 					<input type="hidden" name="courseName" path="courseName" value="Algorithms" />
 					<input type="hidden" name="courseLevel" path="courseLevel" value='1' />
 					<input type="hidden" name="topicName" path="topicName" value="Introduction to Algorithms" />
+					<input type="hidden" name="topicUrl" path="topicUrl" value="algorithms" />
 					
 </form:form>
 <jsp:include page="../backToCourses.jsp" />
-<jsp:include page="../ticker.jsp" />
+<jsp:include page="../tickers/tickerAlgorithms.jsp" />
 
 
 

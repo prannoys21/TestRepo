@@ -2,6 +2,7 @@ package com.jwt.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -44,6 +45,27 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	@Override
 	public Employee updateEmployee(Employee employee) {
 		sessionFactory.getCurrentSession().update(employee);
+		return employee;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Employee validateUser(String userName, String password) {
+		// TODO Auto-generated method stub
+		/*StringBuilder sqlQuery = new StringBuilder();
+		sqlQuery.append("SELECT * FROM EMPLOYEE WHERE USERNAME ='")
+		.append(userName)
+		.append("' AND PASSWORD ='")
+		.append("';");*/
+		String sqlQuery = "SELECT * FROM EMPLOYEE WHERE USERNAME='" + userName + "' AND PASSWORD ='" + password + "' ;";
+		Query query =  sessionFactory.getCurrentSession().createSQLQuery(sqlQuery).addEntity(Employee.class);
+		List<Employee> result = query.list();
+		Employee employee = new Employee();
+		if(!result.isEmpty()) {
+		employee = result.get(0);
+		} else {
+			employee = null;
+		}
 		return employee;
 	}
 

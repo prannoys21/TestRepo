@@ -1,35 +1,50 @@
 package com.jwt.model;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "EMP_TBL")
+@Table(name = "EMPLOYEE")
 public class Employee implements Serializable {
 
 	private static final long serialVersionUID = -3465813074586302847L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name= "ID")
 	private int id;
 
-	@Column
-	private String name;
+	@Column(name="FIRSTNAME")
+	private String firstName;
+	
+	@Column(name="SURNAME")
+	private String surName;
 
-	@Column
+	@Column(name="EMAIL")
 	private String email;
 
-	@Column
-	private String address;
+	@Column(name="MOBILE_NUMBER")
+	private String mobileNumber;
+	
+	@Column(name="USERNAME")
+	private String userName;
 
-	@Column
-	private String telephone;
+	@Column(name="PASSWORD")
+	private String password;
+
+
 
 	public int getId() {
 		return id;
@@ -39,12 +54,20 @@ public class Employee implements Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getSurName() {
+		return surName;
+	}
+
+	public void setSurName(String surName) {
+		this.surName = surName;
 	}
 
 	public String getEmail() {
@@ -55,20 +78,28 @@ public class Employee implements Serializable {
 		this.email = email;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getMobileNumber() {
+		return mobileNumber;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
 	}
 
-	public String getTelephone() {
-		return telephone;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }

@@ -13,10 +13,20 @@
 	<!-- Getting Database properties -->
 	<context:property-placeholder location="classpath:application.properties" />
 
-	<mvc:annotation-driven />
+	<mvc:annotation-driven>
+	 	<mvc:async-support default-timeout="300000000" task-executor="taskExecutor"/> 
+	</mvc:annotation-driven>
+	
 
 	<!-- Specifying the Resource location to load JS, CSS, Images etc -->
-	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<mvc:resources mapping="/resources/**" location="/resources/images/, /resources/css/" />
+
+	<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+	    <property name="corePoolSize" value="5"/>
+	    <property name="maxPoolSize" value="50"/>
+	    <property name="queueCapacity" value="10"/>
+	    <property name="keepAliveSeconds" value="120"/>
+	</bean>
 
 	<!-- View Resolver -->
 	<bean
@@ -34,6 +44,18 @@
 		<property name="password" value="${database.password}"></property>
 	</bean>
 
+	<!-- Message Source -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename"  value="messages" />
+	</bean>
+	
+	<!-- Locale  -->
+	<!-- <bean id="localeResolver"
+	    class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+	    <property name="defaultLocale" value="en_GB" />
+	</bean> -->
+
 	<!-- Hibernate SessionFactory -->
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -48,6 +70,7 @@
 		</property>
 		<property name="packagesToScan" value="com.jwt.model"></property>
 	</bean>
+	
 
 	<!-- Transaction -->
 	<bean id="transactionManager"

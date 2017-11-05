@@ -47,4 +47,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 		this.employeeDAO = employeeDAO;
 	}
 
+	@Override
+	public Employee validateUser(String userName, String password) {
+		// TODO Auto-generated method stub
+		Employee employee = employeeDAO.validateUser(userName,password);
+		return employee;
+	}
+
 }

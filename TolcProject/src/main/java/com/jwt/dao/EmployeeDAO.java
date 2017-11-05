@@ -14,4 +14,6 @@ public interface EmployeeDAO {
 	public Employee updateEmployee(Employee employee);
 
 	public Employee getEmployee(int employeeid);
+
+	public Employee validateUser(String userName, String password);
 }

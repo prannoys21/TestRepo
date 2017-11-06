@@ -57,16 +57,64 @@ public class ChatController {
 		return sseEmitter;
 	}
 	
-	@RequestMapping(value = "/sendMessage", method = RequestMethod.POST)
-	public ModelAndView sendMessage(HttpServletRequest request, @RequestParam String actualMessage) {
+	@RequestMapping("/inCoursechatMessages")
+	public SseEmitter inCoursechatMessages() {
+		SseEmitter sseEmitter = new SseEmitter();
+		emitters.add(sseEmitter);
+		sseEmitter.onCompletion(() -> emitters.remove(sseEmitter));
+		return sseEmitter;
+	}
+	
+	
+	@RequestMapping(value = "/sendMessageInCourse", method = RequestMethod.POST)
+	public void sendMessageInCourse(HttpServletRequest request, @RequestParam String actualMessage) {
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-		int empId = Integer.parseInt(request.getParameter("id"));
-		Employee employee = employeeService.getEmployee(empId);
-		String processedMessage = chatService.processMessage(actualMessage,empId);
+		int senderId = Integer.parseInt(request.getParameter("sender"));
+		Employee sender = employeeService.getEmployee(senderId);
+		int recipientId = Integer.parseInt(request.getParameter("recipient"));
+		Employee recipient = employeeService.getEmployee(recipientId);
+		String thisPageUrl = request.getParameter("thisPageUrl");
+		String processedMessage = chatService.processMessage(actualMessage,senderId);
 		Chat chat = new Chat();
 		chat.setTimeStamp(sdf.format(cal.getTime()));
-		chat.setEmployee(employee);
+		chat.setSender(sender);
+		chat.setRecipient(recipient);
+		chat.setMessage(processedMessage);
+		if(!processedMessage.isEmpty()) {
+			chatService.addMessage(chat);
+		}
+		Gson gson = new Gson();
+		String chatJSONString = gson.toJson(chat);
+		for (SseEmitter emitter : emitters) {
+			try {
+				emitter.send(SseEmitter.event().name("inCourseChatAdd").data(chatJSONString));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		/*ModelAndView model = new ModelAndView();
+		model.addObject("employee",sender);
+		model.setViewName("redirect:/"+thisPageUrl+"?id="+senderId);
+		return model;*/
+	}
+	
+	
+	
+	
+	@RequestMapping(value = "/sendMessage", method = RequestMethod.POST)
+	public void sendMessage(HttpServletRequest request, @RequestParam String actualMessage) {
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+		int senderId = Integer.parseInt(request.getParameter("sender"));
+		Employee sender = employeeService.getEmployee(senderId);
+		int recipientId = Integer.parseInt(request.getParameter("recipient"));
+		Employee recipient = employeeService.getEmployee(recipientId);
+		String processedMessage = chatService.processMessage(actualMessage,senderId);
+		Chat chat = new Chat();
+		chat.setTimeStamp(sdf.format(cal.getTime()));
+		chat.setSender(sender);
+		chat.setRecipient(recipient);
 		chat.setMessage(processedMessage);
 		if(!processedMessage.isEmpty()) {
 			chatService.addMessage(chat);
@@ -80,10 +128,10 @@ public class ChatController {
 				e.printStackTrace();
 			}
 		}
-		ModelAndView model = new ModelAndView();
-		model.addObject("employee",employee);
-		model.setViewName("redirect:/chatAndLearn?id="+empId);
-		return model;
+		/*ModelAndView model = new ModelAndView();
+		model.addObject("employee",sender);
+		model.setViewName("redirect:/chatAndLearn?id="+senderId);
+		return model;*/
 	}
  
 	/*/////////////////////////////////Algorithms///////////////////////////////////*/
@@ -111,6 +159,8 @@ public class ChatController {
 			} else {
 				model.addObject("currCourseLevel", 0);
 			}
+			List<Chat> allMessages = chatService.getAllMessages();
+			model.addObject("allMessages",allMessages);
 			model.addObject("tickerCourse","Algorithms");
 			model.addObject("allNotifications",allNotifications);
 			model.addObject("employee", employee);

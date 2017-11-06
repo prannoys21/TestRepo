@@ -2,6 +2,7 @@
 <!DOCTYPE HTML>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -27,7 +28,12 @@ fieldset {
 
 h4, h5 {
 	line-height: 1.5em;
-	margin: 0;
+	margin: 4px 0px -15px 6px;
+}
+
+p {
+    margin-left: 6px;
+    font-size: 16px;
 }
 
 hr {
@@ -56,9 +62,7 @@ input {
     margin: 0;
 }
 
-p { margin: 0; }
 
-.clearfix { *zoom: 1; } /* For IE 6/7 */
 .clearfix:before, .clearfix:after {
     content: "";
     display: table;
@@ -72,7 +76,8 @@ p { margin: 0; }
 	font-size: 12px;
 	right: 24px;
 	position: fixed;
-	width: 300px;
+	width: 290px;
+	margin-right: 350px;
 }
 
 #live-chat header {
@@ -80,8 +85,7 @@ p { margin: 0; }
 	border-radius: 5px 5px 0 0;
 	color: #fff;
 	cursor: pointer;
-	padding: 16px 24px;
-}
+    padding: 7px 12px 12px 10px;}
 
 #live-chat h4:before {
 	background: #1a8a34;
@@ -95,14 +99,15 @@ p { margin: 0; }
 
 #live-chat h4 {
 	font-size: 12px;
+	color: white;
 }
 
 #live-chat h5 {
-	font-size: 10px;
+	font-size: 12px;
 }
 
 #live-chat form {
-	padding: 24px;
+	padding: 17px;
 }
 
 #live-chat input[type="text"] {
@@ -149,22 +154,23 @@ p { margin: 0; }
 }
 
 .chat-history {
-	height: 252px;
-	padding: 8px 24px;
+	height: 300px;
+	padding: 8px 8px 0px 25px;
 	overflow-y: scroll;
 }
 
 .chat-message {
-	margin: 16px 0;
+	margin: 0px 0;
 }
 
 .chat-message img {
 	border-radius: 50%;
 	float: left;
+	margin-left: -20px;
 }
 
 .chat-message-content {
-	margin-left: 56px;
+	margin-left: 15px;
 }
 
 .chat-time {
@@ -175,6 +181,10 @@ p { margin: 0; }
 .chat-feedback {
 	font-style: italic;	
 	margin: 0 0 0 80px;
+}
+.chatMessageWindowText {
+	 margin-left: 6px;
+    font-size: 11px;
 }
 </style>
 <script type="text/javascript">
@@ -204,89 +214,130 @@ p { margin: 0; }
 			
 			<a href="#" class="chat-close">x</a>
 
-			<h4>John Doe</h4>
+			<div class="headerTitle"></div>
 
-			<span class="chat-message-counter">3</span>
 
 		</header>
 
 		<div class="chat">
 			
-			<div class="chat-history">
+			<div class="chat-history" id="chat-history">
 				
+				<c:forEach var="chat" items="${allMessages}">
+				 <c:set var = "empId" value = "${chat.sender.id}"/>
+				 <c:set var = "messageWith999" value = "${chat.message}"/>
+
 				<div class="chat-message clearfix">
-					
-					<img src="http://lorempixum.com/32/32/people" alt="" width="32" height="32">
+					<img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32">
 
 					<div class="chat-message-content clearfix">
 						
-						<span class="chat-time">13:35</span>
+						<span class="chat-time">${chat.timeStamp}</span>
 
-						<h5>John Doe</h5>
+						<h5>${chat.sender.firstName}</h5>
+					<c:set var = "finalMessageWithEmpId" value = "${fn:replace(messageWith999,999, empId)}" />
 
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, explicabo quasi ratione odio dolorum harum.</p>
+						<p class="chatMessageWindowText">${finalMessageWithEmpId}</p>
 
-					</div> <!-- end chat-message-content -->
-
-				</div> <!-- end chat-message -->
-
-				<hr>
-
-				<div class="chat-message clearfix">
+					</div> 
 					
-					<img src="http://gravatar.com/avatar/2c0ad52fc5943b78d6abe069cc08f320?s=32" alt="" width="32" height="32">
-
-					<div class="chat-message-content clearfix">
-						
-						<span class="chat-time">13:37</span>
-
-						<h5>Marco Biedermann</h5>
-
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, nulla accusamus magni vel debitis numquam qui tempora rem voluptatem delectus!</p>
-
-					</div> <!-- end chat-message-content -->
-
-				</div> <!-- end chat-message -->
-
-				<hr>
-
-				<div class="chat-message clearfix">
-					
-					<img src="http://lorempixum.com/32/32/people" alt="" width="32" height="32">
-
-					<div class="chat-message-content clearfix">
-						
-						<span class="chat-time">13:38</span>
-
-						<h5>John Doe</h5>
-
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
-
-					</div> <!-- end chat-message-content -->
-
-				</div> <!-- end chat-message -->
-
-				<hr>
-
+				</div>
+				 <hr>
+				</c:forEach>
+				
+				
 			</div> <!-- end chat-history -->
 
-			<p class="chat-feedback">Your partner is typing…</p>
 
-			<form action="#" method="post">
+			<form:form action="sendMessageInCourse?id=${employee.id}" method="post" modelAttribute="chat" name="messageAddition" id="messageAddition"> 
 
-				<fieldset>
+					<input type="hidden" name="id"  path="id"/>
+					<input type="hidden" name="sender" path="sender" id="sender" value="${employee.id }" />
+					<input type="hidden" name="recipient" path="recipient" id="recipient" value="" />
+					<input type="hidden" name="thisPageUrl" path="thisPageUrl" id="thisPageUrl" value="" />
+					<input type="text" name="actualMessage" path="actualMessage" id="actualMessage" placeholder="Type your message…" autocomplete="off" autofocus/>
 					
-					<input type="text" placeholder="Type your message…" autofocus>
-					<input type="hidden">
-
-				</fieldset>
-
-			</form>
-
+			</form:form>
 		</div> <!-- end chat -->
 
 	</div> <!-- end live-chat -->
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	//wow//incourse
+	${ticker.employee.firstName}
+	var firstNameFromTicker;
+	var idFromTicker;
+	var tickerDivId;
+	 $(document).ready(function() {
+		 //1
+		 $("#live-chat").hide();
+		 
+		 //2
+		 $(".getTickerUserId").hide();
+		 
+		 //3
+		 $(".clickableFirstName").click(function(){
+			 tickerDivId = $(this).parent().parent().attr('id');
+			 tickerDivId = "#" + tickerDivId
+			 $("#live-chat").show();
+			 firstNameFromTicker = $( tickerDivId ).find('div.clickableFirstName').text();
+			 firstNameFromTicker.replace(" ", "");
+			 $(".headerTitle").html("<h4>"+ firstNameFromTicker +"</h4>");
+			 idFromTicker=  $( tickerDivId ).find('div.getTickerUserId').text()
+			 $("#recipient").val(idFromTicker);
+			 $("#thisPageUrl").val(thisPageUrl);
+			 
+		 });
+		 
+		 //4
+		 $('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
+		 //5
+		 $(".chat-close").click(function(){
+			 $("#live-chat").hide();
+		 });
+		 
+		 //6 
+		 $('#messageAddition').submit(function(e) {
+         e.preventDefault();
+		 var postData = $(this).serializeArray();
+		 var formURL = $(this).attr("action");
+         $.ajax({
+             url : formURL,
+			 type: 'POST',
+             data : postData,
+			  success: function(data, textStatus, jqXHR){   
+						location.reload(); 
+						},
+				error: function(jqXHR, textStatus, errorThrown){   
+						console.log("error");
+						}
+     		});	
+ 		});
+		 
+		 //7
+     $('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
+		 
+		 
+		 
+	 });
+	 
+	 var userId = ${employee.id};
+		var eventSource = new EventSource('inCoursechatMessages');
+		eventSource.addEventListener('inCourseChatAdd',function(event){
+			console.log(event.data)
+			var objectData = JSON.parse(event.data);
+			console.log(objectData)
+			var parsedMessage = objectData.message.replace(999, userId)
+			$('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
+			if(objectData.message != ""){
+				$('#chat-history').append('<hr><div class="chat-message clearfix"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="chat-message-content clearfix"><span class="chat-time">'+ objectData.timeStamp +'</span><h5>'+ objectData.sender.firstName +'</h5><p class="chatMessageWindowText">'+ parsedMessage +'</p></div></div><hr>')
+			}
+			$('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
+			$('input[type="text"], textarea').val('');
+		});
+
+		$('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
+	</script>
 </body>
 </html>

@@ -24,8 +24,12 @@ public class Chat implements Serializable {
 	private int id;
 
 	@ManyToOne
-	@JoinColumn(name = "EMPLOYEE_ID")
-	private Employee employee;
+	@JoinColumn(name = "SENDER")
+	private Employee sender;
+	
+	@ManyToOne
+	@JoinColumn(name = "RECIPIENT")
+	private Employee recipient;
 
 	@Column(name = "MESSAGE")
 	private String message;
@@ -41,24 +45,26 @@ public class Chat implements Serializable {
 		this.id = id;
 	}
 
-	
-
-	public Employee getEmployee() {
-		return employee;
+	public Employee getSender() {
+		return sender;
 	}
 
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
+	public void setSender(Employee sender) {
+		this.sender = sender;
 	}
 
-	/*public String getChatUsername() {
-		return chatUsername;
+	public Employee getRecipient() {
+		return recipient;
 	}
 
-	public void setChatUsername(String chatUsername) {
-		this.chatUsername = chatUsername;
+	public void setRecipient(Employee recipient) {
+		this.recipient = recipient;
 	}
-*/
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	public String getMessage() {
 		return message;
 	}
@@ -74,9 +80,5 @@ public class Chat implements Serializable {
 	public void setTimeStamp(String timeStamp) {
 		this.timeStamp = timeStamp;
 	}
-
-	@Override
-	public String toString(){
-	  return  "{Name: "        + employee.getFirstName() + "," +  "Message: "         + message + "," +    "TimeStamp: " + timeStamp+ "}";
-	}
+	
 }

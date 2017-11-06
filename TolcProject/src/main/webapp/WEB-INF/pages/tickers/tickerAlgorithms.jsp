@@ -12,6 +12,7 @@ a {
 color: #2b8cbe;
 }
 
+
 <style>
 @charset "utf-8";
 /* CSS Document */
@@ -37,6 +38,7 @@ fieldset {
 h4, h5 {
 	line-height: 1.5em;
 	margin: 0;
+	color: #2B8CE8;
 }
 
 hr {
@@ -65,9 +67,10 @@ input {
     margin: 0;
 }
 
-p { margin: 0; }
 
-.clearfix { *zoom: 1; } /* For IE 6/7 */
+.clearfix {
+    font-size: 14px;
+}
 .clearfix:before, .clearfix:after {
     content: "";
     display: table;
@@ -194,9 +197,9 @@ p { margin: 0; }
 }
 
 .notification-message-content {
-	margin-left: 2px;
-    width: 260px;
-    align-content: center;
+	    margin-left: 2px;
+    width: 333px;
+    align-content: left;
 }
 
 .notification-time {
@@ -211,9 +214,11 @@ p { margin: 0; }
 }
 
 .clickableFirstName{
-    font-size: 11px;
-    color: #2b8cbe;
-    float:left;
+    font-size: 14px;
+    color: #2B8CE8;
+    float: left;
+    font-weight: bold;
+	cursor: pointer;
 }
 </style>
 <title></title>
@@ -235,20 +240,21 @@ p { margin: 0; }
 		</header>
  -->
 		<div class=notification>
-			
 			<div class="notification-history" id="notification-history">
+			<c:set var="tickerUpdate" value="${0}" scope="request"/>
 				<c:forEach var="ticker" items="${allNotifications}">
 				<c:if test="${employee.id != ticker.employee.id }">
 				<c:if test="${ticker.courseName == tickerCourse}">
 				<%-- <c:if test="${currCourseLevel <= ticker.courseLevel}"> --%>
-				<div class="notification-message clearfix">
+				<c:set var="tickerUpdate" value="${tickerUpdate+1}" scope="request"/>
+				<div class="notification-message clearfix" id="tickerUpdate${tickerUpdate}">
 					<img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32">
 					<div class="notification-message-content clearfix">
-					<div class="clickableFirstName">
-					${ticker.employee.firstName} </div>	&nbsp;completed ${ticker.topicName}  from the course  ${ticker.courseName}
-					
-					</div>
+					<div class="clickableFirstName">${ticker.employee.firstName}</div>	&nbsp;completed ${ticker.topicName}  from the course  ${ticker.courseName}
+					<div class="getTickerUserId">${ticker.employee.id}</div>
 					<span class="notification-time">${ticker.timeStamp}</span>
+					</div>
+					
 				</div>
 				<hr>
 				</c:if>
@@ -268,7 +274,10 @@ p { margin: 0; }
 	
 	<script type="text/javascript">
 	var courseLevelOfTickerUpdate;
+	var firstNameFromTicker;
+	//wow//tickkkkerrrr
 	 $(document).ready(function() {
+		
 		 $('#notificationAddition').submit(function(e) {
              e.preventDefault();
 			 var postData = $(this).serializeArray();
@@ -290,7 +299,7 @@ p { margin: 0; }
 	var userId = ${employee.id};
 	var courseNameObtainedHere = "${tickerCourse}";
 	var courseLevelOfCurrentEmployee = ${currCourseLevel};
-	  
+	var counter = 0;  
 	var eventSource = new EventSource('http://localhost:7080/TolcProject/tickerNotification');
 	eventSource.addEventListener('tickNotifcication',function(event){
 		console.log(event.data)
@@ -302,7 +311,8 @@ p { margin: 0; }
 				if(objectData.courseName == courseNameObtainedHere){
 					if(courseLevelOfCurrentEmployee <= courseLevelOfTickerUpdate){
 					setTimeout(function(){
-					var newNotification = '<div class="notification-message clearfix animated"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="notification-message-content clearfix">'+ objectData.employee.firstName + " completed "+ objectData.topicName + " from the course "+ objectData.courseName +'</div><span class="notification-time">'+ objectData.timeStamp +'</span></div><hr>'
+					var newNotification = '<div class="notification-message clearfix animated" id="tickerUpdate' +counter +'"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="notification-message-content clearfix"><div class="clickableFirstName">'+ objectData.employee.firstName + "</div>	&nbsp;completed "+ objectData.topicName + " from the course "+ objectData.courseName +'</div><span class="notification-time">'+ objectData.timeStamp +'</span></div><hr>'
+					counter++;
 					$(newNotification).prependTo('.notification-history').hide().slideDown(250);
 					}, 50);
 				}

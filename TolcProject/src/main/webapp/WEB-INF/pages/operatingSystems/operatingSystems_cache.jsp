@@ -135,10 +135,6 @@ $(document).ready(function() {
 					<input type="hidden" name="topicUrl" path="topicUrl" value="operatingSystems/cache" />
 </form:form>
 
-
-
-
-
 <div class="pre-btn">
 <a href="http://localhost:7080/TolcProject/operatingSystems/memoryManagement?id=${employee.id}"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
 </div>
@@ -146,8 +142,11 @@ $(document).ready(function() {
 <a href="http://localhost:7080/TolcProject/operatingSystems/secondaryStorage?id=${employee.id}">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
 </div>
 <jsp:include page="../backToCourses.jsp" />
-
-<jsp:include page="../tickers/tickerOperatingSystems.jsp" />
+<jsp:include page="../ticker.jsp" />
 <jsp:include page="../inCourseChat.jsp" />
+<script type="text/javascript">
+var thisPageUrl = "operatingSystems/cache";
+var subTopic = true;
+</script>
 </body>
 </html>

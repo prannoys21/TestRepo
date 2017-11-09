@@ -141,8 +141,6 @@ If the architecture of DBMS is 2-tier, then it must have an application through 
 					
 </form:form>
 
-
-
 <div class="pre-btn">
 <a href="http://localhost:7080/TolcProject/databases?id=${employee.id}"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
 </div>
@@ -150,9 +148,12 @@ If the architecture of DBMS is 2-tier, then it must have an application through 
 <a href="http://localhost:7080/TolcProject/databases/models?id=${employee.id}">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
 </div>
 <jsp:include page="../backToCourses.jsp" />
-<jsp:include page="../tickers/tickerDatabases.jsp" />
+<jsp:include page="../ticker.jsp" />
 <jsp:include page="../inCourseChat.jsp" />
-
+<script type="text/javascript">
+var thisPageUrl = "databases/architecture";
+var subTopic = true;
+</script>
 
 
 </body>

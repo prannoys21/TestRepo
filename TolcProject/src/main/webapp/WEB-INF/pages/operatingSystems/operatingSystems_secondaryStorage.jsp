@@ -141,17 +141,16 @@ Companies are increasingly placing a second class of storage between primary sto
 					
 </form:form>
 
-
-
-
-
 </p>
 <div class="pre-btn">
 <a href="http://localhost:7080/TolcProject/operatingSystems/cache?id=${employee.id}"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
 </div>
 <jsp:include page="../backToCourses.jsp" />
-<jsp:include page="../tickers/tickerOperatingSystems.jsp" />
+<jsp:include page="../ticker.jsp" />
 <jsp:include page="../inCourseChat.jsp" />
-
+<script type="text/javascript">
+var thisPageUrl = "operatingSystems/secondaryStroage";
+var subTopic = true;
+</script>
 </body>
 </html>

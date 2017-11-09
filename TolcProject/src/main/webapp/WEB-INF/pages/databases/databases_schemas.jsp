@@ -141,13 +141,16 @@ A database instance is a state of operational database with data at any given ti
 					
 </form:form>
 
-
 <div class="pre-btn">
 <a href="http://localhost:7080/TolcProject/databases/models?id=${employee.id}"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
 </div>
 
 <jsp:include page="../backToCourses.jsp" />
-<jsp:include page="../tickers/tickerDatabases.jsp" />
+<jsp:include page="../ticker.jsp" />
 <jsp:include page="../inCourseChat.jsp" />
+<script type="text/javascript">
+var thisPageUrl = "databases/schemas";
+var subTopic = true;
+</script>
 </body>
 </html>

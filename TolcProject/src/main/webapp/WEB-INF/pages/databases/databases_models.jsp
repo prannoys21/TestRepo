@@ -143,8 +143,6 @@ The very first data model could be flat data-models, where all the data used are
 					
 </form:form>
 
-
-
 <div class="pre-btn">
 <a href="http://localhost:7080/TolcProject/databases/architecture?id=${employee.id}"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
 </div>
@@ -152,7 +150,11 @@ The very first data model could be flat data-models, where all the data used are
 <a href="http://localhost:7080/TolcProject/databases/schemas?id=${employee.id}">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
 </div>
 <jsp:include page="../backToCourses.jsp" />
-<jsp:include page="../tickers/tickerDatabases.jsp" />
+<jsp:include page="../ticker.jsp" />
 <jsp:include page="../inCourseChat.jsp" />
+<script type="text/javascript">
+var thisPageUrl = "databases/models";
+var subTopic = true;
+</script>
 </body>
 </html>

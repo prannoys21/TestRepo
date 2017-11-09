@@ -152,9 +152,12 @@ In contrast to divide and conquer algorithms, where solutions are combined to ac
 </form:form>
 
 <jsp:include page="../backToCourses.jsp" />
-<jsp:include page="../tickers/tickerAlgorithms.jsp" />
+<jsp:include page="../ticker.jsp" />
 <jsp:include page="../inCourseChat.jsp" />
-
+<script type="text/javascript">
+var thisPageUrl = "algorithms/dynamicProgramming";
+var subTopic = true;
+</script>
 
 </body>
 </html>

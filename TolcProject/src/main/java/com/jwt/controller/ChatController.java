@@ -292,15 +292,18 @@ public class ChatController {
 				if (currCourseLevel >= pageTopicLevel){
 					model.addObject("markAsCompleted", true);
 				}
+				model.addObject("currCourseLevel", currCourseLevel);
 			} else if  (param2.equals("architecture")) {
 				pageTopicLevel = 2;
 				if (currCourseLevel >= pageTopicLevel){
 					model.addObject("markAsCompleted", true);
 				}
-			} else {
+			} 
+			model.addObject("currCourseLevel", currCourseLevel);
+		} else {
 			model.addObject("currCourseLevel", 0);
 			}
-		}
+		
 		model.addObject("tickerCourse","Databases");
 		model.addObject("allNotifications",allNotifications);
 		model.addObject("employee", employee);

@@ -135,7 +135,7 @@ Greedy algorithms try to find a localized optimum solution, which may eventually
 <a href="http://localhost:7080/TolcProject/algorithms/divideAndConquer?id=${employee.id}">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
 </div>
 
-<form:form action="../algorithms/sendNotification?id=${employee.id}" method="post" modelAttribute="ticker" name="notificationAddition" id="notificationAddition"> 
+<form:form action="../sendNotification?id=${employee.id}" method="post" modelAttribute="ticker" name="notificationAddition" id="notificationAddition"> 
 
 					<c:if test="${markAsCompleted == false}">
 					<input class="markAsComplete" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="Mark as Completed"/>
@@ -149,12 +149,13 @@ Greedy algorithms try to find a localized optimum solution, which may eventually
 					<input type="hidden" name="topicUrl" path="topicUrl" value="algorithms/greedyApproach" />
 					
 </form:form>
-
+	
 <jsp:include page="../backToCourses.jsp" />
-<jsp:include page="../tickers/tickerAlgorithms.jsp" />
+<jsp:include page="../ticker.jsp" />
 <jsp:include page="../inCourseChat.jsp" />
 <script type="text/javascript">
-var thisPageUrl = "algorithms"
+var thisPageUrl = "algorithms/greedyApproach"
+var subTopic = true;
 </script>
 </body>
 </html>

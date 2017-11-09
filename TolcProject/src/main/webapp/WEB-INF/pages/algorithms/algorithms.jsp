@@ -156,11 +156,13 @@ int main(){
 					<input type="hidden" name="topicUrl" path="topicUrl" value="algorithms" />
 					
 </form:form>
+	
 <jsp:include page="../backToCourses.jsp" />
-<jsp:include page="../tickers/tickerAlgorithms.jsp" />
+<jsp:include page="../ticker.jsp" />
 <jsp:include page="../inCourseChat.jsp" />
 <script type="text/javascript">
 var thisPageUrl = "algorithms"
+var subTopic = false;
 </script>
 
 

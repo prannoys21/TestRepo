@@ -139,7 +139,6 @@ This tutorial will teach you basic concepts related to Memory Management.</p>
 					
 </form:form>
 
-
 <div class="pre-btn">
 <a href="http://localhost:7080/TolcProject/operatingSystems?id=${employee.id}"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
 </div>
@@ -147,8 +146,11 @@ This tutorial will teach you basic concepts related to Memory Management.</p>
 <a href="http://localhost:7080/TolcProject/operatingSystems/cache?id=${employee.id}">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
 </div>
 <jsp:include page="../backToCourses.jsp" />
-
-<jsp:include page="../tickers/tickerOperatingSystems.jsp" />
+<jsp:include page="../ticker.jsp" />
 <jsp:include page="../inCourseChat.jsp" />
+<script type="text/javascript">
+var thisPageUrl = "operatingSystems/memoryManagement";
+var subTopic = true;
+</script>
 </body>
 </html>

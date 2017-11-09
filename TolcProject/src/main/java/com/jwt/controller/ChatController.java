@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
@@ -99,7 +100,17 @@ public class ChatController {
 		return model;*/
 	}
 	
-	
+	@RequestMapping(value = "/getInCourseSenderObject/{senderId}/{recipientId}", method = RequestMethod.GET)
+	public @ResponseBody List<Chat> sendMessageInCourse(HttpServletRequest request, @PathVariable int senderId, @PathVariable int recipientId) {
+		/*Employee recipient = employeeService.getEmployee(id);
+		Gson gson = new Gson();
+		String recipientJSONString = gson.toJson(recipient);
+		return recipientJSONString;
+		return recipient;*/
+		List<Chat> allInCourseMessages = chatService.getAllInCourseMessages(senderId, recipientId);
+		return allInCourseMessages;
+		
+	}
 	
 	
 	@RequestMapping(value = "/sendMessage", method = RequestMethod.POST)
@@ -159,8 +170,8 @@ public class ChatController {
 			} else {
 				model.addObject("currCourseLevel", 0);
 			}
-			List<Chat> allMessages = chatService.getAllMessages();
-			model.addObject("allMessages",allMessages);
+			//List<Chat> allMessages = chatService.getAllInCourseMessages(empId);
+			//model.addObject("allMessages",allMessages);
 			model.addObject("tickerCourse","Algorithms");
 			model.addObject("allNotifications",allNotifications);
 			model.addObject("employee", employee);

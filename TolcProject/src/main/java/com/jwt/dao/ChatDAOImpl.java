@@ -29,12 +29,28 @@ public class ChatDAOImpl implements ChatDAO {
 
 	@Override
 	public Integer getMessageCount() {
+		Integer messageCount=0;
 		String sqlQuery = "SELECT * FROM CHAT;";
 		Query query =  sessionFactory.getCurrentSession().createSQLQuery(sqlQuery).addEntity(Chat.class);
 		@SuppressWarnings("unchecked")
 		List<Integer> result = query.list();
-		Integer messageCount= result.size();
+		if(!result.isEmpty()) {
+		messageCount= result.size();
+		}
 		return messageCount;
+	}
+
+	@Override
+	public List<Chat> getAllInCourseMessages(int senderId, int recipientId) {
+		//SELECT * FROM `chat` WHERE SENDER = 1 AND RECIPIENT =5 	UNION		SELECT * FROM `chat`WHERE SENDER = 5 AND RECIPIENT =1 ORDER BY TIMESTAMP ASC;
+		String sqlQuery = "SELECT * FROM CHAT WHERE SENDER = " + senderId + " AND RECIPIENT = "+ recipientId + " UNION	SELECT * FROM CHAT  WHERE SENDER = "+recipientId+ " AND RECIPIENT = "+ senderId+" ORDER BY TIMESTAMP ASC" ;
+		Query query =  sessionFactory.getCurrentSession().createSQLQuery(sqlQuery).addEntity(Chat.class);
+		@SuppressWarnings("unchecked")
+		List<Chat> result = query.list();
+		if(result.isEmpty()) {
+			result = null;
+		}
+		return result;
 	}
 
 

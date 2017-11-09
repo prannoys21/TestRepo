@@ -34,21 +34,26 @@ public class ChatServiceImpl implements ChatService {
 		String processedMessage = actualMessage;
 		ArrayList<String> algorithms = new ArrayList<>();
 		algorithms.add("algorithms"); //1
-		algorithms.add("algo"); //2
-		algorithms.add("greedy approach"); //3
-		algorithms.add("dynamic programming");//4
-		algorithms.add("divide and conquer");//5
+		algorithms.add("algorithms".toUpperCase()); //2
+		algorithms.add("algo"); //3
+		algorithms.add("algo".toUpperCase()); //4
+		algorithms.add("greedy approach"); //5
+		algorithms.add("greedy approach".toUpperCase()); //6
+		algorithms.add("dynamic programming");//7
+		algorithms.add("dynamic programming".toUpperCase());//8
+		algorithms.add("divide and conquer");//9
+		algorithms.add("divide and conquer".toUpperCase());//10
 		int i=0;
 		for (String temp : algorithms) {
 			i+=1;
 			if(actualMessage.contains(temp) || actualMessage.contains(temp.toUpperCase())) {
-				if(i==1 || i==2) {
+				if(i==1 || i==2 || i==3 || i==4) {
 					processedMessage = actualMessage.replace(temp, "<a href=\"algorithms?id=999\">"+ temp +"</a>");
-				} else if (i==3){
+				} else if (i==5 || i==6){
 					processedMessage = actualMessage.replace(temp, "<a href=\"algorithms/greedyApproach?id=999\">"+ temp +"</a>");
-				} else if (i==4){
+				} else if (i==7 || i==8){
 					processedMessage = actualMessage.replace(temp, "<a href=\"algorithms/dynamicProgramming?id=999\">"+ temp +"</a>");
-				} else if (i==5){
+				} else if (i==9 || i==10){
 					processedMessage = actualMessage.replace(temp, "<a href=\"algorithms/divideAndConquer?id=999\">"+ temp +"</a>");
 				} 
 			}
@@ -56,6 +61,7 @@ public class ChatServiceImpl implements ChatService {
 		
 		ArrayList<String> databases = new ArrayList<>();
 		databases.add("databases"); //1
+		databases.add("databases".toUpperCase()); //1
 		databases.add("database"); //2
 		databases.add("dbms"); //3
 		databases.add("architecture");//4
@@ -105,6 +111,11 @@ public class ChatServiceImpl implements ChatService {
 	@Override
 	public Integer getMessageCount() {
 		return chatDAO.getMessageCount();
+	}
+
+	@Override
+	public List<Chat> getAllInCourseMessages(int senderId, int recipientId) {
+		return chatDAO.getAllInCourseMessages(senderId, recipientId);
 	}
 
 }

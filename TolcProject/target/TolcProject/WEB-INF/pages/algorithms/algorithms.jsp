@@ -16,12 +16,15 @@
 <meta name="author" content="tutorialspoint.com">
 <script type="text/javascript" src=""></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-<link rel="stylesheet" href="https://www.tutorialspoint.com/theme/css/style-min.css">
+<!-- <link rel="stylesheet" href="https://www.tutorialspoint.com/theme/css/style-min.css"> -->
 <!-- Head Libs -->
 <!--[if IE 8]>
 <link rel="stylesheet" type="text/css" href="/theme/css/ie8.css">
 <![endif]-->
 <style>
+body {
+	color: #000;
+}
 pre.prettyprint.tryit {min-height:37px; background: #eee url(data_structures_algorithms/images/try-it.jpg) top right no-repeat !important}select{ border:0 !important; outline: 1px inset black !important; outline-offset: -1px !important; }
 ul.nav-list.primary>li a.videolink{    background: none; margin: 0px; padding: 0px; border: 1px solid #d6d6d6;}
 div.feature-box div.feature-box-icon, .col-md-3 .course-box, li.heading, div.footer-copyright { background: #cd3300 url(/images/pattern.png) repeat center center !important;}
@@ -45,7 +48,7 @@ input {border:2px;}
     margin: 50px 0px 0px 207px;
 }
 .middle-col {
-min-height: 2171px;
+min-height: 1171px;
 }
 </style>
 <script>
@@ -74,14 +77,14 @@ $(document).ready(function() {
       </h1>			
       
          <!-- search code here  --> 
-      <button class="btn btn-responsive-nav btn-inverse" data-toggle="collapse" data-target=".nav-main-collapse" id="pull" style="top: 24px!important"> <i class="icon icon-bars"></i> </button>
+      
    </div>
   
    
 </header>
 <div style="clear:both;"></div>
 <div role="main" class="main">
-<div class="container" style="margin-left:200px">
+<div class="container" style="margin-left:200px; margin-right: 736px;">
 <div class="row">
 <div class="col-md-2">
 <aside class="sidebar">
@@ -140,6 +143,7 @@ int main(){
 <a href='http://localhost:7080/TolcProject/algorithms/greedyApproach?id=${employee.id}'>Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
 </div>
 <form:form action="sendNotification?id=${employee.id}" method="post" modelAttribute="ticker" name="notificationAddition" id="notificationAddition"> 
+					
 					<c:if test="${markAsCompleted == false}">
 					<input class="markAsComplete" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="Mark as Completed"/>
 					</c:if>
@@ -154,7 +158,10 @@ int main(){
 </form:form>
 <jsp:include page="../backToCourses.jsp" />
 <jsp:include page="../tickers/tickerAlgorithms.jsp" />
-
+<jsp:include page="../inCourseChat.jsp" />
+<script type="text/javascript">
+var thisPageUrl = "algorithms"
+</script>
 
 
 </body>

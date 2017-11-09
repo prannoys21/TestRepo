@@ -19,7 +19,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="author" content="tutorialspoint.com">
 <script type="text/javascript" src="https://www.tutorialspoint.com/theme/js/script-min-v4.js"></script>
-<link rel="stylesheet" href="https://www.tutorialspoint.com/theme/css/style-min.css">
+<!-- <link rel="stylesheet" href="https://www.tutorialspoint.com/theme/css/style-min.css"> -->
 <!-- Head Libs -->
 <!--[if IE 8]>
 <link rel="stylesheet" type="text/css" href="/theme/css/ie8.css">
@@ -74,14 +74,13 @@ $(document).ready(function() {
       </h1>			
       
          <!-- search code here  --> 
-      <button class="btn btn-responsive-nav btn-inverse" data-toggle="collapse" data-target=".nav-main-collapse" id="pull" style="top: 24px!important"> <i class="icon icon-bars"></i> </button>
    </div>
   
    
 </header>
 <div style="clear:both;"></div>
 <div role="main" class="main">
-<div class="container"  style="margin-left:200px;">
+<div class="container"  style="margin-left:200px; margin-right: 736px;">
 <div class="row">
 <div class="col-md-2">
 <aside class="sidebar">
@@ -136,10 +135,10 @@ Greedy algorithms try to find a localized optimum solution, which may eventually
 <a href="http://localhost:7080/TolcProject/algorithms/divideAndConquer?id=${employee.id}">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
 </div>
 
-<form:form action="../sendNotification?id=${employee.id}" method="post" modelAttribute="ticker" name="notificationAddition" id="notificationAddition"> 
+<form:form action="../algorithms/sendNotification?id=${employee.id}" method="post" modelAttribute="ticker" name="notificationAddition" id="notificationAddition"> 
 
 					<c:if test="${markAsCompleted == false}">
-					<input class="1markAsComplete" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="Mark as Completed"/>
+					<input class="markAsComplete" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="Mark as Completed"/>
 					</c:if>
 					<c:if test="${markAsCompleted == true}">
 					<input class="completedCourse" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="You Completed This Topic"/>
@@ -153,7 +152,9 @@ Greedy algorithms try to find a localized optimum solution, which may eventually
 
 <jsp:include page="../backToCourses.jsp" />
 <jsp:include page="../tickers/tickerAlgorithms.jsp" />
-
-
+<jsp:include page="../inCourseChat.jsp" />
+<script type="text/javascript">
+var thisPageUrl = "algorithms"
+</script>
 </body>
 </html>

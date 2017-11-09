@@ -237,7 +237,7 @@ p { margin: 0; }
 						
 						<span class="chat-time">${chat.timeStamp}</span>
 
-						<h5>${chat.employee.firstName}</h5>
+						<h5>${chat.sender.firstName}</h5>
 					<c:set var = "finalMessageWithEmpId" value = "${fn:replace(messageWith999,999, empId)}" />
 
 						<p>${finalMessageWithEmpId}</p>
@@ -257,6 +257,8 @@ p { margin: 0; }
 			<form:form action="sendMessage?id=${employee.id}" method="post" modelAttribute="chat" name="messageAddition" id="messageAddition"> 
 
 					<input type="hidden" name="id"  path="id"/>
+					<input type="hidden" name="sender" path="sender" value="${employee.id }" />
+					<input type="hidden" name="recipient" path="recipient" value="999" />
 					<input type="text" name="actualMessage" path="actualMessage" placeholder="Type your message…" autocomplete="off" autofocus/>
 					
 			</form:form>
@@ -294,8 +296,9 @@ p { margin: 0; }
 		var parsedMessage = objectData.message.replace(999, userId)
 		$('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
 		if(objectData.message != ""){
-			$('#chat-history').append('<hr><div class="chat-message clearfix"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="chat-message-content clearfix"><span class="chat-time">'+ objectData.timeStamp +'</span><h5>'+ objectData.employee.firstName +'</h5><p>'+ parsedMessage +'</p></div></div><hr>')
+			$('#chat-history').append('<hr><div class="chat-message clearfix"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="chat-message-content clearfix"><span class="chat-time">'+ objectData.timeStamp +'</span><h5>'+ objectData.sender.firstName +'</h5><p>'+ parsedMessage +'</p></div></div><hr>')
 		}
+		$('input[type="text"], textarea').val('');
 		$('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
 	});
 

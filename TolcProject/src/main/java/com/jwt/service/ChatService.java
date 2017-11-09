@@ -14,4 +14,6 @@ public interface ChatService {
 
 	public Integer getMessageCount();
 
+	public List<Chat> getAllInCourseMessages(int senderId, int recipientId);
+
 }	

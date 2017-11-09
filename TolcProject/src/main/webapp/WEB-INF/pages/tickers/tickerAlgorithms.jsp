@@ -276,7 +276,9 @@ input {
 	var courseLevelOfTickerUpdate;
 	var firstNameFromTicker;
 	//wow//tickkkkerrrr
+
 	 $(document).ready(function() {
+		 $(".getTickerUserId").hide();
 		
 		 $('#notificationAddition').submit(function(e) {
              e.preventDefault();

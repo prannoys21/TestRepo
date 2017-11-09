@@ -20,7 +20,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="author" content="tutorialspoint.com">
 <script type="text/javascript" src="https://www.tutorialspoint.com/theme/js/script-min-v4.js"></script>
-<link rel="stylesheet" href="https://www.tutorialspoint.com/theme/css/style-min.css">
+<!-- <link rel="stylesheet" href="https://www.tutorialspoint.com/theme/css/style-min.css"> -->
 <!-- Head Libs -->
 <!--[if IE 8]>
 <link rel="stylesheet" type="text/css" href="/theme/css/ie8.css">
@@ -75,14 +75,13 @@ $(document).ready(function() {
       </h1>			
       
          <!-- search code here  --> 
-      <button class="btn btn-responsive-nav btn-inverse" data-toggle="collapse" data-target=".nav-main-collapse" id="pull" style="top: 24px!important"> <i class="icon icon-bars"></i> </button>
    </div>
   
    
 </header>
 <div style="clear:both;"></div>
 <div role="main" class="main">
-<div class="container" style="margin-left:200px;">
+<div class="container" style="margin-left:200px;margin-right: 736px;">
 <div class="row">
 <div class="col-md-2">
 <aside class="sidebar">
@@ -140,7 +139,6 @@ This tutorial will teach you basic concepts related to Memory Management.</p>
 					
 </form:form>
 
-
 <div class="pre-btn">
 <a href="http://localhost:7080/TolcProject/operatingSystems?id=${employee.id}"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
 </div>
@@ -148,7 +146,11 @@ This tutorial will teach you basic concepts related to Memory Management.</p>
 <a href="http://localhost:7080/TolcProject/operatingSystems/cache?id=${employee.id}">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
 </div>
 <jsp:include page="../backToCourses.jsp" />
-
-<jsp:include page="../tickers/tickerOperatingSystems.jsp" />
+<jsp:include page="../ticker.jsp" />
+<jsp:include page="../inCourseChat.jsp" />
+<script type="text/javascript">
+var thisPageUrl = "operatingSystems/memoryManagement";
+var subTopic = true;
+</script>
 </body>
 </html>

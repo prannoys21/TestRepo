@@ -433,6 +433,61 @@ input {
 		});
 
 		$('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
+		
+		//Again
+		//3
+		 $(".clickableFirstName").click(function(){
+			tickerDivId = $(this).parent().parent().attr('id');
+			tickerDivId = "#" + tickerDivId;
+			//$('.chat').slideToggle(300, 'swing');
+			//$('.chat-message-counter').fadeToggle(300, 'swing');
+			$("#live-chat").show();
+			firstNameFromTicker = $( tickerDivId ).find('div.clickableFirstName').text();
+			firstNameFromTicker.replace(" ", "");
+			$(".headerTitle").html("<h4>"+ firstNameFromTicker +"</h4>");
+			idFromTicker=  $( tickerDivId ).find('div.getTickerUserId').text()
+			$("#recipient").val(idFromTicker);
+			$("#thisPageUrl").val(thisPageUrl);
+			 var formURL = "getInCourseSenderObject/"+userId+"/"+idFromTicker;
+			 /* if(formURL.includes("algorithms")){
+				 formURL.replace("algorithms/","");
+			 } else if (formURL.includes("databases")){
+				 formURL.replace("databases/","");
+			 } else if (formURL.includes("operatingSystems")){
+				 formURL.replace("operatingSystems/","");
+			 } */
+			 if(subTopic == true){
+				 formURL = "../" + formURL;
+			 }
+	         $.ajax({
+	             url : formURL,
+				 type: 'GET',
+	             data : null,
+				  success: function(data, textStatus, jqXHR){ 
+					  inCourseMessage=[];
+					  $('#chat-history').empty()
+					  		$.each(data, function(index, currRecipient) {
+					  			inCourseMessage.push(currRecipient);
+				         }); 
+				  		  for(i=0;i<inCourseMessage.length;i++){
+				  			var parsedMessage = inCourseMessage[i].message.replace(999, userId);
+				  			if((inCourseMessage[i].sender.id == userId)) {
+				  				inCourseMessage[i].sender.firstName = "You";
+				  			}
+				        	// console.log("crazy  "+  inCourseMessage[i].timeStamp + " " +   inCourseMessage[i].sender.firstName + " " + inCourseMessage[i].message);
+				        	 if(inCourseMessage[i].message != ""){
+				 				$('#chat-history').append('<hr><div class="chat-message clearfix"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="chat-message-content clearfix"><span class="chat-time">'+ inCourseMessage[i].timeStamp +'</span><h5>'+ inCourseMessage[i].sender.firstName +'</h5><p class="chatMessageWindowText">'+ parsedMessage +'</p></div></div><hr>')
+				 			}
+				 			$('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
+				 			$('input[type="text"], textarea').val('');
+				         } 
+					},
+					error: function(jqXHR, textStatus, errorThrown){   
+							console.log("error");
+							}
+	     		});	
+		 });
+		 
 	</script>
 </body>
 </html>

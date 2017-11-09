@@ -19,7 +19,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="author" content="tutorialspoint.com">
 <script type="text/javascript" src="https://www.tutorialspoint.com/theme/js/script-min-v4.js"></script>
-<link rel="stylesheet" href="https://www.tutorialspoint.com/theme/css/style-min.css">
+<!-- <link rel="stylesheet" href="https://www.tutorialspoint.com/theme/css/style-min.css"> -->
 <!-- Head Libs -->
 <!--[if IE 8]>
 <link rel="stylesheet" type="text/css" href="/theme/css/ie8.css">
@@ -81,7 +81,7 @@ $(document).ready(function() {
 </header>
 <div style="clear:both;"></div>
 <div role="main" class="main">
-<div class="container"  style="margin-left:200px;">
+<div class="container"  style="margin-left:200px;margin-right: 736px;">
 <div class="row">
 <div class="col-md-2">
 <aside class="sidebar">
@@ -152,8 +152,12 @@ In contrast to divide and conquer algorithms, where solutions are combined to ac
 </form:form>
 
 <jsp:include page="../backToCourses.jsp" />
-<jsp:include page="../tickers/tickerAlgorithms.jsp" />
-
+<jsp:include page="../ticker.jsp" />
+<jsp:include page="../inCourseChat.jsp" />
+<script type="text/javascript">
+var thisPageUrl = "algorithms/dynamicProgramming";
+var subTopic = true;
+</script>
 
 </body>
 </html>

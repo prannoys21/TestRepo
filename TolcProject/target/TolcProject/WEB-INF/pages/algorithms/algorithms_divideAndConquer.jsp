@@ -149,8 +149,12 @@ $(document).ready(function() {
 </form:form>
 
 <jsp:include page="../backToCourses.jsp" />
-<jsp:include page="../tickers/tickerAlgorithms.jsp" />
-
+<jsp:include page="../ticker.jsp" />
+<jsp:include page="../inCourseChat.jsp" />
+<script type="text/javascript">
+var thisPageUrl = "algorithms/divideAndConquer";
+var subTopic = true;
+</script>
 
 </body>
 </html>

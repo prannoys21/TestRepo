@@ -2,6 +2,7 @@ package com.jwt.controller;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -144,9 +145,27 @@ public class EmployeeController {
 			List<Ticker> algoTopics = tickerService.getAlgoTopicsCompleted(employee2.getId());
 			List<Ticker> dbTopics = tickerService.getDbmsTopicsCompleted(employee2.getId());
 			List<Ticker> osTopics = tickerService.getOsTopicsCompleted(employee2.getId());
-			Map<String,Integer>  topicWiseHelpingCountAlgorithms = chatService.getTopicWiseHelpingCount(employee2.getId(),"Algorithms");
+			Map<String,Integer> topicWiseHelpingCountAlgorithms = chatService.getTopicWiseHelpingCount(employee2.getId(),"Algorithms");
+			if(topicWiseHelpingCountAlgorithms.isEmpty()) {
+				topicWiseHelpingCountAlgorithms.put("Introduction to Algorithms", 0);
+				topicWiseHelpingCountAlgorithms.put("Greedy Approach", 0);
+				topicWiseHelpingCountAlgorithms.put("Divide And Conquer", 0);
+				topicWiseHelpingCountAlgorithms.put("Dynamic Programming", 0);
+			}
 			Map<String,Integer>  topicWiseHelpingCountDatabases = chatService.getTopicWiseHelpingCount(employee2.getId(),"Databases");
+			if(topicWiseHelpingCountDatabases.isEmpty()) {
+				topicWiseHelpingCountDatabases.put("Introduction to Databases", 0);
+				topicWiseHelpingCountDatabases.put("Architecture", 0);
+				topicWiseHelpingCountDatabases.put("Models", 0);
+				topicWiseHelpingCountDatabases.put("Schemas", 0);
+			}
 			Map<String,Integer>  topicWiseHelpingCountOperatingSystems = chatService.getTopicWiseHelpingCount(employee2.getId(),"Operating Systems");
+			if(topicWiseHelpingCountOperatingSystems.isEmpty()) {
+				topicWiseHelpingCountOperatingSystems.put("Introduction to Operating Systems", 0);
+				topicWiseHelpingCountOperatingSystems.put("Secondary Storage", 0);
+				topicWiseHelpingCountOperatingSystems.put("Memory Management", 0);
+				topicWiseHelpingCountOperatingSystems.put("Cache", 0);
+			}
 			int numberOfPeopleHelped = chatService.getListOfUsersHelped(employee2.getId());
 			int algoLevel =0 ;
 			int dbLevel =0 ;
@@ -200,8 +219,26 @@ public class EmployeeController {
 		List<Ticker> dbTopics = tickerService.getDbmsTopicsCompleted(empId);
 		List<Ticker> osTopics = tickerService.getOsTopicsCompleted(empId);
 		Map<String,Integer> topicWiseHelpingCountAlgorithms = chatService.getTopicWiseHelpingCount(empId,"Algorithms");
+		if(topicWiseHelpingCountAlgorithms.isEmpty()) {
+			topicWiseHelpingCountAlgorithms.put("Introduction to Algorithms", 0);
+			topicWiseHelpingCountAlgorithms.put("Greedy Approach", 0);
+			topicWiseHelpingCountAlgorithms.put("Divide And Conquer", 0);
+			topicWiseHelpingCountAlgorithms.put("Dynamic Programming", 0);
+		}
 		Map<String,Integer>  topicWiseHelpingCountDatabases = chatService.getTopicWiseHelpingCount(empId,"Databases");
+		if(topicWiseHelpingCountDatabases.isEmpty()) {
+			topicWiseHelpingCountDatabases.put("Introduction to Databases", 0);
+			topicWiseHelpingCountDatabases.put("Architecture", 0);
+			topicWiseHelpingCountDatabases.put("Models", 0);
+			topicWiseHelpingCountDatabases.put("Schemas", 0);
+		}
 		Map<String,Integer>  topicWiseHelpingCountOperatingSystems = chatService.getTopicWiseHelpingCount(empId,"Operating Systems");
+		if(topicWiseHelpingCountOperatingSystems.isEmpty()) {
+			topicWiseHelpingCountOperatingSystems.put("Introduction to Operating Systems", 0);
+			topicWiseHelpingCountOperatingSystems.put("Secondary Storage", 0);
+			topicWiseHelpingCountOperatingSystems.put("Memory Management", 0);
+			topicWiseHelpingCountOperatingSystems.put("Cache", 0);
+		}
 		int numberOfPeopleHelped = chatService.getListOfUsersHelped(empId);
 		
 		int algoLevel =0 ;

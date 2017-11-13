@@ -100,7 +100,10 @@ input {
 	right: 0px;
 	position: fixed;
 	width: 19%;
-	height:100%;
+	/* height:100%; */
+	    height: 99%;
+    margin-top: 56px;
+	
 }
 
 #ticker-notification header {
@@ -177,13 +180,14 @@ input {
 }
 
 .notification {
-	background: #fff;
+	background: #e9e9e900;
 }
 
 .notification-history {
-	height: 975px;
+	height: 919px;
 	padding: 5px 5px;
 	overflow: auto;
+	margin-top:56px;
 }
 
 .notification-message {
@@ -278,6 +282,8 @@ input {
 	//wow//tickkkkerrrr
 
 	 $(document).ready(function() {
+		 //$('.notification-history').scrollTop($('.notification-history')[0].scrollHeight);
+		 
 		 $(".getTickerUserId").hide();
 		
 		 $('#notificationAddition').submit(function(e) {
@@ -296,7 +302,7 @@ input {
 							}
          });
 	 });
-         $('.notification-history').scrollTop($('.notification-history')[0].scrollHeight);
+         //$('.notification-history').scrollTop($('.notification-history')[0].scrollHeight);
 	 });
 	var userId = ${employee.id};
 	var courseNameObtainedHere = "${tickerCourse}";
@@ -313,7 +319,7 @@ input {
 				if(objectData.courseName == courseNameObtainedHere){
 					//if(courseLevelOfCurrentEmployee <= courseLevelOfTickerUpdate){
 					setTimeout(function(){
-					var newNotification = '<div class="notification-message clearfix animated" id="tickerUpdate' +counter +'"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="notification-message-content clearfix"><div class="clickableFirstName">'+ objectData.employee.firstName + "</div>	&nbsp;completed "+ objectData.topicName + " from the course "+ objectData.courseName +'</div><span class="notification-time">'+ objectData.timeStamp +'</span></div><hr>'
+					var newNotification = '<div class="notification-message clearfix animated" id="tickerUpdate' +counter +'"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="notification-message-content clearfix"><div class="clickableFirstName">'+ objectData.employee.firstName + "</div>	&nbsp;completed "+ objectData.topicName + " from the course "+ objectData.courseName +'</div><div class="getTickerUserId" style="display: none;">'+objectData.employee.id+'</div><span class="notification-time">'+ objectData.timeStamp +'</span></div><hr>'
 					counter++;
 					$(newNotification).prependTo('.notification-history').hide().slideDown(250);
 					}, 50);

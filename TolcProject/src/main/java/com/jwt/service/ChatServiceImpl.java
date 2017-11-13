@@ -2,6 +2,7 @@ package com.jwt.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -117,5 +118,27 @@ public class ChatServiceImpl implements ChatService {
 	public List<Chat> getAllInCourseMessages(int senderId, int recipientId) {
 		return chatDAO.getAllInCourseMessages(senderId, recipientId);
 	}
+	
+	public List<Chat> getSentMessageCount(int empId) {
+		return chatDAO.getSentMessageCount(empId);
+	}
+
+	@Override
+	public List<Chat> getReceivedMessageCount(int empId) {
+		return chatDAO.getReceivedMessageCount(empId);
+	}
+
+	@Override
+	public int getListOfUsersHelped(int empId) {
+		return chatDAO.getListOfUsersHelped(empId);
+	}
+
+	
+
+	@Override
+	public Map<String,Integer>   getTopicWiseHelpingCount(int empId,String courseName) {
+		return chatDAO.getTopicWiseHelpingCount(empId,courseName);
+	}
+
 
 }

@@ -1,4 +1,9 @@
-<!doctype html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE HTML>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -49,6 +54,7 @@ img.emoji {
 <link rel='stylesheet' id='tipsy-css'  href='https://novoed.com/wp-content/plugins/wp-shortcode/css/tipsy.css?ver=4.7.5' type='text/css' media='all' />
 <link rel='stylesheet' id='mts_wpshortcodes-css'  href='https://novoed.com/wp-content/plugins/wp-shortcode/css/wp-shortcode.css?ver=4.7.5' type='text/css' media='all' />
 <script type='text/javascript' src='https://novoed.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script type='text/javascript' src='https://novoed.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
 <script type='text/javascript'>
 /* <![CDATA[ */
@@ -197,17 +203,118 @@ src="https://www.facebook.com/tr?id=678167132284607&ev=PageView
 		
 			
 		
-					
-	
-	<br>
-	<br><br><br>
-	
-		
+
 			
 		
 				
 	<section id="solution-highlights" class="solution-highlights" style="">
 		<div class="container">
+		Number of messages sent: ${sentCount} <br>
+		Number of messages received : ${receivedCount} <br>
+		Number of courses completed in Algorithms: ${algoLevel} <br>
+		Number of courses completed in Databases: ${dbLevel} <br>
+		Number of courses completed in Operating Systems: ${osLevel} <br>
+		Overall progress in all courses so far: ${overallProgress}% <br>
+		Your Social Learning Rate (SLR): ${socialLearningRate} <br>		
+		<%-- <c:forEach var="hash" items="${topicWiseHelpingCountAlgorithms}">
+        	<option><c:out value="${hash}"/></option>
+  		</c:forEach> --%>
+  		<%-- ${topicWiseHelpingCountAlgorithms['Introduction to Algorithms']}
+  		${topicWiseHelpingCountAlgorithms['Greedy Approach']}
+  		${topicWiseHelpingCountAlgorithms['Divide And Conquer']}
+  		${topicWiseHelpingCountAlgorithms['Dynamic Programming']}
+  		 --%>
+		<script type="text/javascript">
+		window.onload = function () {
+			//Algorithms Chart
+			var chartAlgo = new CanvasJS.Chart("chartContainerAlgo", {
+				title:{
+					text: "Learning Vs. Contribution in Algorithms"              
+				},
+				axisX: {						
+		      		title: "Courses in Algorithms"
+		      	},
+		      	axisY: {						
+		      		title: "Number of people helped",
+		      		interval: 1
+		      	},
+				data: [              
+				{
+					type: "bar",
+					dataPoints: [
+						{ label: "Introduction to Algorithms",  y: ${topicWiseHelpingCountAlgorithms['Introduction to Algorithms']}  },
+						{ label: "Greedy Approach", y: ${topicWiseHelpingCountAlgorithms['Greedy Approach']} },
+						{ label: "Divide And Conquer", y: ${topicWiseHelpingCountAlgorithms['Divide And Conquer']} },
+						{ label: "Dynamic Programming",  y: ${topicWiseHelpingCountAlgorithms['Dynamic Programming']} },
+					]
+				}
+				]
+			});
+			chartAlgo.render();
+			
+			//Databases Chart
+			
+			var chartDb = new CanvasJS.Chart("chartContainerDb", {
+				title:{
+					text: "Learning Vs. Contribution in Databases"              
+				},
+				axisX: {						
+		      		title: "Courses in Databases"
+		      	},
+		      	axisY: {						
+		      		title: "Number of people helped",
+		      		interval: 1
+		      	},
+				data: [              
+				{
+					type: "bar",
+					dataPoints: [
+						{ label: "Introduction to Databases",  y: ${topicWiseHelpingCountDatabases['Introduction to Databases']}  },
+						{ label: "Architecture", y: ${topicWiseHelpingCountDatabases['Architecture']} },
+						{ label: "Models", y: ${topicWiseHelpingCountDatabases['Models']} },
+						{ label: "Schemas",  y: ${topicWiseHelpingCountDatabases['Schemas']} },
+					]
+				}
+				]
+			});
+			chartDb.render();
+			
+			//Operating Systems Chart 
+			
+			var chartOs = new CanvasJS.Chart("chartContainerOs", {
+				title:{
+					text: "Learning Vs. Contribution in Operating Systems"              
+				},
+				axisX: {						
+		      		title: "Courses in Operating Systems"
+		      	},
+		      	axisY: {						
+		      		title: "Number of people helped",
+		      		interval: 1
+		      	},
+				data: [              
+				{
+					type: "bar",
+					dataPoints: [
+						{ label: "Introduction to Operating Systems",  y: ${topicWiseHelpingCountOperatingSystems['Introduction to Operating Systems']}  },
+						{ label: "Memory Management", y: ${topicWiseHelpingCountOperatingSystems['Memory Management']} },
+						{ label: "Cache", y: ${topicWiseHelpingCountOperatingSystems['Cache']} },
+						{ label: "Secondary Storage",  y: ${topicWiseHelpingCountOperatingSystems['Secondary Storage']} },
+					]
+				}
+				]
+			});
+			chartOs.render();
+		}
+		</script>
+  		
+  		<div id="chartContainerAlgo" style="height: 450px; width: 100%;"></div>
+  		<br><br>
+  		<div id="chartContainerDb" style="height: 450px; width: 100%;"></div>
+  		<br><br>
+  		<div id="chartContainerOs" style="height: 450px; width: 100%;"></div>
+  		<br><br>
+		
 						<h2 class="heading">Product Highlights</h2>
 									<p class="subheading">welearn engages learners to collaborate with tutors and to keep track of their progress.</p>
 						<div class="highlights">

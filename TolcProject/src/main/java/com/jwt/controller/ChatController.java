@@ -76,8 +76,12 @@ public class ChatController {
 		int recipientId = Integer.parseInt(request.getParameter("recipient"));
 		Employee recipient = employeeService.getEmployee(recipientId);
 		String thisPageUrl = request.getParameter("thisPageUrl");
+		String globalTopicName = request.getParameter("globalTopicName");
+		String globalCourseName = request.getParameter("globalCourseName");
 		String processedMessage = chatService.processMessage(actualMessage,senderId);
 		Chat chat = new Chat();
+		chat.setGlobalCourseName(globalCourseName);
+		chat.setGlobalTopicName(globalTopicName);
 		chat.setTimeStamp(sdf.format(cal.getTime()));
 		chat.setSender(sender);
 		chat.setRecipient(recipient);
@@ -102,11 +106,6 @@ public class ChatController {
 	
 	@RequestMapping(value = "/getInCourseSenderObject/{senderId}/{recipientId}", method = RequestMethod.GET)
 	public @ResponseBody List<Chat> sendMessageInCourse(HttpServletRequest request, @PathVariable int senderId, @PathVariable int recipientId) {
-		/*Employee recipient = employeeService.getEmployee(id);
-		Gson gson = new Gson();
-		String recipientJSONString = gson.toJson(recipient);
-		return recipientJSONString;
-		return recipient;*/
 		List<Chat> allInCourseMessages = chatService.getAllInCourseMessages(senderId, recipientId);
 		return allInCourseMessages;
 		
@@ -121,8 +120,10 @@ public class ChatController {
 		Employee sender = employeeService.getEmployee(senderId);
 		int recipientId = Integer.parseInt(request.getParameter("recipient"));
 		Employee recipient = employeeService.getEmployee(recipientId);
+		String globalTopicName = request.getParameter("globalTopicName");
 		String processedMessage = chatService.processMessage(actualMessage,senderId);
 		Chat chat = new Chat();
+		chat.setGlobalTopicName(globalTopicName);
 		chat.setTimeStamp(sdf.format(cal.getTime()));
 		chat.setSender(sender);
 		chat.setRecipient(recipient);

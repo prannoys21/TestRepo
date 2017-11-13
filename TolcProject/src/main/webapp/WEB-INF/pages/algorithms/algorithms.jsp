@@ -31,7 +31,7 @@ div.feature-box div.feature-box-icon, .col-md-3 .course-box, li.heading, div.foo
 .sub-main-menu .sub-menuu div:hover, .sub-main-menu .viewall, header nav ul.nav-main li a:hover, button.btn-responsive-nav, header div.search button.btn-default { background: #cd3300 !important;}
 .submenu-item{ border-bottom: 2px solid #cd3300 !important; border-top: 2px solid #cd3300 !important }
 .ace_scroller{overflow: auto!important;}
-header {background: #e9e9e9;}
+/* header {background: #e9e9e9;} */
 input {border:2px;}
 .completedCourse {
     background: #54278f;
@@ -63,27 +63,11 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<div class="wrapLoader">
-   <div class="imgLoader">
-      <img  src="/images/loading-cg.gif" alt="" width="70" height="70" />
-   </div>
+<div class="container" style="width: 100%; height:56px; position:fixed; overflow: hidden; background: #fd8d3c; color: #9a9a9a; box-shadow: 0px 3px 9px #888888; font: 100%/1.5em Droid Sans sans-serif;">
 </div>
-<header>
-   <div class="container" style="margin-left:200px; background: #e9e9e9; color: #9a9a9a; font: 100%/1.5em Droid Sans sans-serif;">			
-      <h1 class="logo">
-      <a href="index.htm" title="tutorialspoint">
-      <img alt="welearn" src="https://image.ibb.co/cPU8qb/welearn.png">
-      </a>
-      </h1>			
-      
-         <!-- search code here  --> 
-      
-   </div>
-  
-   
-</header>
-<div style="clear:both;"></div>
-<div role="main" class="main">
+
+<div role="main" class="main" style="padding: 92px 0px 0px 0px;">
+	
 <div class="container" style="margin-left:200px; margin-right: 736px;">
 <div class="row">
 <div class="col-md-2">
@@ -94,9 +78,9 @@ $(document).ready(function() {
 
 <ul class="nav nav-list primary left-menu">
 <li class="heading">Algorithm</li>   
-<li>Greedy Algorithms</a></li>
-<li>Divide and Conquer</a></li>
-<li>Dynamic Programming</a></li>
+<li>Greedy Algorithms</li>
+<li>Divide and Conquer</li>
+<li>Dynamic Programming</li>
 </ul>
 
 
@@ -156,15 +140,15 @@ int main(){
 					<input type="hidden" name="topicUrl" path="topicUrl" value="algorithms" />
 					
 </form:form>
-	
 <jsp:include page="../backToCourses.jsp" />
 <jsp:include page="../ticker.jsp" />
 <jsp:include page="../inCourseChat.jsp" />
 <script type="text/javascript">
-var thisPageUrl = "algorithms"
+var thisPageUrl = "algorithms";
+var globalTopicName = "Introduction to Algorithms";
+var globalCourseName = "Algorithms";
 var subTopic = false;
 </script>
-
-
+</div></div></div></div></div></div>
 </body>
 </html>

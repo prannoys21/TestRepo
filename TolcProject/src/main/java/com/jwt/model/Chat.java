@@ -36,6 +36,33 @@ public class Chat implements Serializable {
 
 	@Column(name = "TIMESTAMP")
 	private String timeStamp;
+	
+	@Column(name = "TOPIC_NAME")
+	private String globalTopicName;
+	
+	@Column(name = "COURSE_NAME")
+	private String globalCourseName;
+	
+	
+	
+	
+	
+
+	public String getGlobalCourseName() {
+		return globalCourseName;
+	}
+
+	public void setGlobalCourseName(String globalCourseName) {
+		this.globalCourseName = globalCourseName;
+	}
+
+	public String getGlobalTopicName() {
+		return globalTopicName;
+	}
+
+	public void setGlobalTopicName(String globalTopicName) {
+		this.globalTopicName = globalTopicName;
+	}
 
 	public int getId() {
 		return id;

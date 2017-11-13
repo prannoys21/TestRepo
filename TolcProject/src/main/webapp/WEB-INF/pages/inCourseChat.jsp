@@ -37,7 +37,7 @@ p {
 }
 
 hr {
-	background: #e9e9e9;
+	background: #fecc5c36;
     border: 0;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
@@ -257,6 +257,8 @@ input {
 					<input type="hidden" name="id"  path="id"/>
 					<input type="hidden" name="sender" path="sender" id="sender" value="${employee.id}" />
 					<input type="hidden" name="recipient" path="recipient" id="recipient" value="" />
+					<input type="hidden" name="globalTopicName" path="globalTopicName" id="globalTopicName" value="" />
+					<input type="hidden" name="globalCourseName" path="globalCourseName" id="globalCourseName" value="" />
 					<input type="hidden" name="thisPageUrl" path="thisPageUrl" id="thisPageUrl" value="" />
 					<input type="text" name="actualMessage" path="actualMessage" id="actualMessage" placeholder="Type your message…" autocomplete="off" autofocus/>
 					
@@ -281,7 +283,7 @@ input {
 		 $(".getTickerUserId").hide();
 		 
 		 //3
-		 $(".clickableFirstName").click(function(){
+		 $(document).on('click',".clickableFirstName", function(){
 			tickerDivId = $(this).parent().parent().attr('id');
 			tickerDivId = "#" + tickerDivId;
 			//$('.chat').slideToggle(300, 'swing');
@@ -293,6 +295,8 @@ input {
 			idFromTicker=  $( tickerDivId ).find('div.getTickerUserId').text()
 			$("#recipient").val(idFromTicker);
 			$("#thisPageUrl").val(thisPageUrl);
+			$("#globalTopicName").val(globalTopicName);
+			$("#globalCourseName").val(globalCourseName);
 			 var formURL = "getInCourseSenderObject/"+userId+"/"+idFromTicker;
 			 /* if(formURL.includes("algorithms")){
 				 formURL.replace("algorithms/","");
@@ -321,7 +325,7 @@ input {
 				  			}
 				        	// console.log("crazy  "+  inCourseMessage[i].timeStamp + " " +   inCourseMessage[i].sender.firstName + " " + inCourseMessage[i].message);
 				        	 if(inCourseMessage[i].message != ""){
-				 				$('#chat-history').append('<hr><div class="chat-message clearfix"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="chat-message-content clearfix"><span class="chat-time">'+ inCourseMessage[i].timeStamp +'</span><h5>'+ inCourseMessage[i].sender.firstName +'</h5><p class="chatMessageWindowText">'+ parsedMessage +'</p></div></div><hr>')
+				 				$('#chat-history').append('<div class="chat-message clearfix"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="chat-message-content clearfix"><span class="chat-time">'+ inCourseMessage[i].timeStamp +'</span><h5>'+ inCourseMessage[i].sender.firstName +'</h5><p class="chatMessageWindowText">'+ parsedMessage +'</p></div></div><hr>')
 				 			}
 				 			$('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
 				 			$('input[type="text"], textarea').val('');
@@ -436,7 +440,7 @@ input {
 		
 		//Again
 		//3
-		 $(".clickableFirstName").click(function(){
+		 $(document).on('click',".clickableFirstName", function(){
 			tickerDivId = $(this).parent().parent().attr('id');
 			tickerDivId = "#" + tickerDivId;
 			//$('.chat').slideToggle(300, 'swing');
@@ -448,6 +452,9 @@ input {
 			idFromTicker=  $( tickerDivId ).find('div.getTickerUserId').text()
 			$("#recipient").val(idFromTicker);
 			$("#thisPageUrl").val(thisPageUrl);
+			$("#thisPageUrl").val(thisPageUrl);
+			$("#globalTopicName").val(globalTopicName);
+			$("#globalCourseName").val(globalCourseName);
 			 var formURL = "getInCourseSenderObject/"+userId+"/"+idFromTicker;
 			 /* if(formURL.includes("algorithms")){
 				 formURL.replace("algorithms/","");

@@ -171,6 +171,7 @@ public class EmployeeController {
 			}
 			double socialLearningRate = (double) numberOfPeopleHelped/(algoLevel + dbLevel + osLevel);
 			model.addObject("employee", employee2);
+			model.addObject("peopleHelped", numberOfPeopleHelped);
 			model.addObject("topicWiseHelpingCountAlgorithms", topicWiseHelpingCountAlgorithms);
 			model.addObject("topicWiseHelpingCountDatabases", topicWiseHelpingCountDatabases);
 			model.addObject("topicWiseHelpingCountOperatingSystems", topicWiseHelpingCountOperatingSystems);
@@ -232,6 +233,7 @@ public class EmployeeController {
 		model.addObject("topicWiseHelpingCountOperatingSystems", topicWiseHelpingCountOperatingSystems);
 		model.addObject("dbLevel", dbLevel);
 		model.addObject("osLevel", osLevel);
+		model.addObject("peopleHelped", numberOfPeopleHelped);
 		model.addObject("overallProgress", df2.format(overallProgress*100));
 		model.addObject("socialLearningRate", df2.format(socialLearningRate));
 		model.addObject("employee", employee);

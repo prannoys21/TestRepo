@@ -11,6 +11,10 @@
     <link rel="shortcut icon" href="" type="image/x-icon">
 
     <title>welearn-home</title>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"/>
+<link rel="stylesheet" type="text/css" href="http://kenwheeler.github.io/slick/slick/slick-theme.css"/>
+
+<!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"/> -->
 
 <!-- This site is optimized with the Yoast SEO plugin v3.8 - https://yoast.com/wordpress/plugins/seo/ -->
 <meta name="description" content="NovoEd provides the best online learning platform for social, collaborative and mobile learning that enables effective online training at scale."/>
@@ -49,13 +53,72 @@ img.emoji {
 	background: none !important;
 	padding: 0 !important;
 }
+ .slick-prev:before, .slick-next:before {
+        color: red;
+}
+.slick-dots li {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 16px 22px 14px 6px;
+    padding: 0px 23px 0px 30px;
+    cursor: pointer;
+}
+ol {
+    counter-reset: li; /* Initiate a counter */
+    list-style: none; /* Remove default numbering */
+    *list-style: decimal; /* Keep using default numbering for IE6/7 */
+    font: 21px 'trebuchet MS', 'lucida sans';
+    padding: 0;
+    margin-bottom: 4em;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+.rounded-list a{
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em 2em;
+    *padding: .4em;
+    margin: .5em 0;
+    background: #ddd;
+    color: #444;
+    text-decoration: none;
+    border-radius: .3em;
+    transition: all .3s ease-out;   
+}
+
+.rounded-list a:hover{
+    background: #eee;
+}
+
+.rounded-list a:hover:before{
+    transform: rotate(360deg);  
+}
+
+.rounded-list a:before{
+    content: counter(li);
+    counter-increment: li;
+    position: absolute; 
+    left: -1.3em;
+    top: 50%;
+    margin-top: -1.3em;
+    background: #87ceeb;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    border: .3em solid #fff;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 2em;
+    transition: all .3s ease-out;
+}
 </style>
 <link rel='stylesheet' id='styles-css'  href='https://novoed.com/wp-content/themes/novoed/style.css?ver=4.7.5' type='text/css' media='all' />
 <link rel='stylesheet' id='tipsy-css'  href='https://novoed.com/wp-content/plugins/wp-shortcode/css/tipsy.css?ver=4.7.5' type='text/css' media='all' />
 <link rel='stylesheet' id='mts_wpshortcodes-css'  href='https://novoed.com/wp-content/plugins/wp-shortcode/css/wp-shortcode.css?ver=4.7.5' type='text/css' media='all' />
 <script type='text/javascript' src='https://novoed.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-<script type='text/javascript' src='https://novoed.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script type='text/javascript'>
 /* <![CDATA[ */
 var wp_flow = {"some_string":"Some string to translate","a_value":"10","wp_flow_placeholders":{"page":"page","is_single":false,"is_front_page":true,"page_title":"Home","page_name":"home","is_user_logged_in":false,"current_user_id":false,"post_author":"admin"}};
@@ -82,6 +145,7 @@ var wp_flow = {"some_string":"Some string to translate","a_value":"10","wp_flow_
 <script type='text/javascript' src='https://js.hsforms.net/forms/v2.js?ver=4.7.5'></script>
 <script type='text/javascript' src='https://novoed.com/wp-content/themes/novoed/js/main.js?ver=4.7.5'></script>
 <script type='text/javascript' src='https://novoed.com/wp-content/plugins/wp-shortcode/js/jquery.tipsy.js?ver=4.7.5'></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type='text/javascript' src='https://novoed.com/wp-content/plugins/wp-shortcode/js/wp-shortcode.js?ver=4.7.5'></script>
 <link rel='https://api.w.org/' href='https://novoed.com/wp-json/' />
 <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://novoed.com/xmlrpc.php?rsd" />
@@ -145,6 +209,9 @@ src="https://www.facebook.com/tr?id=678167132284607&ev=PageView
 
 </head>
 <body>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js'></script>
+<!-- <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-min.js'></script> -->
 <header>
     <div class="container">
                 <div class="logo">
@@ -205,17 +272,39 @@ src="https://www.facebook.com/tr?id=678167132284607&ev=PageView
 		
 
 			
-		
+<script type="text/javascript">
+$(document).ready(function(){
+	  $('.slidingGraphs').slick({
+		  dots: true,
+		  infinite: true,
+		  slidesToShow: 1,
+		  slidesToScroll: 1,
+		  arrows: true,
+		  adaptiveHeight: true
+	  });
+	});
+</script>		
 				
 	<section id="solution-highlights" class="solution-highlights" style="">
 		<div class="container">
-		Number of messages sent: ${sentCount} <br>
-		Number of messages received : ${receivedCount} <br>
-		Number of courses completed in Algorithms: ${algoLevel} <br>
-		Number of courses completed in Databases: ${dbLevel} <br>
-		Number of courses completed in Operating Systems: ${osLevel} <br>
-		Overall progress in all courses so far: ${overallProgress}% <br>
-		Your Social Learning Rate (SLR): ${socialLearningRate} <br>		
+		<ol class="rounded-list">
+		    <li><a href="">Number of messages sent: ${sentCount}</a></li>
+		    <li><a href="">Number of messages received : ${receivedCount} <br></a></li>
+		    <li><a href="">Overall progress in all courses so far: ${overallProgress}% </a></li>
+		    <li><a href="">Your Social Learning Rate (SLR): ${socialLearningRate}</a></li>
+		    <li><a href="">Number of courses completed in Algorithms: ${algoLevel}</a></li>
+		    <li><a href="">Number of courses completed in Databases: ${dbLevel}</a></li>
+		    <li><a href="">Number of courses completed in Operating Systems: ${osLevel}</a></li>
+		    
+		</ol>
+		
+		<%-- Number of messages sent: ${sentCount} <br>
+		Number of messages received : ${receivedCount} <br> --%>
+		
+		
+		
+		<%-- Overall progress in all courses so far: ${overallProgress}% <br>
+		Your Social Learning Rate (SLR): ${socialLearningRate} <br> --%>		
 		<%-- <c:forEach var="hash" items="${topicWiseHelpingCountAlgorithms}">
         	<option><c:out value="${hash}"/></option>
   		</c:forEach> --%>
@@ -226,8 +315,18 @@ src="https://www.facebook.com/tr?id=678167132284607&ev=PageView
   		 --%>
 		<script type="text/javascript">
 		window.onload = function () {
+			CanvasJS.addColorSet("myColorScaling",
+	                [//colorSet Array
+	                	"#d7191c",
+	                	"#fdae61",
+	                	"#abdda4",
+	                	"#2b83ba"          
+	                ]);
 			//Algorithms Chart
 			var chartAlgo = new CanvasJS.Chart("chartContainerAlgo", {
+				
+				 colorSet: "myColorScaling",
+
 				title:{
 					text: "Learning Vs. Contribution in Algorithms"              
 				},
@@ -241,6 +340,7 @@ src="https://www.facebook.com/tr?id=678167132284607&ev=PageView
 				data: [              
 				{
 					type: "bar",
+					 fillOpacity: .7, 
 					dataPoints: [
 						{ label: "Introduction to Algorithms",  y: ${topicWiseHelpingCountAlgorithms['Introduction to Algorithms']}  },
 						{ label: "Greedy Approach", y: ${topicWiseHelpingCountAlgorithms['Greedy Approach']} },
@@ -250,11 +350,14 @@ src="https://www.facebook.com/tr?id=678167132284607&ev=PageView
 				}
 				]
 			});
+			
 			chartAlgo.render();
+			
 			
 			//Databases Chart
 			
 			var chartDb = new CanvasJS.Chart("chartContainerDb", {
+				colorSet: "myColorScaling",
 				title:{
 					text: "Learning Vs. Contribution in Databases"              
 				},
@@ -268,6 +371,7 @@ src="https://www.facebook.com/tr?id=678167132284607&ev=PageView
 				data: [              
 				{
 					type: "bar",
+					fillOpacity: .7,
 					dataPoints: [
 						{ label: "Introduction to Databases",  y: ${topicWiseHelpingCountDatabases['Introduction to Databases']}  },
 						{ label: "Architecture", y: ${topicWiseHelpingCountDatabases['Architecture']} },
@@ -282,6 +386,7 @@ src="https://www.facebook.com/tr?id=678167132284607&ev=PageView
 			//Operating Systems Chart 
 			
 			var chartOs = new CanvasJS.Chart("chartContainerOs", {
+				colorSet: "myColorScaling",
 				title:{
 					text: "Learning Vs. Contribution in Operating Systems"              
 				},
@@ -295,6 +400,7 @@ src="https://www.facebook.com/tr?id=678167132284607&ev=PageView
 				data: [              
 				{
 					type: "bar",
+					fillOpacity: .7,
 					dataPoints: [
 						{ label: "Introduction to Operating Systems",  y: ${topicWiseHelpingCountOperatingSystems['Introduction to Operating Systems']}  },
 						{ label: "Memory Management", y: ${topicWiseHelpingCountOperatingSystems['Memory Management']} },
@@ -305,15 +411,45 @@ src="https://www.facebook.com/tr?id=678167132284607&ev=PageView
 				]
 			});
 			chartOs.render();
+			
+			//Learning vs. Contribution Pie Chart
+			var chartPie = new CanvasJS.Chart("chartContainerPie",
+					{
+						colorSet: "myColorScaling",
+						title:{
+							text: "Total Learning vs. Total Contribution"
+						},		
+						data: [
+						{       
+							type: "pie",
+							showInLegend: true,
+							toolTipContent: "#percent %",
+							legendText: "{indexLabel}",
+							dataPoints: [
+								{  y: ${algoLevel}+${osLevel}+${dbLevel}, indexLabel: "Overall Learning" },
+								{  y: ${peopleHelped}, indexLabel: "Overall Contribution" }
+							]
+						}
+						]
+					});
+			chartPie.render();
 		}
 		</script>
   		
-  		<div id="chartContainerAlgo" style="height: 450px; width: 100%;"></div>
-  		<br><br>
-  		<div id="chartContainerDb" style="height: 450px; width: 100%;"></div>
-  		<br><br>
-  		<div id="chartContainerOs" style="height: 450px; width: 100%;"></div>
-  		<br><br>
+  		<div class="slidingGraphs">
+  		<div id="chartContainerAlgo" style="height: 450px; width: 100%;">
+  			
+  		</div>
+  		<div id="chartContainerDb" style="height: 450px; width: 100%;">
+  			
+  		</div>
+  		<div id="chartContainerOs" style="height: 450px; width: 100%;">
+  			
+  		</div>
+  		<div id="chartContainerPie" style="height: 450px; width: 100%;">
+  			
+  		</div>
+  		</div>
 		
 						<h2 class="heading">Product Highlights</h2>
 									<p class="subheading">welearn engages learners to collaborate with tutors and to keep track of their progress.</p>

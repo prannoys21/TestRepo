@@ -19,7 +19,7 @@
 	
 
 	<!-- Specifying the Resource location to load JS, CSS, Images etc -->
-	<mvc:resources mapping="/resources/**" location="/resources/images/, /resources/css/" />
+	<mvc:resources mapping="/resources/**" location="/resources/images/, /resources/css/, /resources/js/" />
 
 	<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
 	    <property name="corePoolSize" value="5"/>

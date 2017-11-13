@@ -50,6 +50,11 @@ input {border:2px;}
 .middle-col {
 min-height: 1171px;
 }
+.img_resize_fit{
+    max-width:9%;
+    max-height:11%;
+    vertical-align: middle;
+}
 </style>
 <script>
 $(document).ready(function() {
@@ -64,6 +69,12 @@ $(document).ready(function() {
 </head>
 <body>
 <div class="container" style="width: 100%; height:56px; position:fixed; overflow: hidden; background: #fd8d3c; color: #9a9a9a; box-shadow: 0px 3px 9px #888888; font: 100%/1.5em Droid Sans sans-serif;">
+<div class="logo">
+            <a href="../userHomepage?id=${employee.id}">
+                <img src="https://image.ibb.co/cPU8qb/welearn.png" class="img_resize_fit"  alt="Learn"> 
+                <img src="https://image.ibb.co/cPU8qb/welearn.png" class="img_resize_fit" alt="Collolearn">
+            </a>
+        </div>
 </div>
 
 <div role="main" class="main" style="padding: 92px 0px 0px 0px;">

@@ -249,7 +249,7 @@ input {
 				<c:forEach var="ticker" items="${allNotifications}">
 				<c:if test="${employee.id != ticker.employee.id }">
 				<c:if test="${ticker.courseName == tickerCourse}">
-				<c:if test="${currCourseLevel <= ticker.courseLevel}">
+				<%-- <c:if test="${currCourseLevel <= ticker.courseLevel}"> --%>
 				<c:set var="tickerUpdate" value="${tickerUpdate+1}" scope="request"/>
 				<div class="notification-message clearfix" id="tickerUpdate${tickerUpdate}">
 					<img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32">
@@ -263,7 +263,7 @@ input {
 				<hr>
 				</c:if>
 				</c:if>
-				</c:if>
+				<%-- </c:if> --%>
 				</c:forEach>
 
 			</div> <!-- end notification-history -->

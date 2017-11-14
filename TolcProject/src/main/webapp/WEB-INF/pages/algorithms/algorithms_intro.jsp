@@ -50,10 +50,15 @@ input {border:2px;}
 .middle-col {
 min-height: 1171px;
 }
+
 .img_resize_fit{
     max-width:9%;
     max-height:11%;
     vertical-align: middle;
+}
+.img {
+    max-width: 50%;
+    max-height: 1%;
 }
 </style>
 <script>
@@ -78,21 +83,21 @@ $(document).ready(function() {
 </div>
 
 <div role="main" class="main" style="padding: 92px 0px 0px 0px;">
-<div class="container"  style="margin-left:200px; margin-right: 736px;">
+	
+<div class="container" style="margin-left:200px; margin-right: 736px;">
 <div class="row">
 <div class="col-md-2">
 <aside class="sidebar">
 <div class="mini-logo">
-<img src="https://image.ibb.co/epH6bG/database.jpg" alt="Databases" />
+<img src="http://www.geeksforgeeks.org/wp-content/uploads/Competitive-Programming-1.jpg" style="width: 50%;"alt="Data Structures & Algorithms Tutorial" />
 </div>
 
 <ul class="nav nav-list primary left-menu">
-<li class="heading">Databases</li>   
-<li>Architecture</a></li>
-<li>Data Models</a></li>
-<li>Data Schemas</a></li>
+<li class="heading">Algorithm</li>   
+<li>Greedy Algorithms</li>
+<li>Divide and Conquer</li>
+<li>Dynamic Programming</li>
 </ul>
-
 
 
 </aside>
@@ -102,49 +107,63 @@ $(document).ready(function() {
 <div class="content">
 <div class="col-md-7 middle-col">
 <div class="cover">
-<img class="img-responsive" src="https://image.ibb.co/jzUnWR/dbms.jpg" alt="Database Tutorial" />
+<!-- <img class="img-responsive" src="/data_structures_algorithms/images/data-structure-algorithm.jpg" alt="Data Structures & Algorithms (DSA) Tutorial" /> -->
 </div>
 <hr />
 
 <hr />
-<h1>Database Management Systems Tutorial</h1>
+<h1>Algorithms Tutorial</h1>
 <div class="center-aligned tutorial-menu">
 <form action="/job_search.php" method="POST">
 <input type="hidden" name="search_string" value="Data Structures" />
 
 </form>
 </div>
-<p>Database Management System or DBMS in short refers to the technology of storing and retrieving usersâ data with utmost efficiency along with appropriate security measures. This tutorial explains the basics of DBMS such as its architecture, data models, data schemas, data independence, E-R model, relation model, relational database design, and storage and file structure and much more.</p>
-<h1>Audience</h1>
-<p>This tutorial will especially help computer science graduates in understanding the basic-to-advanced concepts related to Database Management Systems.</p>
+<p>This tutorial is designed for Computer Science graduates as well as Software Professionals who are willing to learn data structures and algorithm programming in simple and easy steps.</p>
+<p>After completing this tutorial you will be at intermediate level of expertise from where you can take yourself to higher level of expertise.</p>
 <h1>Prerequisites</h1>
+<p>Before proceeding with this tutorial, you should have a basic understanding of C programming language, text editor, and execution of programs, etc.</p>
+<h1>Compile and Execute C Online</h1>
+<p>For most of the examples given in this tutorial you will find <b>Try it</b> option, so just make use of this option to execute your programs on the spot and enjoy your learning.</p>
+<p>Try the following example using the Try it option available at the top right corner of the following sample code box &minus;</p>
+<pre class="prettyprint notranslate tryit">
+#include &lt;stdio.h&gt;
+
+int main(){
+   /* My first program in C */
+   printf("Hello, World! \n");
+   
+   return 0;
+}
+</pre>
 
 
-<form:form action="sendNotification?id=${employee.id}" method="post" modelAttribute="ticker" name="notificationAddition" id="notificationAddition"> 
+
+<div class="nxt-btn">
+<a href='http://localhost:7080/TolcProject/algorithms/greedyApproach?id=${employee.id}'>Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
+</div>
+<form:form action="../sendNotification?id=${employee.id}" method="post" modelAttribute="ticker" name="notificationAddition" id="notificationAddition"> 
+					
 					<c:if test="${markAsCompleted == false}">
 					<input class="markAsComplete" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="Mark as Completed"/>
 					</c:if>
 					<c:if test="${markAsCompleted == true}">
 					<input class="completedCourse" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="You Completed This Topic"/>
 					</c:if>
-					<input type="hidden" name="courseName" path="courseName" value="Databases" />
-					<input type="hidden" name="courseLevel" path="courseLevel" value="1" />
-					<input type="hidden" name="topicName" path="topicName" value="Introduction to Databases" />
-					<input type="hidden" name="topicUrl" path="topicUrl" value="databases" />
+					<input type="hidden" name="courseName" path="courseName" value="Algorithms" />
+					<input type="hidden" name="courseLevel" path="courseLevel" value='1' />
+					<input type="hidden" name="topicName" path="topicName" value="Introduction to Algorithms" />
+					<input type="hidden" name="topicUrl" path="topicUrl" value="algorithms" />
 					
 </form:form>
-
-<div class="nxt-btn">
-<a href="http://localhost:7080/TolcProject/databases/architecture?id=${employee.id}">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
-</div>
 <jsp:include page="../backToCourses.jsp" />
 <jsp:include page="../ticker.jsp" />
 <jsp:include page="../inCourseChat.jsp" />
 <script type="text/javascript">
-var thisPageUrl = "databases";
+var thisPageUrl = "algorithms/intro";
+var globalTopicName = "Introduction to Algorithms";
+var globalCourseName = "Algorithms";
 var subTopic = false;
-var globalTopicName = "Introduction to Databases";
-var globalCourseName = "Databases";
 </script>
 </div></div></div></div></div></div>
 </body>

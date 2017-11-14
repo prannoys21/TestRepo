@@ -83,7 +83,7 @@ $(document).ready(function() {
 <div class="col-md-2">
 <aside class="sidebar">
 <div class="mini-logo">
-<img src="" alt="Dynamic Programming Tutorial" />
+<img src="http://www.geeksforgeeks.org/wp-content/uploads/Competitive-Programming-1.jpg" style="width: 50%;"alt="Data Structures & Algorithms Tutorial" />
 </div>
 
 
@@ -103,7 +103,7 @@ $(document).ready(function() {
 <div class="content">
 <div class="col-md-7 middle-col">
 <div class="cover">
-<img class="img-responsive" src="" alt="Data Structures & Algorithms (DSA) Tutorial" />
+<!-- <img class="img-responsive" src="" alt="Data Structures & Algorithms (DSA) Tutorial" /> -->
 </div>
 <hr />
 

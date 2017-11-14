@@ -83,7 +83,7 @@ $(document).ready(function() {
 <div class="col-md-2">
 <aside class="sidebar">
 <div class="mini-logo">
-<img src="https://image.ibb.co/fF1ciw/learn.jpg" alt="Databases" />
+<img src="https://image.ibb.co/epH6bG/database.jpg" style="width: 50%;" alt="Databases" />
 </div>
 
 <ul class="nav nav-list primary left-menu">
@@ -102,7 +102,7 @@ $(document).ready(function() {
 <div class="content">
 <div class="col-md-7 middle-col">
 <div class="cover">
-<img class="img-responsive" src="https://image.ibb.co/jzUnWR/dbms.jpg" alt="Data Structures & Algorithms (DSA) Tutorial" />
+<!-- <img class="img-responsive" src="https://image.ibb.co/jzUnWR/dbms.jpg" alt="Data Structures & Algorithms (DSA) Tutorial" /> -->
 </div>
 <hr />
 

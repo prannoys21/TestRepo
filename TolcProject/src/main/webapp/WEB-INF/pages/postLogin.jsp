@@ -328,7 +328,7 @@ $(document).ready(function(){
 				 colorSet: "myColorScaling",
 				 backgroundColor: "transparent",
 				title:{
-					text: "Learning Vs. Contribution in Algorithms"              
+					text: "Contribution in Algorithms"              
 				},
 				axisX: {						
 		      		title: "Courses in Algorithms"
@@ -360,7 +360,7 @@ $(document).ready(function(){
 				colorSet: "myColorScaling",
 				backgroundColor: "transparent",
 				title:{
-					text: "Learning Vs. Contribution in Databases"              
+					text: "Contribution in Databases"              
 				},
 				axisX: {						
 		      		title: "Courses in Databases"
@@ -390,7 +390,7 @@ $(document).ready(function(){
 				colorSet: "myColorScaling",
 				backgroundColor: "transparent",
 				title:{
-					text: "Learning Vs. Contribution in Operating Systems"              
+					text: "Contribution in Operating Systems"              
 				},
 				axisX: {						
 		      		title: "Courses in Operating Systems"

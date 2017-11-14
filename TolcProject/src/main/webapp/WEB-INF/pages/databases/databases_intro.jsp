@@ -78,20 +78,19 @@ $(document).ready(function() {
 </div>
 
 <div role="main" class="main" style="padding: 92px 0px 0px 0px;">
-<div class="container" style="margin-left:200px;margin-right: 736px;">
+<div class="container"  style="margin-left:200px; margin-right: 736px;">
 <div class="row">
 <div class="col-md-2">
 <aside class="sidebar">
 <div class="mini-logo">
-<img src="https://image.ibb.co/gAoewG/os.jpg" alt="Operating Systems" />
+<img src="https://image.ibb.co/epH6bG/database.jpg" style="width: 50%;"alt="Databases" />
 </div>
 
-
 <ul class="nav nav-list primary left-menu">
-<li class="heading">Operating Systems</li>   
-<li>Memory Management</a></li>
-<li>Caches</a></li>
-<li>Secondary Storage</a></li>
+<li class="heading">Databases</li>   
+<li>Architecture</a></li>
+<li>Data Models</a></li>
+<li>Data Schemas</a></li>
 </ul>
 
 
@@ -103,51 +102,49 @@ $(document).ready(function() {
 <div class="content">
 <div class="col-md-7 middle-col">
 <div class="cover">
-<img class="img-responsive" src="https://image.ibb.co/gAoewG/os.jpg" alt="Data Structures & Algorithms (DSA) Tutorial" />
+<!-- <img class="img-responsive" src="https://image.ibb.co/jzUnWR/dbms.jpg" alt="Database Tutorial" /> -->
 </div>
 <hr />
 
 <hr />
-<h1>Operating Systems Tutorial</h1>
+<h1>Database Management Systems Tutorial</h1>
 <div class="center-aligned tutorial-menu">
 <form action="/job_search.php" method="POST">
 <input type="hidden" name="search_string" value="Data Structures" />
 
 </form>
 </div>
-<p>An operating system (OS) is a collection of software that manages computer hardware resources and provides common services for computer programs. The operating system is a vital component of the system software in a computer system.</p>
+<p>Database Management System or DBMS in short refers to the technology of storing and retrieving usersâ data with utmost efficiency along with appropriate security measures. This tutorial explains the basics of DBMS such as its architecture, data models, data schemas, data independence, E-R model, relation model, relational database design, and storage and file structure and much more.</p>
 <h1>Audience</h1>
-<p>This tutorial has been prepared for the computer science graduates to help them understand the basic to advanced concepts related to Operating System.</p>
+<p>This tutorial will especially help computer science graduates in understanding the basic-to-advanced concepts related to Database Management Systems.</p>
 <h1>Prerequisites</h1>
-<p>Before you start proceeding with this tutorial, we are making an assumption that you are already aware of basic computer concepts like what is keyboard, mouse, monitor, input, output, primary memory and secondary memory etc. If you are not well aware of these concepts, then we will suggest to go through our short tutorial on Computer Fundamentals.</p>
 
 
-<form:form action="sendNotification?id=${employee.id}" method="post" modelAttribute="ticker" name="notificationAddition" id="notificationAddition"> 
-
+<form:form action="../sendNotification?id=${employee.id}" method="post" modelAttribute="ticker" name="notificationAddition" id="notificationAddition"> 
 					<c:if test="${markAsCompleted == false}">
 					<input class="markAsComplete" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="Mark as Completed"/>
 					</c:if>
 					<c:if test="${markAsCompleted == true}">
 					<input class="completedCourse" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="You Completed This Topic"/>
 					</c:if>
-					<input type="hidden" name="courseName" path="courseName" value="Operating Systems" />
-					<input type="hidden" name="courseLevel" path="courseLevel" value='1' />
-					<input type="hidden" name="topicName" path="topicName" value="Introduction to Operating Systems" />
-					<input type="hidden" name="topicUrl" path="topicUrl" value="operatingSystems" />
+					<input type="hidden" name="courseName" path="courseName" value="Databases" />
+					<input type="hidden" name="courseLevel" path="courseLevel" value="1" />
+					<input type="hidden" name="topicName" path="topicName" value="Introduction to Databases" />
+					<input type="hidden" name="topicUrl" path="topicUrl" value="databases" />
 					
 </form:form>
 
 <div class="nxt-btn">
-<a href="http://localhost:7080/TolcProject/operatingSystems/memoryManagement?id=${employee.id}">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
+<a href="http://localhost:7080/TolcProject/databases/architecture?id=${employee.id}">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
 </div>
 <jsp:include page="../backToCourses.jsp" />
 <jsp:include page="../ticker.jsp" />
 <jsp:include page="../inCourseChat.jsp" />
 <script type="text/javascript">
-var thisPageUrl = "operatingSystems";
+var thisPageUrl = "databases/intro";
 var subTopic = false;
-var globalTopicName = "Introduction to Operating Systems";
-var globalCourseName = "Operating Systems";
+var globalTopicName = "Introduction to Databases";
+var globalCourseName = "Databases";
 </script>
 </div></div></div></div></div></div>
 </body>

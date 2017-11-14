@@ -11,7 +11,7 @@ public interface ChatService {
 
 	public List<Chat> getAllMessages();
 
-	public String processMessage(String actualMessage, int empId);
+	public String processMessage(String actualMessage, int empId, boolean introPage, boolean topicPage);
 
 	public Integer getMessageCount();
 

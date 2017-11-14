@@ -50,7 +50,6 @@ input {border:2px;}
 .middle-col {
 min-height: 1171px;
 }
-
 .img_resize_fit{
     max-width:9%;
     max-height:11%;
@@ -79,21 +78,22 @@ $(document).ready(function() {
 </div>
 
 <div role="main" class="main" style="padding: 92px 0px 0px 0px;">
-	
-<div class="container" style="margin-left:200px; margin-right: 736px;">
+<div class="container" style="margin-left:200px;margin-right: 736px;">
 <div class="row">
 <div class="col-md-2">
 <aside class="sidebar">
 <div class="mini-logo">
-<img src="/data_structures_algorithms/images/data-structure-mini-logo.jpg" alt="Data Structures & Algorithms Tutorial" />
+<img src="http://www.domo.sg/wp-content/uploads/2016/10/Business-Operating-System.jpg" style="width:50%;" alt="Operating Systems" />
 </div>
 
+
 <ul class="nav nav-list primary left-menu">
-<li class="heading">Algorithm</li>   
-<li>Greedy Algorithms</li>
-<li>Divide and Conquer</li>
-<li>Dynamic Programming</li>
+<li class="heading">Operating Systems</li>   
+<li>Memory Management</a></li>
+<li>Caches</a></li>
+<li>Secondary Storage</a></li>
 </ul>
+
 
 
 </aside>
@@ -103,63 +103,51 @@ $(document).ready(function() {
 <div class="content">
 <div class="col-md-7 middle-col">
 <div class="cover">
-<img class="img-responsive" src="/data_structures_algorithms/images/data-structure-algorithm.jpg" alt="Data Structures & Algorithms (DSA) Tutorial" />
+<!-- <img class="img-responsive" src="https://image.ibb.co/gAoewG/os.jpg" alt="Data Structures & Algorithms (DSA) Tutorial" /> -->
 </div>
 <hr />
 
 <hr />
-<h1>Algorithms Tutorial</h1>
+<h1>Operating Systems Tutorial</h1>
 <div class="center-aligned tutorial-menu">
 <form action="/job_search.php" method="POST">
 <input type="hidden" name="search_string" value="Data Structures" />
 
 </form>
 </div>
-<p>This tutorial is designed for Computer Science graduates as well as Software Professionals who are willing to learn data structures and algorithm programming in simple and easy steps.</p>
-<p>After completing this tutorial you will be at intermediate level of expertise from where you can take yourself to higher level of expertise.</p>
+<p>An operating system (OS) is a collection of software that manages computer hardware resources and provides common services for computer programs. The operating system is a vital component of the system software in a computer system.</p>
+<h1>Audience</h1>
+<p>This tutorial has been prepared for the computer science graduates to help them understand the basic to advanced concepts related to Operating System.</p>
 <h1>Prerequisites</h1>
-<p>Before proceeding with this tutorial, you should have a basic understanding of C programming language, text editor, and execution of programs, etc.</p>
-<h1>Compile and Execute C Online</h1>
-<p>For most of the examples given in this tutorial you will find <b>Try it</b> option, so just make use of this option to execute your programs on the spot and enjoy your learning.</p>
-<p>Try the following example using the Try it option available at the top right corner of the following sample code box &minus;</p>
-<pre class="prettyprint notranslate tryit">
-#include &lt;stdio.h&gt;
-
-int main(){
-   /* My first program in C */
-   printf("Hello, World! \n");
-   
-   return 0;
-}
-</pre>
+<p>Before you start proceeding with this tutorial, we are making an assumption that you are already aware of basic computer concepts like what is keyboard, mouse, monitor, input, output, primary memory and secondary memory etc. If you are not well aware of these concepts, then we will suggest to go through our short tutorial on Computer Fundamentals.</p>
 
 
+<form:form action="../sendNotification?id=${employee.id}" method="post" modelAttribute="ticker" name="notificationAddition" id="notificationAddition"> 
 
-<div class="nxt-btn">
-<a href='http://localhost:7080/TolcProject/algorithms/greedyApproach?id=${employee.id}'>Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
-</div>
-<form:form action="sendNotification?id=${employee.id}" method="post" modelAttribute="ticker" name="notificationAddition" id="notificationAddition"> 
-					
 					<c:if test="${markAsCompleted == false}">
 					<input class="markAsComplete" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="Mark as Completed"/>
 					</c:if>
 					<c:if test="${markAsCompleted == true}">
 					<input class="completedCourse" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="You Completed This Topic"/>
 					</c:if>
-					<input type="hidden" name="courseName" path="courseName" value="Algorithms" />
+					<input type="hidden" name="courseName" path="courseName" value="Operating Systems" />
 					<input type="hidden" name="courseLevel" path="courseLevel" value='1' />
-					<input type="hidden" name="topicName" path="topicName" value="Introduction to Algorithms" />
-					<input type="hidden" name="topicUrl" path="topicUrl" value="algorithms" />
+					<input type="hidden" name="topicName" path="topicName" value="Introduction to Operating Systems" />
+					<input type="hidden" name="topicUrl" path="topicUrl" value="operatingSystems" />
 					
 </form:form>
+
+<div class="nxt-btn">
+<a href="http://localhost:7080/TolcProject/operatingSystems/memoryManagement?id=${employee.id}">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
+</div>
 <jsp:include page="../backToCourses.jsp" />
 <jsp:include page="../ticker.jsp" />
 <jsp:include page="../inCourseChat.jsp" />
 <script type="text/javascript">
-var thisPageUrl = "algorithms";
-var globalTopicName = "Introduction to Algorithms";
-var globalCourseName = "Algorithms";
+var thisPageUrl = "operatingSystems/intro";
 var subTopic = false;
+var globalTopicName = "Introduction to Operating Systems";
+var globalCourseName = "Operating Systems";
 </script>
 </div></div></div></div></div></div>
 </body>

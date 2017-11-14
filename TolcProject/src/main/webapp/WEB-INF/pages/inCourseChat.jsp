@@ -297,7 +297,7 @@ input {
 			$("#thisPageUrl").val(thisPageUrl);
 			$("#globalTopicName").val(globalTopicName);
 			$("#globalCourseName").val(globalCourseName);
-			 var formURL = "getInCourseSenderObject/"+userId+"/"+idFromTicker;
+			 var formURL = "../getInCourseSenderObject/"+userId+"/"+idFromTicker;
 			 /* if(formURL.includes("algorithms")){
 				 formURL.replace("algorithms/","");
 			 } else if (formURL.includes("databases")){
@@ -305,11 +305,11 @@ input {
 			 } else if (formURL.includes("operatingSystems")){
 				 formURL.replace("operatingSystems/","");
 			 } */
-			 if(subTopic == true){
+			/*  if(subTopic == true){
 				 formURL = "../" + formURL;
-			 }
+			 } */
 	         $.ajax({
-	             url : formURL,
+	             url :  formURL,
 				 type: 'GET',
 	             data : null,
 				  success: function(data, textStatus, jqXHR){ 
@@ -351,11 +351,11 @@ input {
 		     e.preventDefault();
 			 var postData = $(this).serializeArray();
 			 var formURL = $(this).attr("action");
-			 if(subTopic == true){
+			/*  if(subTopic == true){
 				 formURL = "../" + formURL;
-			 }
+			 } */
 		        $.ajax({
-		            url : formURL,
+		            url : "../" + formURL,
 				 type: 'POST',
 		            data : postData,
 				  success: function(data, textStatus, jqXHR){   
@@ -383,10 +383,10 @@ input {
 	 
 	 //8
 	 function updateSenderWindow(){
-		  formURL = "getInCourseSenderObject/"+userId+"/"+idFromTicker;
-		  if(subTopic == true){
+		  formURL = "../getInCourseSenderObject/"+userId+"/"+idFromTicker;
+		  /* if(subTopic == true){
 				 formURL = "../" + formURL;
-			 }
+			 } */
 	        $.ajax({
 	             url : formURL,
 				 type: 'GET',
@@ -455,7 +455,7 @@ input {
 			$("#thisPageUrl").val(thisPageUrl);
 			$("#globalTopicName").val(globalTopicName);
 			$("#globalCourseName").val(globalCourseName);
-			 var formURL = "getInCourseSenderObject/"+userId+"/"+idFromTicker;
+			 var formURL = "../getInCourseSenderObject/"+userId+"/"+idFromTicker;
 			 /* if(formURL.includes("algorithms")){
 				 formURL.replace("algorithms/","");
 			 } else if (formURL.includes("databases")){
@@ -463,11 +463,11 @@ input {
 			 } else if (formURL.includes("operatingSystems")){
 				 formURL.replace("operatingSystems/","");
 			 } */
-			 if(subTopic == true){
+			/*  if(subTopic == true){
 				 formURL = "../" + formURL;
-			 }
+			 } */
 	         $.ajax({
-	             url : formURL,
+	             url :  formURL,
 				 type: 'GET',
 	             data : null,
 				  success: function(data, textStatus, jqXHR){ 

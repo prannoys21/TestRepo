@@ -83,7 +83,7 @@ $(document).ready(function() {
 <div class="col-md-2">
 <aside class="sidebar">
 <div class="mini-logo">
-<img src="https://image.ibb.co/epH6bG/database.jpg" alt="Databases" />
+<img src="https://image.ibb.co/epH6bG/database.jpg" style="width: 50%;" alt="Databases" />
 </div>
 
 <ul class="nav nav-list primary left-menu">
@@ -102,7 +102,7 @@ $(document).ready(function() {
 <div class="content">
 <div class="col-md-7 middle-col">
 <div class="cover">
-<img class="img-responsive" src="https://image.ibb.co/jzUnWR/dbms.jpg" alt="Data Structures & Algorithms (DSA) Tutorial" />
+<!-- <img class="img-responsive" src="https://image.ibb.co/jzUnWR/dbms.jpg" alt="Data Structures & Algorithms (DSA) Tutorial" /> -->
 </div>
 <hr />
 
@@ -139,7 +139,7 @@ If the architecture of DBMS is 2-tier, then it must have an application through 
 </form:form>
 
 <div class="pre-btn">
-<a href="http://localhost:7080/TolcProject/databases?id=${employee.id}"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
+<a href="http://localhost:7080/TolcProject/databases/intro?id=${employee.id}"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
 </div>
 <div class="nxt-btn">
 <a href="http://localhost:7080/TolcProject/databases/models?id=${employee.id}">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>

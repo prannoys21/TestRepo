@@ -83,7 +83,7 @@ $(document).ready(function() {
 <div class="col-md-2">
 <aside class="sidebar">
 <div class="mini-logo">
-<img src="https://image.ibb.co/gAoewG/os.jpg" alt="Operating Systems" />
+<img src="http://www.domo.sg/wp-content/uploads/2016/10/Business-Operating-System.jpg" style="width:50%;" alt="Operating Systems" />
 </div>
 
 
@@ -103,7 +103,7 @@ $(document).ready(function() {
 <div class="content">
 <div class="col-md-7 middle-col">
 <div class="cover">
-<img class="img-responsive" src="https://image.ibb.co/gAoewG/os.jpg" alt="Data Structures & Algorithms (DSA) Tutorial" />
+<!-- <img class="img-responsive" src="https://image.ibb.co/gAoewG/os.jpg" alt="Data Structures & Algorithms (DSA) Tutorial" /> -->
 </div>
 <hr />
 

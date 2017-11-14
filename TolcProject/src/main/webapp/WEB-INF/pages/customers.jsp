@@ -147,15 +147,15 @@ src="https://www.facebook.com/tr?id=678167132284607&ev=PageView
             </a>
         </div>
         <nav>
-            <ul id="menu-header-bar" class="menu"><li id="menu-item-3884" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3884"><a href="">About us</a></li>
-<li id="menu-item-3885" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-3784 current_page_item menu-item-3885"><a href="">Customers</a></li>
-<li id="menu-item-3910" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3910"><a href="">Courses</a></li>
+            <ul id="menu-header-bar" class="menu"><li id="menu-item-3884" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3884"><a href="aboutUs">About us</a></li>
+<li id="menu-item-3885" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-3784 current_page_item menu-item-3885"><a href="customers">Customers</a></li>
+<li id="menu-item-3910" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3910"><a href="courseList?id=${employee.id}">Courses</a></li>
 
 
 </ul>                            <ul id="personal-menu">
                                             <li>
-                            <a href="loginPage" class="btn btn-transparent" >
-                                Log In                            </a>
+                            <!-- <a href="loginPage" class="btn btn-transparent" >
+                                Log In                            </a> -->
                         </li>
                                     </ul>
                     </nav>

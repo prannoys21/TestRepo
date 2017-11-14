@@ -69,6 +69,8 @@ public class ChatController {
 	
 	@RequestMapping(value = "/sendMessageInCourse", method = RequestMethod.POST)
 	public void sendMessageInCourse(HttpServletRequest request, @RequestParam String actualMessage) {
+		boolean introPage = false;
+		boolean topicPage = false;
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 		int senderId = Integer.parseInt(request.getParameter("sender"));
@@ -76,9 +78,16 @@ public class ChatController {
 		int recipientId = Integer.parseInt(request.getParameter("recipient"));
 		Employee recipient = employeeService.getEmployee(recipientId);
 		String thisPageUrl = request.getParameter("thisPageUrl");
+		if(thisPageUrl.equals("algorithms") || thisPageUrl.equals("databases") || thisPageUrl.equals("operatingSystems")) {
+			introPage =  true;
+			topicPage = false;
+		} else {
+			introPage =  false;
+			topicPage = true;
+		}
 		String globalTopicName = request.getParameter("globalTopicName");
 		String globalCourseName = request.getParameter("globalCourseName");
-		String processedMessage = chatService.processMessage(actualMessage,senderId);
+		String processedMessage = chatService.processMessage(actualMessage,senderId,introPage,topicPage);
 		Chat chat = new Chat();
 		chat.setGlobalCourseName(globalCourseName);
 		chat.setGlobalTopicName(globalTopicName);
@@ -98,10 +107,6 @@ public class ChatController {
 				e.printStackTrace();
 			}
 		}
-		/*ModelAndView model = new ModelAndView();
-		model.addObject("employee",sender);
-		model.setViewName("redirect:/"+thisPageUrl+"?id="+senderId);
-		return model;*/
 	}
 	
 	@RequestMapping(value = "/getInCourseSenderObject/{senderId}/{recipientId}", method = RequestMethod.GET)
@@ -114,6 +119,8 @@ public class ChatController {
 	
 	@RequestMapping(value = "/sendMessage", method = RequestMethod.POST)
 	public void sendMessage(HttpServletRequest request, @RequestParam String actualMessage) {
+		boolean introPage = false;
+		boolean topicPage = false;
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 		int senderId = Integer.parseInt(request.getParameter("sender"));
@@ -121,7 +128,15 @@ public class ChatController {
 		int recipientId = Integer.parseInt(request.getParameter("recipient"));
 		Employee recipient = employeeService.getEmployee(recipientId);
 		String globalTopicName = request.getParameter("globalTopicName");
-		String processedMessage = chatService.processMessage(actualMessage,senderId);
+		String thisPageUrl = request.getParameter("thisPageUrl");
+		if(thisPageUrl.equals("algorithms") || thisPageUrl.equals("databases") || thisPageUrl.equals("operatingSystems")) {
+			introPage =  true;
+			topicPage = false;
+		} else {
+			introPage =  false;
+			topicPage = true;
+		}
+		String processedMessage = chatService.processMessage(actualMessage,senderId,introPage, topicPage);
 		Chat chat = new Chat();
 		chat.setGlobalTopicName(globalTopicName);
 		chat.setTimeStamp(sdf.format(cal.getTime()));
@@ -140,51 +155,19 @@ public class ChatController {
 				e.printStackTrace();
 			}
 		}
-		/*ModelAndView model = new ModelAndView();
-		model.addObject("employee",sender);
-		model.setViewName("redirect:/chatAndLearn?id="+senderId);
-		return model;*/
 	}
  
 	/*/////////////////////////////////Algorithms///////////////////////////////////*/
 
-	@RequestMapping(value = "/algorithms", method = RequestMethod.GET)
-	public ModelAndView algorithmsPage(HttpServletRequest request) {
-			ModelAndView model = new ModelAndView("algorithms/algorithms");
-			model.addObject("markAsCompleted", false);
-			int empId = Integer.parseInt(request.getParameter("id"));
-			Employee employee = employeeService.getEmployee(empId);
-			List<Ticker> allNotifications = tickerService.getAllNotifications();
-			Collections.reverse(allNotifications);
-			List<Ticker> currentCourseLevel = tickerService.getCoursesCompleted(empId, "Algorithms");
-			int pageTopicLevel = 1;
-			if(!currentCourseLevel.isEmpty()) {
-				int currCourseLevel = currentCourseLevel.get(0).getCourseLevel();
-				if(!currentCourseLevel.isEmpty()) {
-					currCourseLevel = currentCourseLevel.get(0).getCourseLevel();
-						pageTopicLevel = 1;
-						if (currCourseLevel >= pageTopicLevel){
-							model.addObject("markAsCompleted", true);
-					} 
-					}
-				model.addObject("currCourseLevel", currCourseLevel);
-			} else {
-				model.addObject("currCourseLevel", 0);
-			}
-			//List<Chat> allMessages = chatService.getAllInCourseMessages(empId);
-			//model.addObject("allMessages",allMessages);
-			model.addObject("tickerCourse","Algorithms");
-			model.addObject("allNotifications",allNotifications);
-			model.addObject("employee", employee);
-			
-			return model;
-	}
 	
 	@RequestMapping(value = "/algorithms/{param1}", method = RequestMethod.GET)
 	public ModelAndView algorithmsTopics(HttpServletRequest request, @PathVariable String param1) {
 		ModelAndView model = new ModelAndView();
 		model.addObject("markAsCompleted", false);
-			if(param1.equals("divideAndConquer")) {
+		if(param1.equals("intro")) {
+				model.setViewName("algorithms/algorithms_intro");
+			}
+			else if(param1.equals("divideAndConquer")) {
 				model.setViewName("algorithms/algorithms_divideAndConquer");
 			}
 			else if(param1.equals("dynamicProgramming")) {
@@ -202,7 +185,12 @@ public class ChatController {
 			int pageTopicLevel;
 			if(!currentCourseLevel.isEmpty()) {
 				currCourseLevel = currentCourseLevel.get(0).getCourseLevel();
-				if (param1.equals("greedyApproach")) {
+				if (param1.equals("intro")) {
+					pageTopicLevel = 1;
+					if (currCourseLevel >= pageTopicLevel){
+						model.addObject("markAsCompleted", true);
+						}
+					} else	if (param1.equals("greedyApproach")) {
 					pageTopicLevel = 2;
 					if (currCourseLevel >= pageTopicLevel){
 						model.addObject("markAsCompleted", true);
@@ -232,40 +220,13 @@ public class ChatController {
 	/*/////////////////////////////////Databases///////////////////////////////////*/
 	
 	
-	@RequestMapping(value = "/databases", method = RequestMethod.GET)
-	public ModelAndView databasesPage(HttpServletRequest request) {
-		ModelAndView model = new ModelAndView("databases/databases");
-		model.addObject("markAsCompleted", false);
-		int empId = Integer.parseInt(request.getParameter("id"));
-		Employee employee = employeeService.getEmployee(empId);
-		List<Ticker> allNotifications = tickerService.getAllNotifications();
-		Collections.reverse(allNotifications);
-		List<Ticker> currentCourseLevel = tickerService.getCoursesCompleted(empId, "Databases");
-		int pageTopicLevel = 1;
-		if(!currentCourseLevel.isEmpty()) {
-			int currCourseLevel = currentCourseLevel.get(0).getCourseLevel();
-			if(!currentCourseLevel.isEmpty()) {
-				currCourseLevel = currentCourseLevel.get(0).getCourseLevel();
-					pageTopicLevel = 1;
-					if (currCourseLevel >= pageTopicLevel){
-						model.addObject("markAsCompleted", true);
-				} 
-				}
-			model.addObject("currCourseLevel", currCourseLevel);
-		} else {
-			model.addObject("currCourseLevel", 0);
-		}
-		model.addObject("tickerCourse","Databases");
-		model.addObject("allNotifications",allNotifications);
-		model.addObject("employee", employee);
-		return model;
-	}
-	
 	@RequestMapping(value = "/databases/{param2}", method = RequestMethod.GET)
 	public ModelAndView architecture(HttpServletRequest request, @PathVariable String param2) {
 		ModelAndView model = new ModelAndView();
 		model.addObject("markAsCompleted", false);
-		if(param2.equals("architecture")) {
+		if(param2.equals("intro")) {
+			model.setViewName("databases/databases_intro");
+			} else if(param2.equals("architecture")) {
 			model.setViewName("databases/databases_architecture");
 		}
 		else if(param2.equals("models")) {
@@ -283,7 +244,12 @@ public class ChatController {
 		int pageTopicLevel;
 		if(!currentCourseLevel.isEmpty()) {
 			currCourseLevel = currentCourseLevel.get(0).getCourseLevel();
-			if (param2.equals("schemas")) {
+			if (param2.equals("intro")) {
+				pageTopicLevel = 1;
+				if (currCourseLevel >= pageTopicLevel){
+					model.addObject("markAsCompleted", true);
+					}
+				} else 	if (param2.equals("schemas")) {
 				pageTopicLevel = 4;
 				if (currCourseLevel >= pageTopicLevel){
 					model.addObject("markAsCompleted", true);
@@ -313,40 +279,16 @@ public class ChatController {
 	
 	/*/////////////////////////////////Operating Systems///////////////////////////////////*/
 	
-	@RequestMapping(value = "/operatingSystems", method = RequestMethod.GET)
-	public ModelAndView operatingSystemsPage(HttpServletRequest request) {
-			ModelAndView model = new ModelAndView("operatingSystems/operatingSystems");
-			model.addObject("markAsCompleted", false);
-			int empId = Integer.parseInt(request.getParameter("id"));
-			Employee employee = employeeService.getEmployee(empId);
-			List<Ticker> allNotifications = tickerService.getAllNotifications();
-			Collections.reverse(allNotifications);
-			List<Ticker> currentCourseLevel = tickerService.getCoursesCompleted(empId, "Operating Systems");
-			int pageTopicLevel = 1;
-			if(!currentCourseLevel.isEmpty()) {
-				int currCourseLevel = currentCourseLevel.get(0).getCourseLevel();
-				if(!currentCourseLevel.isEmpty()) {
-					currCourseLevel = currentCourseLevel.get(0).getCourseLevel();
-						pageTopicLevel = 1;
-						if (currCourseLevel >= pageTopicLevel){
-							model.addObject("markAsCompleted", true);
-					} 
-					}
-				model.addObject("currCourseLevel", currCourseLevel);
-			} else {
-				model.addObject("currCourseLevel", 0);
-			}
-			model.addObject("tickerCourse","Operating Systems");
-			model.addObject("allNotifications",allNotifications);
-			model.addObject("employee", employee);
-			return model;
-	}
+
 	@RequestMapping(value = "/operatingSystems/{param3}", method = RequestMethod.GET)
 	public ModelAndView operatingSystemsTopics(HttpServletRequest request, @PathVariable String param3) {
 		ModelAndView model = new ModelAndView();
 		
 		
 		model.addObject("markAsCompleted", false);
+		if(param3.equals("intro")) {
+			model.setViewName("operatingSystems/operatingSystems_intro");
+			}
 		if(param3.equals("cache")) {
 			model.setViewName("operatingSystems/operatingSystems_cache");
 		}
@@ -365,7 +307,12 @@ public class ChatController {
 		int pageTopicLevel;
 		if(!currentCourseLevel.isEmpty()) {
 			currCourseLevel = currentCourseLevel.get(0).getCourseLevel();
-			if (param3.equals("cache")) {
+			if (param3.equals("intro")) {
+				pageTopicLevel = 1;
+				if (currCourseLevel >= pageTopicLevel){
+					model.addObject("markAsCompleted", true);
+					}
+				} else if (param3.equals("cache")) {
 				pageTopicLevel = 3;
 				if (currCourseLevel >= pageTopicLevel){
 					model.addObject("markAsCompleted", true);
@@ -392,7 +339,7 @@ public class ChatController {
 	}
 	/*/////////////////////////////////Machine Learning///////////////////////////////////*/
 	
-	@RequestMapping(value = "/machineLearning", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/machineLearning", method = RequestMethod.GET)
 	public ModelAndView machineLearningPage(HttpServletRequest request) {
 			ModelAndView model = new ModelAndView("machineLearning/machineLearning");
 			int empId = Integer.parseInt(request.getParameter("id"));
@@ -426,7 +373,7 @@ public class ChatController {
 	}
 	
 	
-	/*/////////////////////////////////Software Engineering///////////////////////////////////*/
+	/////////////////////////////////Software Engineering///////////////////////////////////
 	
 	@RequestMapping(value = "/softwareEngineering", method = RequestMethod.GET)
 	public ModelAndView softwareEngineeringPage(HttpServletRequest request) {
@@ -459,6 +406,96 @@ public class ChatController {
 		model.addObject("allNotifications",allNotifications);
 		model.addObject("employee", employee);
 		return model;
+	}*/
+	
+/*	@RequestMapping(value = "/algorithms", method = RequestMethod.GET)
+	public ModelAndView algorithmsPage(HttpServletRequest request) {
+			ModelAndView model = new ModelAndView("algorithms/algorithms");
+			model.addObject("markAsCompleted", false);
+			int empId = Integer.parseInt(request.getParameter("id"));
+			Employee employee = employeeService.getEmployee(empId);
+			List<Ticker> allNotifications = tickerService.getAllNotifications();
+			Collections.reverse(allNotifications);
+			List<Ticker> currentCourseLevel = tickerService.getCoursesCompleted(empId, "Algorithms");
+			int pageTopicLevel = 1;
+			if(!currentCourseLevel.isEmpty()) {
+				int currCourseLevel = currentCourseLevel.get(0).getCourseLevel();
+				if(!currentCourseLevel.isEmpty()) {
+					currCourseLevel = currentCourseLevel.get(0).getCourseLevel();
+						pageTopicLevel = 1;
+						if (currCourseLevel >= pageTopicLevel){
+							model.addObject("markAsCompleted", true);
+					} 
+					}
+				model.addObject("currCourseLevel", currCourseLevel);
+			} else {
+				model.addObject("currCourseLevel", 0);
+			}
+			//List<Chat> allMessages = chatService.getAllInCourseMessages(empId);
+			//model.addObject("allMessages",allMessages);
+			model.addObject("tickerCourse","Algorithms");
+			model.addObject("allNotifications",allNotifications);
+			model.addObject("employee", employee);
+			
+			return model;
 	}
-		
+	*/
+
+	/*@RequestMapping(value = "/databases", method = RequestMethod.GET)
+	public ModelAndView databasesPage(HttpServletRequest request) {
+		ModelAndView model = new ModelAndView("databases/databases");
+		model.addObject("markAsCompleted", false);
+		int empId = Integer.parseInt(request.getParameter("id"));
+		Employee employee = employeeService.getEmployee(empId);
+		List<Ticker> allNotifications = tickerService.getAllNotifications();
+		Collections.reverse(allNotifications);
+		List<Ticker> currentCourseLevel = tickerService.getCoursesCompleted(empId, "Databases");
+		int pageTopicLevel = 1;
+		if(!currentCourseLevel.isEmpty()) {
+			int currCourseLevel = currentCourseLevel.get(0).getCourseLevel();
+			if(!currentCourseLevel.isEmpty()) {
+				currCourseLevel = currentCourseLevel.get(0).getCourseLevel();
+					pageTopicLevel = 1;
+					if (currCourseLevel >= pageTopicLevel){
+						model.addObject("markAsCompleted", true);
+				} 
+				}
+			model.addObject("currCourseLevel", currCourseLevel);
+		} else {
+			model.addObject("currCourseLevel", 0);
+		}
+		model.addObject("tickerCourse","Databases");
+		model.addObject("allNotifications",allNotifications);
+		model.addObject("employee", employee);
+		return model;
+	}
+	*/
+	/*	@RequestMapping(value = "/operatingSystems", method = RequestMethod.GET)
+	public ModelAndView operatingSystemsPage(HttpServletRequest request) {
+			ModelAndView model = new ModelAndView("operatingSystems/operatingSystems");
+			model.addObject("markAsCompleted", false);
+			int empId = Integer.parseInt(request.getParameter("id"));
+			Employee employee = employeeService.getEmployee(empId);
+			List<Ticker> allNotifications = tickerService.getAllNotifications();
+			Collections.reverse(allNotifications);
+			List<Ticker> currentCourseLevel = tickerService.getCoursesCompleted(empId, "Operating Systems");
+			int pageTopicLevel = 1;
+			if(!currentCourseLevel.isEmpty()) {
+				int currCourseLevel = currentCourseLevel.get(0).getCourseLevel();
+				if(!currentCourseLevel.isEmpty()) {
+					currCourseLevel = currentCourseLevel.get(0).getCourseLevel();
+						pageTopicLevel = 1;
+						if (currCourseLevel >= pageTopicLevel){
+							model.addObject("markAsCompleted", true);
+					} 
+					}
+				model.addObject("currCourseLevel", currCourseLevel);
+			} else {
+				model.addObject("currCourseLevel", 0);
+			}
+			model.addObject("tickerCourse","Operating Systems");
+			model.addObject("allNotifications",allNotifications);
+			model.addObject("employee", employee);
+			return model;
+	}*/
 }

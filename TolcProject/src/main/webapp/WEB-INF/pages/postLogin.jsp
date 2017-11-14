@@ -326,7 +326,7 @@ $(document).ready(function(){
 			var chartAlgo = new CanvasJS.Chart("chartContainerAlgo", {
 				
 				 colorSet: "myColorScaling",
-
+				 backgroundColor: "transparent",
 				title:{
 					text: "Learning Vs. Contribution in Algorithms"              
 				},
@@ -358,6 +358,7 @@ $(document).ready(function(){
 			
 			var chartDb = new CanvasJS.Chart("chartContainerDb", {
 				colorSet: "myColorScaling",
+				backgroundColor: "transparent",
 				title:{
 					text: "Learning Vs. Contribution in Databases"              
 				},
@@ -387,6 +388,7 @@ $(document).ready(function(){
 			
 			var chartOs = new CanvasJS.Chart("chartContainerOs", {
 				colorSet: "myColorScaling",
+				backgroundColor: "transparent",
 				title:{
 					text: "Learning Vs. Contribution in Operating Systems"              
 				},
@@ -415,6 +417,7 @@ $(document).ready(function(){
 			//Learning vs. Contribution Pie Chart
 			var chartPie = new CanvasJS.Chart("chartContainerPie",
 					{
+						backgroundColor: "transparent",
 						colorSet: "myColorScaling",
 						title:{
 							text: "Total Learning vs. Total Contribution"

@@ -12,6 +12,7 @@ body{
   width:100%; 
   text-align:center;
   margin: 20px 0px 20px 0px;   
+  background-image: url("https://www.clipartsgram.com/image/1116146294-login-page-background-image-112.jpg");
 }
 
 p{
@@ -27,8 +28,8 @@ h1{
 
 .box{
   background:white;
-  width:300px;
-  height: 300px;
+  width:650px;
+  height: 450px;
   border-radius:6px;
   margin: 0 auto 0 auto;
   padding:0px 0px 70px 0px;
@@ -96,7 +97,10 @@ text-decoration: none;
   font-weight:800;
   font-size:0.8em;
 }
-
+.error {
+    font-size: 12px;
+    color: red;
+}
 #btn2:hover{ 
 background:#3594D2; 
 }
@@ -109,16 +113,20 @@ background:#3594D2;
 <h1>Login</h1>
 
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-<input type="text" name="userName" value="" class="email" />
+Username: <input type="text" name="userName" value="" class="email" />
+<br>
 <form:errors path="userName" cssClass="error" />
-<input type="password" name="password" value="" class="email" />
+<br>
+Passowrd: <input type="password" name="password" value="" class="email" />
+<br>
 <form:errors path="password" cssClass="error" />
+<br>
 
 
-
+<div style = "margin-left:200px">
 <input class="btn" type="submit" value="Sign In"/>
 <div id="btn2"><a href="newEmployee">Sign Up</a></div> <!-- End Btn2 --> 
-  
+  </div>
 </div> <!-- End Box -->
 
 <%--  <form:errors path="loginError" cssClass="error" /> --%>

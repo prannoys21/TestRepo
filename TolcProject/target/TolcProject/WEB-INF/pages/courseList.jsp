@@ -288,7 +288,7 @@ fbq('track', 'PageView');
 			<div id="feature-item1" class="feature">
 				<div class="title"
 					style="background-image: url(http://novoed.com/wp-content/uploads/2017/03/feature-image01.png);">
-					<span><a href="algorithms?id=${employee.id}">Algorithm Design</a></span>
+					<span><a href="algorithms/intro?id=${employee.id}">Algorithm Design</a></span>
 				</div>
 
 				<div class="text">
@@ -314,7 +314,7 @@ fbq('track', 'PageView');
 			<div id="feature-item2" class="feature">
 				<div class="title"
 					style="background-image: url(http://novoed.com/wp-content/uploads/2017/03/feature-image02.png);">
-					<span><a href="databases?id=${employee.id}">Database Management</a></span>
+					<span><a href="databases/intro?id=${employee.id}">Database Management</a></span>
 				</div>
 
 				<div class="text">
@@ -339,7 +339,7 @@ fbq('track', 'PageView');
 			<div id="feature-item3" class="feature">
 				<div class="title"
 					style="background-image: url(http://novoed.com/wp-content/uploads/2017/03/feature-image03.png);">
-					<span><a href="operatingSystems?id=${employee.id}">Operating Systems</a></span>
+					<span><a href="operatingSystems/intro?id=${employee.id}">Operating Systems</a></span>
 				</div>
 
 				<div class="text">

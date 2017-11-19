@@ -70,7 +70,7 @@ $(document).ready(function() {
 <body>
 <div class="container" style="width: 100%; height:56px; position:fixed; overflow: hidden; background: #fd8d3c; color: #9a9a9a; box-shadow: 0px 3px 9px #888888; font: 100%/1.5em Droid Sans sans-serif;">
 <div class="logo">
-            <a href="userHomepage?id=${employee.id}">
+            <a href="../userHomepage?id=${employee.id}">
                 <img src="https://image.ibb.co/cPU8qb/welearn.png" class="img_resize_fit"  alt="Learn"> 
                 <img src="https://image.ibb.co/cPU8qb/welearn.png" class="img_resize_fit" alt="Collolearn">
             </a>

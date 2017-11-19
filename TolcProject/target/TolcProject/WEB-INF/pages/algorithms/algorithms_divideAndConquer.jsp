@@ -150,6 +150,7 @@ $(document).ready(function() {
 
 <jsp:include page="../backToCourses.jsp" />
 <jsp:include page="../tickers/tickerAlgorithms.jsp" />
+<jsp:include page="../inCourseChat.jsp" />
 
 
 </body>

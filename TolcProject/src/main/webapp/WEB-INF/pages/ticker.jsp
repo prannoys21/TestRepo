@@ -295,7 +295,7 @@ input {
 				 type: 'POST',
                  data : postData,
 				  success: function(data, textStatus, jqXHR){   
-							location.reload();    
+							/* location.reload();   */  
 							},
 					error: function(jqXHR, textStatus, errorThrown){   
 							console.log("error");

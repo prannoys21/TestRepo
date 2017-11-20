@@ -294,7 +294,7 @@ public class ChatController {
 		} else {
 			model.addObject("currCourseLevel", 0);
 			}
-		
+		model.addObject("messageRequestsListRefined",messageRequestsListRefined);
 		model.addObject("tickerCourse","Databases");
 		model.addObject("allNotifications",allNotifications);
 		model.addObject("employee", employee);
@@ -367,6 +367,7 @@ public class ChatController {
 		} else {
 			model.addObject("currCourseLevel", 0);
 		}
+		model.addObject("messageRequestsListRefined",messageRequestsListRefined);
 		model.addObject("tickerCourse","Operating Systems");
 		model.addObject("allNotifications",allNotifications);
 		model.addObject("employee", employee);

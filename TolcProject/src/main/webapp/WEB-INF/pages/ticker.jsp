@@ -279,13 +279,31 @@ input {
 	<script type="text/javascript">
 	var courseLevelOfTickerUpdate;
 	var firstNameFromTicker;
+	var userId = ${employee.id};
+	var courseNameObtainedHere = "${tickerCourse}";
+	var courseLevelOfCurrentEmployee = ${currCourseLevel};
+	var counter = 0;  
+	var markAsCompleted = ${markAsCompleted};
 	//wow//tickkkkerrrr
 
 	 $(document).ready(function() {
 		 //$('.notification-history').scrollTop($('.notification-history')[0].scrollHeight);
-		 
+		 //t1
 		 $(".getTickerUserId").hide();
 		
+		 $('.completedCourse').hide();
+		 
+		 /* function completedTopicOrNot(){ */
+		 if(markAsCompleted){
+			 $('.markAsComplete').hide();
+			 $('.completedCourse').show();
+		 } else {
+			 $('.markAsComplete').show();
+			 $('.completedCourse').hide();
+		 }
+	 /* } */
+		 
+		 //t2
 		 $('#notificationAddition').submit(function(e) {
              e.preventDefault();
 			 var postData = $(this).serializeArray();
@@ -302,12 +320,18 @@ input {
 							}
          });
 	 });
+		 
+		 //t3
+		  $('.markAsComplete').click(function(){
+			$('.markAsComplete').hide();  
+			$('.completedCourse').show(); 
+		 });
+		 
+	
+		 
          //$('.notification-history').scrollTop($('.notification-history')[0].scrollHeight);
 	 });
-	var userId = ${employee.id};
-	var courseNameObtainedHere = "${tickerCourse}";
-	var courseLevelOfCurrentEmployee = ${currCourseLevel};
-	var counter = 0;  
+	
 	var eventSource = new EventSource('http://localhost:7080/TolcProject/tickerNotification');
 	eventSource.addEventListener('tickNotifcication',function(event){
 		console.log(event.data)

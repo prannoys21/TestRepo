@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <head>
 <meta charset="utf-8">
 <title>Algorithms Tutorial</title>
@@ -16,11 +17,6 @@
 <meta name="author" content="tutorialspoint.com">
 <script type="text/javascript" src=""></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-<!-- <link rel="stylesheet" href="https://www.tutorialspoint.com/theme/css/style-min.css"> -->
-<!-- Head Libs -->
-<!--[if IE 8]>
-<link rel="stylesheet" type="text/css" href="/theme/css/ie8.css">
-<![endif]-->
 <style>
 body {
 	color: #000;
@@ -50,11 +46,9 @@ input {border:2px;}
 .middle-col {
 min-height: 1171px;
 }
-.img_resize_fit{
-    max-width:9%;
-    max-height:11%;
-    vertical-align: middle;
-}
+
+
+/
 </style>
 <script>
 $(document).ready(function() {
@@ -68,14 +62,7 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<div class="container" style="width: 100%; height:56px; position:fixed; overflow: hidden; background: #fd8d3c; color: #9a9a9a; box-shadow: 0px 3px 9px #888888; font: 100%/1.5em Droid Sans sans-serif;">
-<div class="logo">
-            <a href="../userHomepage?id=${employee.id}">
-                <img src="https://image.ibb.co/cPU8qb/welearn.png" class="img_resize_fit"  alt="Learn"> 
-                <img src="https://image.ibb.co/cPU8qb/welearn.png" class="img_resize_fit" alt="Collolearn">
-            </a>
-        </div>
-</div>
+<jsp:include page="../headerBar.jsp" />
 
 <div role="main" class="main" style="padding: 92px 0px 0px 0px;">
 <div class="container"  style="margin-left:200px;margin-right: 736px;">
@@ -135,12 +122,8 @@ In contrast to divide and conquer algorithms, where solutions are combined to ac
 </div>
 <form:form action="../sendNotification?id=${employee.id}" method="post" modelAttribute="ticker" name="notificationAddition" id="notificationAddition"> 
 
-					<c:if test="${markAsCompleted == false}">
 					<input class="markAsComplete" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="Mark as Completed"/>
-					</c:if>
-					<c:if test="${markAsCompleted == true}">
 					<input class="completedCourse" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="You Completed This Topic"/>
-					</c:if>
 					<input type="hidden" name="courseName" path="courseName" value="Algorithms" />
 					<input type="hidden" name="courseLevel" path="courseLevel" value='4' />
 					<input type="hidden" name="topicName" path="topicName" value="Dynamic Programming" />

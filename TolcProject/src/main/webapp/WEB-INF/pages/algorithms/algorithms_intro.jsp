@@ -126,12 +126,8 @@ int main(){
 </div>
 <form:form action="../sendNotification?id=${employee.id}" method="post" modelAttribute="ticker" name="notificationAddition" id="notificationAddition"> 
 					
-					<c:if test="${markAsCompleted == false}">
 					<input class="markAsComplete" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="Mark as Completed"/>
-					</c:if>
-					<c:if test="${markAsCompleted == true}">
 					<input class="completedCourse" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="You Completed This Topic"/>
-					</c:if>
 					<input type="hidden" name="courseName" path="courseName" value="Algorithms" />
 					<input type="hidden" name="courseLevel" path="courseLevel" value='1' />
 					<input type="hidden" name="topicName" path="topicName" value="Introduction to Algorithms" />

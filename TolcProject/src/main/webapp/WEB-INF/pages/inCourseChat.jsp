@@ -274,6 +274,7 @@ input {
 	var inCourseMessage =[];
 	var firstNameFromTicker;
 	var idFromTicker;
+	var idFromMessageRequestDiv;
 	var tickerDivId;
 	var messageRequestsOpen = false;
 	var messageRequestSenderId=0;
@@ -414,7 +415,7 @@ input {
   			}
 			$('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
 			if(objectData.message != ""){
-				if(objectData.sender.id == idFromTicker && objectData.recipient.id == userId){
+				if((objectData.sender.id == idFromTicker || objectData.sender.id == idFromMessageRequestDiv) && objectData.recipient.id == userId){
 					$('#chat-history').append('<hr><div class="chat-message clearfix"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="chat-message-content clearfix"><span class="chat-time">'+ objectData.timeStamp +'</span><h5>'+ objectData.sender.firstName +'</h5><p class="chatMessageWindowText">'+ parsedMessage +'</p></div></div><hr>')
 				}
 				if((objectData.recipient.id == userId) && (objectData.sender.id != messageRequestSenderId  )){
@@ -422,6 +423,7 @@ input {
 					var newMessageRequest = '<div class="message-request messagefix" id="message-request'+messageCounter+'"><div class="message-request-content messagefix"><div class="clickableMessageRequestName">'+ objectData.sender.firstName + '</div> &nbsp; wants to chat with you!<div class="getMessageRequestSenderId" style="display:none;">'+objectData.sender.id+'</div><span class="message-request-time">' +objectData.timeStamp + '</span></div><hr></div>'
 					$(newMessageRequest).prependTo('.message-history').hide().slideDown(250);
 					$("#messageRqstIcon").attr("src","http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-2/48/message-already-read-icon.png");
+					messageRequestSenderId = objectData.sender.id;
 					messageCounter++;
 					}, 50);
 					

@@ -96,7 +96,9 @@ public class ChatDAOImpl implements ChatDAO {
 		List <Object[]> result=  query.list();
 		Map<String,Integer> finalMap = new HashMap<String,Integer>();
 		Map<String,Integer> resultSetObtainedAlgo = new HashMap<String,Integer>();
-		resultSetObtainedAlgo.put("Introduction to Algorithms", 0);
+		Map<String,Integer> resultSetObtainedDb = new HashMap<String,Integer>();
+		Map<String,Integer> resultSetObtainedOs = new HashMap<String,Integer>();
+	/*	resultSetObtainedAlgo.put("Introduction to Algorithms", 0);
 		resultSetObtainedAlgo.put("Greedy Approach", 0);
 		resultSetObtainedAlgo.put("Divide And Conquer", 0);
 		resultSetObtainedAlgo.put("Dynamic Programming", 0);
@@ -114,7 +116,7 @@ public class ChatDAOImpl implements ChatDAO {
 		resultSetObtainedOs.put("Memory Management", 0);
 		resultSetObtainedOs.put("Cache", 0);
 		
-		
+		*/
 		if(!result.isEmpty()) {
 			for (Object[] sss : result) {
 				if(courseName.equals("Algorithms")) {
@@ -130,6 +132,15 @@ public class ChatDAOImpl implements ChatDAO {
 			}
 		} 
 		return finalMap;
+	}
+
+	@Override
+	public List<Chat> getAllMessageRequests(int empId) {
+		String sqlQuery = "SELECT * FROM CHAT WHERE RECIPIENT = "+ empId +" ORDER BY TIMESTAMP DESC ;"; 
+		Query query =  sessionFactory.getCurrentSession().createSQLQuery(sqlQuery).addEntity(Chat.class);
+		@SuppressWarnings("unchecked")
+		List<Chat> result = query.list();
+		return result;
 	}
 
 	

@@ -23,6 +23,8 @@ public interface ChatDAO {
 
 	public Map<String,Integer> getTopicWiseHelpingCount(int empId,String courseName);
 
+	public List<Chat> getAllMessageRequests(int empId);
+
 
 
 }

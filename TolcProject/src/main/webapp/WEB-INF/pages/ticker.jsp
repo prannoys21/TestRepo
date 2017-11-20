@@ -249,7 +249,7 @@ input {
 				<c:forEach var="ticker" items="${allNotifications}">
 				<c:if test="${employee.id != ticker.employee.id }">
 				<c:if test="${ticker.courseName == tickerCourse}">
-				<%-- <c:if test="${currCourseLevel <= ticker.courseLevel}"> --%>
+				<c:if test="${currCourseLevel <= ticker.courseLevel}">
 				<c:set var="tickerUpdate" value="${tickerUpdate+1}" scope="request"/>
 				<div class="notification-message clearfix" id="tickerUpdate${tickerUpdate}">
 					<img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32">
@@ -263,7 +263,7 @@ input {
 				<hr>
 				</c:if>
 				</c:if>
-				<%-- </c:if> --%>
+				</c:if>
 				</c:forEach>
 
 			</div> <!-- end notification-history -->
@@ -317,13 +317,13 @@ input {
 		console.log(courseLevelOfTickerUpdate)
 		if(userId != objectData.employee.id){
 				if(objectData.courseName == courseNameObtainedHere){
-					//if(courseLevelOfCurrentEmployee <= courseLevelOfTickerUpdate){
+					if(courseLevelOfCurrentEmployee <= courseLevelOfTickerUpdate){
 					setTimeout(function(){
 					var newNotification = '<div class="notification-message clearfix animated" id="tickerUpdate' +counter +'"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="notification-message-content clearfix"><div class="clickableFirstName">'+ objectData.employee.firstName + "</div>	&nbsp;completed "+ objectData.topicName + " from the course "+ objectData.courseName +'</div><div class="getTickerUserId" style="display: none;">'+objectData.employee.id+'</div><span class="notification-time">'+ objectData.timeStamp +'</span></div><hr>'
 					counter++;
 					$(newNotification).prependTo('.notification-history').hide().slideDown(250);
 					}, 50);
-				//}
+				}
 			}
 		}
 	});

@@ -2,6 +2,7 @@ package com.jwt.controller;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
@@ -177,10 +178,21 @@ public class ChatController {
 				model.setViewName("algorithms/algorithms_greedyApproach");
 			}
 			int empId = Integer.parseInt(request.getParameter("id"));
+			int currentEmpIdMessageRequest =0;
 			Employee employee = employeeService.getEmployee(empId);
 			List<Ticker> allNotifications = tickerService.getAllNotifications();
 			Collections.reverse(allNotifications);
 			List<Ticker> currentCourseLevel = tickerService.getCoursesCompleted(empId, "Algorithms");
+			List<Chat> messageRequestsList = chatService.getAllMessageRequests(empId);
+			List<Chat> messageRequestsListRefined = new ArrayList<>();
+			if(!messageRequestsList.isEmpty()) {
+				for (Chat eachRequest :  messageRequestsList) {
+					if(eachRequest.getSender().getId() != currentEmpIdMessageRequest) {
+						messageRequestsListRefined.add(eachRequest);
+						currentEmpIdMessageRequest = eachRequest.getSender().getId();
+					}
+				}
+			}
 			int currCourseLevel;
 			int pageTopicLevel;
 			if(!currentCourseLevel.isEmpty()) {
@@ -213,6 +225,7 @@ public class ChatController {
 			model.addObject("tickerCourse","Algorithms");
 			model.addObject("allNotifications",allNotifications);
 			model.addObject("employee", employee);
+			model.addObject("messageRequestsListRefined",messageRequestsListRefined);
 			return model;
 			
 	}
@@ -236,10 +249,21 @@ public class ChatController {
 			model.setViewName("databases/databases_schemas");
 		}
 		int empId = Integer.parseInt(request.getParameter("id"));
+		int currentEmpIdMessageRequest =0;
 		Employee employee = employeeService.getEmployee(empId);
 		List<Ticker> allNotifications = tickerService.getAllNotifications();
 		Collections.reverse(allNotifications);
 		List<Ticker> currentCourseLevel = tickerService.getCoursesCompleted(empId, "Databases");
+		List<Chat> messageRequestsList = chatService.getAllMessageRequests(empId);
+		List<Chat> messageRequestsListRefined = new ArrayList<>();
+		if(!messageRequestsList.isEmpty()) {
+			for (Chat eachRequest :  messageRequestsList) {
+				if(eachRequest.getSender().getId() != currentEmpIdMessageRequest) {
+					messageRequestsListRefined.add(eachRequest);
+					currentEmpIdMessageRequest = eachRequest.getSender().getId();
+				}
+			}
+		}
 		int currCourseLevel;
 		int pageTopicLevel;
 		if(!currentCourseLevel.isEmpty()) {
@@ -299,10 +323,21 @@ public class ChatController {
 			model.setViewName("operatingSystems/operatingSystems_secondaryStorage");
 		}
 		int empId = Integer.parseInt(request.getParameter("id"));
+		int currentEmpIdMessageRequest =0;
 		Employee employee = employeeService.getEmployee(empId);
 		List<Ticker> allNotifications = tickerService.getAllNotifications();
 		Collections.reverse(allNotifications);
 		List<Ticker> currentCourseLevel = tickerService.getCoursesCompleted(empId, "Operating Systems");
+		List<Chat> messageRequestsList = chatService.getAllMessageRequests(empId);
+		List<Chat> messageRequestsListRefined = new ArrayList<>();
+		if(!messageRequestsList.isEmpty()) {
+			for (Chat eachRequest :  messageRequestsList) {
+				if(eachRequest.getSender().getId() != currentEmpIdMessageRequest) {
+					messageRequestsListRefined.add(eachRequest);
+					currentEmpIdMessageRequest = eachRequest.getSender().getId();
+				}
+			}
+		}
 		int currCourseLevel;
 		int pageTopicLevel;
 		if(!currentCourseLevel.isEmpty()) {

@@ -150,5 +150,10 @@ public class ChatServiceImpl implements ChatService {
 		return chatDAO.getTopicWiseHelpingCount(empId,courseName);
 	}
 
+	@Override
+	public List<Chat> getAllMessageRequests(int empId) {
+		return chatDAO.getAllMessageRequests(empId);
+	}
+
 
 }

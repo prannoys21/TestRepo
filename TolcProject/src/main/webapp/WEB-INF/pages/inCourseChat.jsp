@@ -276,8 +276,9 @@ input {
 	var idFromTicker;
 	var tickerDivId;
 	var messageRequestsOpen = false;
-	var messageRequestSenderId;
-	var messageCounter=2;
+	var messageRequestSenderId=0;
+	var messageCounter= ${messageCounter} + 1;
+
 	 $(document).ready(function() {
 		 //1
 		 $("#live-chat").hide();
@@ -367,7 +368,11 @@ input {
 	 
 	 //8
 	 function updateSenderWindow(){
-		  formURL = "../getInCourseSenderObject/"+userId+"/"+idFromTicker;
+		 if(idFromTicker != undefined){
+		  formURL = "../getInCourseSenderObject/"+userId+"/"+ idFromTicker;
+		 } else {
+			 formURL = "../getInCourseSenderObject/"+userId+"/"+ idFromMessageRequestDiv
+		 }
 	        $.ajax({
 	             url : formURL,
 				 type: 'GET',
@@ -402,7 +407,6 @@ input {
 			//firstTime
 			console.log(event.data)
 			var objectData = JSON.parse(event.data);
-			messageRequestSenderId = objectData.sender.id;
 			console.log(objectData)
 			var parsedMessage = objectData.message.replace(999, userId);
 			if(objectData.sender.id == userId) {
@@ -413,9 +417,18 @@ input {
 				if(objectData.sender.id == idFromTicker && objectData.recipient.id == userId){
 					$('#chat-history').append('<hr><div class="chat-message clearfix"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="chat-message-content clearfix"><span class="chat-time">'+ objectData.timeStamp +'</span><h5>'+ objectData.sender.firstName +'</h5><p class="chatMessageWindowText">'+ parsedMessage +'</p></div></div><hr>')
 				}
-				if(objectData.recipient.id == userId){
-					$('#message-history').append('<div class="message-request messagefix" id="message-request'+messageCounter+'"><div class="message-request-content messagefix"><div class="clickableMessageRequestName">'+ objectData.sender.firstName + '</div> &nbsp; wants to chat with you!<div class="getMessageRequestSenderId" style="display:none;">'+objectData.sender.id+'</div><span class="message-request-time">' +objectData.timeStamp + '</span></div><hr></div>')
+				if((objectData.recipient.id == userId) && (objectData.sender.id != messageRequestSenderId  )){
+					setTimeout(function(){
+					var newMessageRequest = '<div class="message-request messagefix" id="message-request'+messageCounter+'"><div class="message-request-content messagefix"><div class="clickableMessageRequestName">'+ objectData.sender.firstName + '</div> &nbsp; wants to chat with you!<div class="getMessageRequestSenderId" style="display:none;">'+objectData.sender.id+'</div><span class="message-request-time">' +objectData.timeStamp + '</span></div><hr></div>'
+					$(newMessageRequest).prependTo('.message-history').hide().slideDown(250);
+					$("#messageRqstIcon").attr("src","http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-2/48/message-already-read-icon.png");
 					messageCounter++;
+					}, 50);
+					
+					/* $('#message-history').prepend('<div class="message-request messagefix" id="message-request'+messageCounter+'"><div class="message-request-content messagefix"><div class="clickableMessageRequestName">'+ objectData.sender.firstName + '</div> &nbsp; wants to chat with you!<div class="getMessageRequestSenderId" style="display:none;">'+objectData.sender.id+'</div><span class="message-request-time">' +objectData.timeStamp + '</span></div><hr></div>')
+					$("#messageRqstIcon").attr("src","http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-2/48/message-already-read-icon.png");
+					messageRequestSenderId = objectData.sender.id;
+					messageCounter++; */
 				}
 			}
 			$('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
@@ -425,12 +438,14 @@ input {
 		$('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
 		
 		//Again 
-		$(document).on('click',".message-request-icon", function(){
+		$(document).on('click',"#message-request-icon", function(){
 			if(messageRequestsOpen == false){
 			$('#message').show();
+			$("#messageRqstIcon").attr("src","http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-2/48/message-already-read-icon.png");
 			messageRequestsOpen = true;
 			} else {
 				$('#message').hide();
+				$("#messageRqstIcon").attr("src","http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-2/48/new-message-icon.png");
 				messageRequestsOpen = false;
 			}
 		});

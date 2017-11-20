@@ -25,6 +25,8 @@ public interface ChatService {
 
 	public Map<String,Integer> getTopicWiseHelpingCount(int empId, String courseName);
 
+	public List<Chat> getAllMessageRequests(int empId);
+
 
 
 }	

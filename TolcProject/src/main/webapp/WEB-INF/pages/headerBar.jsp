@@ -37,6 +37,7 @@ float:right;
 margin-right:26%;
 margin-top:0.5%;
 margin-left:2%;
+cursor: pointer;
 }
 
 .message {
@@ -47,12 +48,11 @@ background: #6baed6;
 	
     height: 300px;
     padding: 8px 8px 0px 25px;
-    overflow-y: scroll;
     width: 340px;
     float: right;
     margin-right: 20%;
     margin-top: 3%;
-    overflow: scroll;
+    overflow: auto;
 	
 }
 
@@ -100,7 +100,7 @@ text-align:left;
 	        <img src="https://image.ibb.co/cPU8qb/welearn.png" class="img_resize_fit"  alt="Learn"> 
 	    </a>
 	    <div class="headerInfo">${employee.firstName}</div>
-	    <div class="message-request-icon"><img src="http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-2/48/message-already-read-icon.png" class="img_resize_fit"  alt="Learn"></div>
+	    <div id="message-request-icon" class="message-request-icon"><img id="messageRqstIcon"src="http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-2/48/new-message-icon.png" class="img_resize_fit"  alt="Learn"></div>
 	   
     </div>
 </div>
@@ -108,20 +108,23 @@ text-align:left;
     <div class="message" id="message"> 
     	<div class="message-history" id="message-history">
     	<c:set var="messageCounter" value="${0}" scope="request"/>
+    	<c:forEach var="messageRequest" items="${messageRequestsListRefined}">
     	<c:set var="messageCounter" value="${messageCounter+1}" scope="request"/>
     		<div class="message-request messagefix" id="message-request${messageCounter}">
 				<div class="message-request-content messagefix">
-					<div class="clickableMessageRequestName">objectData.sender.firstName</div> wants to chat with you!
-					<div class="getMessageRequestSenderId" style="display:none;">objectData.sender.id</div>
-				<span class="message-request-time">objectData.timeStamp</span>
+					<div class="clickableMessageRequestName">${messageRequest.sender.firstName}</div> &nbsp; wants to chat with you!
+					<div class="getMessageRequestSenderId" style="display:none;">${messageRequest.sender.id}</div>
+				<span class="message-request-time">${messageRequest.timeStamp}</span>
 				</div>
 				 <hr>
 			</div> 
+		</c:forEach>
 		</div>
 	</div>
 	<!-- end chat-history -->
 
  <script type="text/javascript">
+ //1
  $(document).on('click',".clickableMessageRequestName", function(){
 	 messageRequestDivId = $(this).parent().parent().attr('id');
 	 messageRequestDivId = "#" + messageRequestDivId;
@@ -130,7 +133,7 @@ text-align:left;
 		firstNameFromMessageRequest.replace(" ", ""); 
 		$(".headerTitle").html("<h4>"+ firstNameFromMessageRequest +"</h4>");
 		idFromMessageRequestDiv=  $( messageRequestDivId ).find('div.getMessageRequestSenderId').text()
-		$("#recipient").val(idFromTicker);
+		$("#recipient").val(idFromMessageRequestDiv);
 		$("#thisPageUrl").val(thisPageUrl);
 		$("#globalTopicName").val(globalTopicName);
 		$("#globalCourseName").val(globalCourseName);
@@ -162,6 +165,9 @@ text-align:left;
 						}
   		});	
 	 });
+ 
+ 
+
  </script>
 </body>
 </html>

@@ -137,13 +137,15 @@ $(document).ready(function() {
 					
 </form:form>
 
-
-
 <div class="nxt-btn">
 <a href="http://localhost:7080/TolcProject/databases/architecture?id=${employee.id}">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
 </div>
 <jsp:include page="../backToCourses.jsp" />
-<jsp:include page="../tickers/tickerDatabases.jsp" />
+<jsp:include page="../ticker.jsp" />
 <jsp:include page="../inCourseChat.jsp" />
+<script type="text/javascript">
+var thisPageUrl = "databases";
+var subTopic = false;
+</script>
 </body>
 </html>

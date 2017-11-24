@@ -4,30 +4,33 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-
+<html>
 	<head>
 		<title>Introduction to algorithms</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="<c:url value="/resources/css/main.css"/>" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 	</head>
 	<body>
 
 		<!-- Header -->
-			<header id="header" class="alt">
+			<div id="header" class="alt">
 				<div class="logo"><a href="algorithms_intro.jsp">welearn <span>by PAA</span></a></div>
-				<a href="#menu" class="toggle"><span>Menu</span></a>
+				<jsp:include page="../headerBar.jsp" />
+				
 
-			</header>
+			</div>
 
 		<!-- Nav -->
 				
 				
 			<nav id="menu">
 				<ul class="links">
-					<li><a href="index.html">Home</a></li>
+				<li><jsp:include page="../ticker.jsp" /></li>
+					<!-- <li><a href="index.html">Home</a></li>
 					<li><a href="generic.html">Generic</a></li>
-					<li><a href="elements.html">Elements</a></li>
+					<li><a href="elements.html">Elements</a></li> -->
 				</ul>
 			</nav>
 
@@ -103,13 +106,7 @@
 			<script src="<c:url value="/resources/js/util.js" />"></script>
 			<script src="<c:url value="/resources/js/main.js" />"></script>
 			
-			<!-- <script src="jquery.min.js"></script>
-			<script src="jquery.scrolly.min.js"/></script>
-			<script src="jquery.scrollex.min.js" /></script>
-			<script src="skel.min.js" /></script>
-			<script src="util.js" /></script>
-			<script src="assets/main.js" /></script> -->
 			
-
+<jsp:include page="../inCourseChat.jsp" />
 	</body>
 </html>

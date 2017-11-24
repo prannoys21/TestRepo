@@ -5,33 +5,33 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <head>
 <meta charset="utf-8">
-<title>Greedy Approach</title>
+<title>Algorithms Tutorial</title>
 <meta name="Description" content="Data Structures and Algorithms (DSA) Tutorial for Beginners - Learn Data Structures and Algorithm using c, C++ and Java in simple and easy steps starting from basic to advanced concepts with examples including Overview, Environment Setup, Algorithm, Asymptotic Analysis, Greedy Algorithms, Divide and Conquer, Dynamic Programming, Data Structures, Array, Linked List, Doubly Linked List, Circular List, Stack, Parsing Expression, Queue, Priority queue, Linear, Binary, Interpolation Search, Tree, Tree Traversal, Binary Search Tree, B+, AVL, Spanning, Tower of Hanoi, Hash Table, Heap, Graph, Depth, Breadth First Traversal, Search techniques, Sorting techniques, Sorting Algorithm, Bubble, Merge Sort Algorithm, Insertion, Selection, Shell, Quick Sort, Recursion, Fibonacci Series." />
 <meta name="Keywords" content="Overview, Environment Setup, Algorithm, Asymptotic Analysis, Greedy Algorithms, Divide and Conquer, Dynamic Programming, Data Structures, Array, Linked List, Doubly Linked List, Circular List, Stack, Parsing Expression, Queue, Priority queue, Linear, Binary, Interpolation Search, Tree, Tree Traversal, Binary Search Tree, B+, AVL, Spanning, Tower of Hanoi, Hash Table, Heap, Graph, Depth, Breadth First Traversal, Search techniques, Sorting techniques, Sorting Algorithm, Bubble, Merge Sort Algorithm, Insertion, Selection, Shell, Quick Sort, Recursion, Fibonacci Series." />
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes">
-<meta property="og:locale" content="en_US" />
-<meta property="og:type" content="website" />
-<meta property="fb:app_id" content="471319149685276" />
-<meta property="og:site_name" content="www.tutorialspoint.com" />
 <meta name="robots" content="index, follow"/>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="author" content="tutorialspoint.com">
-<script type="text/javascript" src="https://www.tutorialspoint.com/theme/js/script-min-v4.js"></script>
+<script type="text/javascript" src=""></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 <!-- <link rel="stylesheet" href="https://www.tutorialspoint.com/theme/css/style-min.css"> -->
 <!-- Head Libs -->
 <!--[if IE 8]>
 <link rel="stylesheet" type="text/css" href="/theme/css/ie8.css">
 <![endif]-->
 <style>
+body {
+	color: #000;
+}
 pre.prettyprint.tryit {min-height:37px; background: #eee url(data_structures_algorithms/images/try-it.jpg) top right no-repeat !important}select{ border:0 !important; outline: 1px inset black !important; outline-offset: -1px !important; }
 ul.nav-list.primary>li a.videolink{    background: none; margin: 0px; padding: 0px; border: 1px solid #d6d6d6;}
 div.feature-box div.feature-box-icon, .col-md-3 .course-box, li.heading, div.footer-copyright { background: #cd3300 url(/images/pattern.png) repeat center center !important;}
 .sub-main-menu .sub-menuu div:hover, .sub-main-menu .viewall, header nav ul.nav-main li a:hover, button.btn-responsive-nav, header div.search button.btn-default { background: #cd3300 !important;}
 .submenu-item{ border-bottom: 2px solid #cd3300 !important; border-top: 2px solid #cd3300 !important }
 .ace_scroller{overflow: auto!important;}
-header {background: #e9e9e9;}
+/* header {background: #e9e9e9;} */
 input {border:2px;}
 .completedCourse {
     background: #54278f;
@@ -47,6 +47,14 @@ input {border:2px;}
     font-size: 12px;
     margin: 50px 0px 0px 207px;
 }
+.middle-col {
+min-height: 1171px;
+}
+.img_resize_fit{
+    max-width:9%;
+    max-height:11%;
+    vertical-align: middle;
+}
 </style>
 <script>
 $(document).ready(function() {
@@ -59,33 +67,23 @@ $(document).ready(function() {
 });
 </script>
 </head>
-<body onload="prettyPrint()">
-<div class="wrapLoader">
-   <div class="imgLoader">
-      <img  src="/images/loading-cg.gif" alt="" width="70" height="70" />
-   </div>
+<body>
+<div class="container" style="width: 100%; height:56px; position:fixed; overflow: hidden; background: #fd8d3c; color: #9a9a9a; box-shadow: 0px 3px 9px #888888; font: 100%/1.5em Droid Sans sans-serif;">
+<div class="logo">
+            <a href="../userHomepage?id=${employee.id}">
+                <img src="https://image.ibb.co/cPU8qb/welearn.png" class="img_resize_fit"  alt="Learn"> 
+                <img src="https://image.ibb.co/cPU8qb/welearn.png" class="img_resize_fit" alt="Collolearn">
+            </a>
+        </div>
 </div>
-<header>
-   <div class="container" style="margin-left:200px; background: #e9e9e9; color: #9a9a9a; font: 100%/1.5em Droid Sans sans-serif;">			
-      <h1 class="logo">
-      <a href="index.htm" title="tutorialspoint">
-      <img alt="welearn" src="https://image.ibb.co/cPU8qb/welearn.png">
-      </a>
-      </h1>			
-      
-         <!-- search code here  --> 
-   </div>
-  
-   
-</header>
-<div style="clear:both;"></div>
-<div role="main" class="main">
+
+<div role="main" class="main" style="padding: 92px 0px 0px 0px;">
 <div class="container"  style="margin-left:200px; margin-right: 736px;">
 <div class="row">
 <div class="col-md-2">
 <aside class="sidebar">
 <div class="mini-logo">
-<img src="" alt="Software Engineering Tutorial" />
+<img src="http://www.geeksforgeeks.org/wp-content/uploads/Competitive-Programming-1.jpg" style="width: 50%;"alt="Data Structures & Algorithms Tutorial" />
 </div>
 
 
@@ -105,7 +103,7 @@ $(document).ready(function() {
 <div class="content">
 <div class="col-md-7 middle-col">
 <div class="cover">
-<img class="img-responsive" src="C:\Users\ambar\Desktop\MOOC Website\software_engineering.jpg" alt="Data Structures & Algorithms (DSA) Tutorial" />
+<!-- <img class="img-responsive" src="C:\Users\ambar\Desktop\MOOC Website\software_engineering.jpg" alt="Data Structures & Algorithms (DSA) Tutorial" /> -->
 </div>
 <hr />
 
@@ -129,13 +127,13 @@ Greedy algorithms try to find a localized optimum solution, which may eventually
 
 
 <div class="pre-btn">
-<a href="http://localhost:7080/TolcProject/algorithms?id=${employee.id}"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
+<a href="http://localhost:7080/TolcProject/algorithms/intro?id=${employee.id}"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
 </div>
 <div class="nxt-btn">
 <a href="http://localhost:7080/TolcProject/algorithms/divideAndConquer?id=${employee.id}">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
 </div>
 
-<form:form action="../algorithms/sendNotification?id=${employee.id}" method="post" modelAttribute="ticker" name="notificationAddition" id="notificationAddition"> 
+<form:form action="../sendNotification?id=${employee.id}" method="post" modelAttribute="ticker" name="notificationAddition" id="notificationAddition"> 
 
 					<c:if test="${markAsCompleted == false}">
 					<input class="markAsComplete" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="Mark as Completed"/>
@@ -149,12 +147,16 @@ Greedy algorithms try to find a localized optimum solution, which may eventually
 					<input type="hidden" name="topicUrl" path="topicUrl" value="algorithms/greedyApproach" />
 					
 </form:form>
-
+	
 <jsp:include page="../backToCourses.jsp" />
-<jsp:include page="../tickers/tickerAlgorithms.jsp" />
+<jsp:include page="../ticker.jsp" />
 <jsp:include page="../inCourseChat.jsp" />
 <script type="text/javascript">
-var thisPageUrl = "algorithms"
+var thisPageUrl = "algorithms/greedyApproach"
+var subTopic = true;
+var globalTopicName = "Greedy Approach";
+var globalCourseName = "Algorithms";
 </script>
+</div></div></div></div></div></div>
 </body>
 </html>

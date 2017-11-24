@@ -37,7 +37,7 @@ p {
 }
 
 hr {
-	background: #e9e9e9;
+	background: #fecc5c36;
     border: 0;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
@@ -72,12 +72,13 @@ input {
 /* ---------- LIVE-CHAT ---------- */
 
 #live-chat {
-	bottom: 0;
+	bottom: -35px;
 	font-size: 12px;
 	right: 24px;
 	position: fixed;
 	width: 290px;
-	margin-right: 350px;
+	margin-right: 20%;
+	z-index:99999;
 }
 
 #live-chat header {
@@ -160,7 +161,7 @@ input {
 }
 
 .chat-message {
-	margin: 0px 0;
+	margin: 0px;
 }
 
 .chat-message img {
@@ -197,10 +198,9 @@ input {
 
 	});
 
-	$('.chat-close').on('click', function(e) {
-
-		e.preventDefault();
-		$('#live-chat').fadeOut(300);
+	$(document).on('click', '.chat-close', function(e) {
+		//e.preventDefault();
+		$('#live-chat').hide();
 
 	});
 
@@ -252,16 +252,18 @@ input {
 				
 			</div> <!-- end chat-history -->
 
-
-			<form:form action="sendMessageInCourse?id=${employee.id}" method="post" modelAttribute="chat" name="messageAddition" id="messageAddition"> 
+<form:form action="sendMessageInCourse?id=${employee.id}" method="post" modelAttribute="chat" name="messageAddition" id="messageAddition"> 
 
 					<input type="hidden" name="id"  path="id"/>
 					<input type="hidden" name="sender" path="sender" id="sender" value="${employee.id}" />
 					<input type="hidden" name="recipient" path="recipient" id="recipient" value="" />
+					<input type="hidden" name="globalTopicName" path="globalTopicName" id="globalTopicName" value="" />
+					<input type="hidden" name="globalCourseName" path="globalCourseName" id="globalCourseName" value="" />
 					<input type="hidden" name="thisPageUrl" path="thisPageUrl" id="thisPageUrl" value="" />
 					<input type="text" name="actualMessage" path="actualMessage" id="actualMessage" placeholder="Type your message…" autocomplete="off" autofocus/>
 					
-			</form:form>
+			</form:form>	
+		
 		</div> <!-- end chat -->
 
 	</div> <!-- end live-chat -->
@@ -272,30 +274,35 @@ input {
 	var inCourseMessage =[];
 	var firstNameFromTicker;
 	var idFromTicker;
+	var idFromMessageRequestDiv;
 	var tickerDivId;
+	var messageRequestsOpen = false;
+	var messageRequestSenderId=0;
+	var messageCounter= ${messageCounter} + 1;
+
 	 $(document).ready(function() {
 		 //1
 		 $("#live-chat").hide();
+		 $('#message').hide();
 		 
 		 //2
 		 $(".getTickerUserId").hide();
 		 
 		 //3
-		 $(".clickableFirstName").click(function(){
+		 $(document).on('click',".clickableFirstName", function(){
 			tickerDivId = $(this).parent().parent().attr('id');
 			tickerDivId = "#" + tickerDivId;
-			//$('.chat').slideToggle(300, 'swing');
-			//$('.chat-message-counter').fadeToggle(300, 'swing');
 			$("#live-chat").show();
 			firstNameFromTicker = $( tickerDivId ).find('div.clickableFirstName').text();
 			firstNameFromTicker.replace(" ", "");
-			$(".headerTitle").html("<h4>"+ firstNameFromTicker +"</h4>");
 			idFromTicker=  $( tickerDivId ).find('div.getTickerUserId').text()
 			$("#recipient").val(idFromTicker);
 			$("#thisPageUrl").val(thisPageUrl);
-			 var formURL = "getInCourseSenderObject/"+userId+"/"+idFromTicker;
+			$("#globalTopicName").val(globalTopicName);
+			$("#globalCourseName").val(globalCourseName);
+			 var formURL = "../getInCourseSenderObject/"+userId+"/"+idFromTicker;
 	         $.ajax({
-	             url : formURL,
+	             url :  formURL,
 				 type: 'GET',
 	             data : null,
 				  success: function(data, textStatus, jqXHR){ 
@@ -309,9 +316,8 @@ input {
 				  			if((inCourseMessage[i].sender.id == userId)) {
 				  				inCourseMessage[i].sender.firstName = "You";
 				  			}
-				        	// console.log("crazy  "+  inCourseMessage[i].timeStamp + " " +   inCourseMessage[i].sender.firstName + " " + inCourseMessage[i].message);
 				        	 if(inCourseMessage[i].message != ""){
-				 				$('#chat-history').append('<hr><div class="chat-message clearfix"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="chat-message-content clearfix"><span class="chat-time">'+ inCourseMessage[i].timeStamp +'</span><h5>'+ inCourseMessage[i].sender.firstName +'</h5><p class="chatMessageWindowText">'+ parsedMessage +'</p></div></div><hr>')
+				 				$('#chat-history').append('<div class="chat-message clearfix"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="chat-message-content clearfix"><span class="chat-time">'+ inCourseMessage[i].timeStamp +'</span><h5>'+ inCourseMessage[i].sender.firstName +'</h5><p class="chatMessageWindowText">'+ parsedMessage +'</p></div></div><hr>')
 				 			}
 				 			$('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
 				 			$('input[type="text"], textarea').val('');
@@ -327,29 +333,32 @@ input {
 		 $('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
 		 //5
 		$(".chat-close").click(function(){
-				//e.preventDefault();
-				//$('#live-chat').animate(300);
 				$("#live-chat").hide();
 		 }); 
 		 
 		 //6 
 		 $('#messageAddition').submit(function(e) {
-         e.preventDefault();
-		 var postData = $(this).serializeArray();
-		 var formURL = $(this).attr("action");
+		     e.preventDefault();
+			 var postData = $(this).serializeArray();
+			 var formURL = $(this).attr("action");
+		        $.ajax({
+		            url : "../" + formURL,
+				 type: 'POST',
+		            data : postData,
+				  success: function(data, textStatus, jqXHR){   
+							updateSenderWindow();
+							
+							},
+					error: function(jqXHR, textStatus, errorThrown){   
+							console.log("error");
+							}
+		    		});
+		      
+		        
+		        
+		        
+				});
 		 
-         $.ajax({
-             url : formURL,
-			 type: 'POST',
-             data : postData,
-			  success: function(data, textStatus, jqXHR){   
-						/* location.reload();  */
-						},
-				error: function(jqXHR, textStatus, errorThrown){   
-						console.log("error");
-						}
-     		});	
- 		});
 		 
 		 //7
      $('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
@@ -358,9 +367,45 @@ input {
 		 
 	 });
 	 
+	 //8
+	 function updateSenderWindow(){
+		 if(idFromTicker != undefined){
+		  formURL = "../getInCourseSenderObject/"+userId+"/"+ idFromTicker;
+		 } else {
+			 formURL = "../getInCourseSenderObject/"+userId+"/"+ idFromMessageRequestDiv
+		 }
+	        $.ajax({
+	             url : formURL,
+				 type: 'GET',
+	             data : null,
+				  success: function(data, textStatus, jqXHR){ 
+					  inCourseMessage=[];
+					  $('#chat-history').empty()
+					  		$.each(data, function(index, currRecipient) {
+					  			inCourseMessage.push(currRecipient);
+				         }); 
+				  		  for(i=0;i<inCourseMessage.length;i++){
+				  			var parsedMessage = inCourseMessage[i].message.replace(999, userId);
+				  			if((inCourseMessage[i].sender.id == userId)) {
+				  				inCourseMessage[i].sender.firstName = "You";
+				  			}
+				        	 if(inCourseMessage[i].message != ""){
+				 				$('#chat-history').append('<hr><div class="chat-message clearfix"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="chat-message-content clearfix"><span class="chat-time">'+ inCourseMessage[i].timeStamp +'</span><h5>'+ inCourseMessage[i].sender.firstName +'</h5><p class="chatMessageWindowText">'+ parsedMessage +'</p></div></div><hr>')
+				 			}
+				 			$('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
+				 			$('input[type="text"], textarea').val('');
+				         } 
+					},
+					error: function(jqXHR, textStatus, errorThrown){   
+							console.log("error");
+							}
+	     		});	
+	 }
+	 
 	 var userId = ${employee.id};
-		var eventSource = new EventSource('inCoursechatMessages');
+		var eventSource = new EventSource('http://localhost:7080/TolcProject/inCoursechatMessages');
 		eventSource.addEventListener('inCourseChatAdd',function(event){
+			//firstTime
 			console.log(event.data)
 			var objectData = JSON.parse(event.data);
 			console.log(objectData)
@@ -370,15 +415,86 @@ input {
   			}
 			$('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
 			if(objectData.message != ""){
-				//if(objectData.sender.id == idFromTicker && objectData.recipient.id == userId){
+				if((objectData.sender.id == idFromTicker || objectData.sender.id == idFromMessageRequestDiv) && objectData.recipient.id == userId){
 					$('#chat-history').append('<hr><div class="chat-message clearfix"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="chat-message-content clearfix"><span class="chat-time">'+ objectData.timeStamp +'</span><h5>'+ objectData.sender.firstName +'</h5><p class="chatMessageWindowText">'+ parsedMessage +'</p></div></div><hr>')
-				//}
+				}
+				if((objectData.recipient.id == userId) && (objectData.sender.id != messageRequestSenderId  )){
+					setTimeout(function(){
+					var newMessageRequest = '<div class="message-request messagefix" id="message-request'+messageCounter+'"><div class="message-request-content messagefix"><div class="clickableMessageRequestName">'+ objectData.sender.firstName + '</div> &nbsp; wants to chat with you!<div class="getMessageRequestSenderId" style="display:none;">'+objectData.sender.id+'</div><span class="message-request-time">' +objectData.timeStamp + '</span></div><hr></div>'
+					$(newMessageRequest).prependTo('.message-history').hide().slideDown(250);
+					$("#messageRqstIcon").attr("src","http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-2/48/message-already-read-icon.png");
+					messageRequestSenderId = objectData.sender.id;
+					messageCounter++;
+					}, 50);
+					
+					/* $('#message-history').prepend('<div class="message-request messagefix" id="message-request'+messageCounter+'"><div class="message-request-content messagefix"><div class="clickableMessageRequestName">'+ objectData.sender.firstName + '</div> &nbsp; wants to chat with you!<div class="getMessageRequestSenderId" style="display:none;">'+objectData.sender.id+'</div><span class="message-request-time">' +objectData.timeStamp + '</span></div><hr></div>')
+					$("#messageRqstIcon").attr("src","http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-2/48/message-already-read-icon.png");
+					messageRequestSenderId = objectData.sender.id;
+					messageCounter++; */
+				}
 			}
 			$('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
 			$('input[type="text"], textarea').val('');
 		});
 
 		$('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
+		
+		//Again 
+		$(document).on('click',"#message-request-icon", function(){
+			if(messageRequestsOpen == false){
+			$('#message').show();
+			$("#messageRqstIcon").attr("src","http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-2/48/message-already-read-icon.png");
+			messageRequestsOpen = true;
+			} else {
+				$('#message').hide();
+				$("#messageRqstIcon").attr("src","http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-2/48/new-message-icon.png");
+				messageRequestsOpen = false;
+			}
+		});
+		
+		//9
+		 $(document).on('click',".clickableFirstName", function(){
+			tickerDivId = $(this).parent().parent().attr('id');
+			tickerDivId = "#" + tickerDivId;
+			$("#live-chat").show();
+			firstNameFromTicker = $( tickerDivId ).find('div.clickableFirstName').text();
+			firstNameFromTicker.replace(" ", "");
+			$(".headerTitle").html("<h4>"+ firstNameFromTicker +"</h4>");
+			idFromTicker=  $( tickerDivId ).find('div.getTickerUserId').text()
+			$("#recipient").val(idFromTicker);
+			$("#thisPageUrl").val(thisPageUrl);
+			$("#thisPageUrl").val(thisPageUrl);
+			$("#globalTopicName").val(globalTopicName);
+			$("#globalCourseName").val(globalCourseName);
+			 var formURL = "../getInCourseSenderObject/"+userId+"/"+idFromTicker;
+	         $.ajax({
+	             url :  formURL,
+				 type: 'GET',
+	             data : null,
+				  success: function(data, textStatus, jqXHR){ 
+					  inCourseMessage=[];
+					  $('#chat-history').empty()
+					  		$.each(data, function(index, currRecipient) {
+					  			inCourseMessage.push(currRecipient);
+				         }); 
+				  		  for(i=0;i<inCourseMessage.length;i++){
+				  			var parsedMessage = inCourseMessage[i].message.replace(999, userId);
+				  			if((inCourseMessage[i].sender.id == userId)) {
+				  				inCourseMessage[i].sender.firstName = "You";
+				  			}
+				        	 if(inCourseMessage[i].message != ""){
+				 				$('#chat-history').append('<hr><div class="chat-message clearfix"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="chat-message-content clearfix"><span class="chat-time">'+ inCourseMessage[i].timeStamp +'</span><h5>'+ inCourseMessage[i].sender.firstName +'</h5><p class="chatMessageWindowText">'+ parsedMessage +'</p></div></div><hr>')
+				 			}
+				 			$('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
+				 			$('input[type="text"], textarea').val('');
+				         } 
+					},
+					error: function(jqXHR, textStatus, errorThrown){   
+							console.log("error");
+							}
+	     		});	
+		 });
+		 
 	</script>
 </body>
 </html>

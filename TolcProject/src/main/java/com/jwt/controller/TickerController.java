@@ -55,7 +55,7 @@ private List<SseEmitter> emitters = new CopyOnWriteArrayList<>();
 	}
 	
 	@RequestMapping(value = "/sendNotification", method = RequestMethod.POST)
-	public ModelAndView  sendNotification(HttpServletRequest request, @RequestParam String courseName, @RequestParam String topicName, @RequestParam String topicUrl) {
+	public void  sendNotification(HttpServletRequest request, @RequestParam String courseName, @RequestParam String topicName, @RequestParam String topicUrl) {
 		//String controllerMapping = this.getClass().getAnnotation(RequestMapping.class).value()[0];
 		//System.out.println(controllerMapping);
 		int empId = Integer.parseInt(request.getParameter("id"));
@@ -102,10 +102,10 @@ private List<SseEmitter> emitters = new CopyOnWriteArrayList<>();
 			}
 		}
 		}
-		ModelAndView model = new ModelAndView();
+		/*ModelAndView model = new ModelAndView();
 		model.addObject("employee",employee);
 		model.setViewName("redirect:/"+topicUrl+"?id="+empId);
-		return model;
+		return model;*/
 		 
 	}
 	

@@ -1,7 +1,10 @@
 package com.jwt.controller;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,9 +24,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.jwt.model.Chat;
 import com.jwt.model.Course;
 import com.jwt.model.Employee;
+import com.jwt.model.Ticker;
 import com.jwt.service.ChatService;
 import com.jwt.service.CourseService;
 import com.jwt.service.EmployeeService;
+import com.jwt.service.TickerService;
 
 @Controller
 public class EmployeeController {
@@ -43,6 +48,9 @@ public class EmployeeController {
 	
 	@Autowired
 	private CourseService courseService;
+	
+	@Autowired
+	private TickerService tickerService;
 	
 	
 
@@ -107,6 +115,8 @@ public class EmployeeController {
 	
 	@RequestMapping(value = "/loginPage", method = RequestMethod.POST)
 	public ModelAndView validateUser(HttpServletRequest request, @ModelAttribute Employee employee, BindingResult result, SessionStatus status) {
+		DecimalFormat df2 = new DecimalFormat(".##");
+		double overallProgress = 0.0;
 		boolean error = false;
 		System.out.println(employee);
 		if(employee.getUserName().isEmpty()){
@@ -130,10 +140,144 @@ public class EmployeeController {
 			return model;
 		} else {
 			model.setViewName("postLogin");
+			List<Chat> sentMessageList = chatService.getSentMessageCount(employee2.getId());
+			List<Chat> receivedMessageList = chatService.getReceivedMessageCount(employee2.getId());
+			List<Ticker> algoTopics = tickerService.getAlgoTopicsCompleted(employee2.getId());
+			List<Ticker> dbTopics = tickerService.getDbmsTopicsCompleted(employee2.getId());
+			List<Ticker> osTopics = tickerService.getOsTopicsCompleted(employee2.getId());
+			Map<String,Integer> topicWiseHelpingCountAlgorithms = chatService.getTopicWiseHelpingCount(employee2.getId(),"Algorithms");
+			if(topicWiseHelpingCountAlgorithms.isEmpty()) {
+				topicWiseHelpingCountAlgorithms.put("Introduction to Algorithms", 0);
+				topicWiseHelpingCountAlgorithms.put("Greedy Approach", 0);
+				topicWiseHelpingCountAlgorithms.put("Divide And Conquer", 0);
+				topicWiseHelpingCountAlgorithms.put("Dynamic Programming", 0);
+			}
+			Map<String,Integer>  topicWiseHelpingCountDatabases = chatService.getTopicWiseHelpingCount(employee2.getId(),"Databases");
+			if(topicWiseHelpingCountDatabases.isEmpty()) {
+				topicWiseHelpingCountDatabases.put("Introduction to Databases", 0);
+				topicWiseHelpingCountDatabases.put("Architecture", 0);
+				topicWiseHelpingCountDatabases.put("Models", 0);
+				topicWiseHelpingCountDatabases.put("Schemas", 0);
+			}
+			Map<String,Integer>  topicWiseHelpingCountOperatingSystems = chatService.getTopicWiseHelpingCount(employee2.getId(),"Operating Systems");
+			if(topicWiseHelpingCountOperatingSystems.isEmpty()) {
+				topicWiseHelpingCountOperatingSystems.put("Introduction to Operating Systems", 0);
+				topicWiseHelpingCountOperatingSystems.put("Secondary Storage", 0);
+				topicWiseHelpingCountOperatingSystems.put("Memory Management", 0);
+				topicWiseHelpingCountOperatingSystems.put("Cache", 0);
+			}
+			int numberOfPeopleHelped = chatService.getListOfUsersHelped(employee2.getId());
+			int algoLevel =0 ;
+			int dbLevel =0 ;
+			int osLevel = 0;
+			int sentCount =0 ;
+			int receivedCount=0;
+			if(!algoTopics.isEmpty()) {
+				algoLevel = algoTopics.get(0).getCourseLevel();
+			}
+			if(!dbTopics.isEmpty()) {
+				dbLevel = dbTopics.get(0).getCourseLevel();
+			}
+			if(!osTopics.isEmpty()) {
+				osLevel = osTopics.get(0).getCourseLevel();
+			}
+			overallProgress = (double)(algoLevel + dbLevel + osLevel)/12;
+			if(!sentMessageList.isEmpty()) {
+				sentCount = sentMessageList.size();
+			}
+			if(!receivedMessageList.isEmpty()) {
+				receivedCount = receivedMessageList.size();
+			}
+			double socialLearningRate = (double) numberOfPeopleHelped/(algoLevel + dbLevel + osLevel);
 			model.addObject("employee", employee2);
+			model.addObject("peopleHelped", numberOfPeopleHelped);
+			model.addObject("topicWiseHelpingCountAlgorithms", topicWiseHelpingCountAlgorithms);
+			model.addObject("topicWiseHelpingCountDatabases", topicWiseHelpingCountDatabases);
+			model.addObject("topicWiseHelpingCountOperatingSystems", topicWiseHelpingCountOperatingSystems);
+			model.addObject("socialLearningRate", df2.format(socialLearningRate));
+			model.addObject("sentCount", sentCount);
+			model.addObject("receivedCount", receivedCount);
+			model.addObject("algoLevel", algoLevel);
+			model.addObject("dbLevel", dbLevel);
+			model.addObject("osLevel", osLevel);
+			model.addObject("overallProgress", df2.format(overallProgress*100));
 			status.setComplete();
 			return model;
 		}
+	}
+	
+	@RequestMapping(value = "/userHomepage", method = RequestMethod.GET)
+	public ModelAndView userHomepage(HttpServletRequest request) {
+		DecimalFormat df2 = new DecimalFormat(".##");
+		double overallProgress = 0.0;
+		int empId = Integer.parseInt(request.getParameter("id"));
+		Employee employee = employeeService.getEmployee(empId);
+		ModelAndView model = new ModelAndView();
+		List<Chat> sentMessageList = chatService.getSentMessageCount(empId);
+		List<Chat> receivedMessageList = chatService.getReceivedMessageCount(empId);
+		List<Ticker> algoTopics = tickerService.getAlgoTopicsCompleted(empId);
+		List<Ticker> dbTopics = tickerService.getDbmsTopicsCompleted(empId);
+		List<Ticker> osTopics = tickerService.getOsTopicsCompleted(empId);
+		Map<String,Integer> topicWiseHelpingCountAlgorithms = chatService.getTopicWiseHelpingCount(empId,"Algorithms");
+		if(topicWiseHelpingCountAlgorithms.isEmpty()) {
+			topicWiseHelpingCountAlgorithms.put("Introduction to Algorithms", 0);
+			topicWiseHelpingCountAlgorithms.put("Greedy Approach", 0);
+			topicWiseHelpingCountAlgorithms.put("Divide And Conquer", 0);
+			topicWiseHelpingCountAlgorithms.put("Dynamic Programming", 0);
+		}
+		Map<String,Integer>  topicWiseHelpingCountDatabases = chatService.getTopicWiseHelpingCount(empId,"Databases");
+		if(topicWiseHelpingCountDatabases.isEmpty()) {
+			topicWiseHelpingCountDatabases.put("Introduction to Databases", 0);
+			topicWiseHelpingCountDatabases.put("Architecture", 0);
+			topicWiseHelpingCountDatabases.put("Models", 0);
+			topicWiseHelpingCountDatabases.put("Schemas", 0);
+		}
+		Map<String,Integer>  topicWiseHelpingCountOperatingSystems = chatService.getTopicWiseHelpingCount(empId,"Operating Systems");
+		if(topicWiseHelpingCountOperatingSystems.isEmpty()) {
+			topicWiseHelpingCountOperatingSystems.put("Introduction to Operating Systems", 0);
+			topicWiseHelpingCountOperatingSystems.put("Secondary Storage", 0);
+			topicWiseHelpingCountOperatingSystems.put("Memory Management", 0);
+			topicWiseHelpingCountOperatingSystems.put("Cache", 0);
+		}
+		int numberOfPeopleHelped = chatService.getListOfUsersHelped(empId);
+		
+		int algoLevel =0 ;
+		int dbLevel =0 ;
+		int osLevel = 0;
+		int sentCount =0 ;
+		int receivedCount=0;
+		if(!sentMessageList.isEmpty()) {
+			sentCount = sentMessageList.size();
+		}
+		if(!receivedMessageList.isEmpty()) {
+			receivedCount = receivedMessageList.size();
+		}
+		if(!algoTopics.isEmpty()) {
+			algoLevel = algoTopics.get(0).getCourseLevel();
+		}
+		if(!dbTopics.isEmpty()) {
+			dbLevel = dbTopics.get(0).getCourseLevel();
+		}
+		if(!osTopics.isEmpty()) {
+			osLevel = osTopics.get(0).getCourseLevel();
+		}
+		overallProgress = (double)(algoLevel + dbLevel + osLevel)/12;
+		double socialLearningRate = (double) numberOfPeopleHelped/(algoLevel + dbLevel + osLevel);
+		
+		model.addObject("algoLevel", algoLevel);
+		model.addObject("topicWiseHelpingCountAlgorithms", topicWiseHelpingCountAlgorithms);
+		model.addObject("topicWiseHelpingCountDatabases", topicWiseHelpingCountDatabases);
+		model.addObject("topicWiseHelpingCountOperatingSystems", topicWiseHelpingCountOperatingSystems);
+		model.addObject("dbLevel", dbLevel);
+		model.addObject("osLevel", osLevel);
+		model.addObject("peopleHelped", numberOfPeopleHelped);
+		model.addObject("overallProgress", df2.format(overallProgress*100));
+		model.addObject("socialLearningRate", df2.format(socialLearningRate));
+		model.addObject("employee", employee);
+		model.addObject("sentCount", sentCount);
+		model.addObject("receivedCount", receivedCount);
+		model.setViewName("postLogin");
+		return model;
 	}
 	
 	
@@ -183,15 +327,6 @@ public class EmployeeController {
 		
 	}
 	
-	@RequestMapping(value = "/userHomepage", method = RequestMethod.GET)
-	public ModelAndView userHomepage(HttpServletRequest request) {
-		int empId = Integer.parseInt(request.getParameter("id"));
-		Employee employee = employeeService.getEmployee(empId);
-		ModelAndView model = new ModelAndView();
-		model.addObject("employee", employee);
-		model.setViewName("postLogin");
-		return model;
-	}
 	
 	@RequestMapping(value = "/initialPage", method = RequestMethod.GET)
 	public ModelAndView initialPage(HttpServletRequest request) {

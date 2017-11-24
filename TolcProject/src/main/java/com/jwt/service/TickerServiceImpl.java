@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.jwt.dao.ChatDAO;
 import com.jwt.dao.TickerDAO;
-import com.jwt.model.Chat;
 import com.jwt.model.Ticker;
 
 @Service
@@ -33,6 +31,21 @@ public class TickerServiceImpl implements TickerService {
 	@Override
 	public List<Ticker> getCoursesCompleted(int empId, String courseName) {
 		return tickerDAO.getCoursesCompleted(empId,courseName);
+	}
+
+	@Override
+	public List<Ticker> getAlgoTopicsCompleted(int empId) {
+		return tickerDAO.getAlgoTopicsCompleted(empId);
+	}
+
+	@Override
+	public List<Ticker> getDbmsTopicsCompleted(int empId) {
+		return tickerDAO.getDbmsTopicsCompleted(empId);
+	}
+
+	@Override
+	public List<Ticker> getOsTopicsCompleted(int empId) {
+		return tickerDAO.getOsTopicsCompleted(empId);
 	}
 
 

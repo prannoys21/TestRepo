@@ -290,8 +290,8 @@ input {
 		 $(".getTickerUserId").hide();
 		 
 		 //3
-		 $(document).on('click',".clickableFirstName", function(){
-			tickerDivId = $(this).parent().parent().attr('id');
+		 /* $(document).on('click',".clickableFirstName", function() */function clickableFirstName(thisValue){
+			tickerDivId = $(thisValue).parent().parent().attr('id');
 			tickerDivId = "#" + tickerDivId;
 			$("#live-chat").show();
 			firstNameFromTicker = $( tickerDivId ).find('div.clickableFirstName').text();
@@ -328,7 +328,7 @@ input {
 							console.log("error");
 							}
 	     		});	
-		 });
+		 }/* ); */
 		 
 		 //4
 		 $('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
@@ -454,8 +454,8 @@ input {
 		});
 		
 		//9
-		 $(document).on('click',".clickableFirstName", function(){
-			tickerDivId = $(this).parent().parent().attr('id');
+		 /* $(document).on('click',".clickableFirstName", function() */function clickableFirstName(thisValue){
+			tickerDivId = $(thisValue).parent().parent().attr('id');
 			tickerDivId = "#" + tickerDivId;
 			$("#live-chat").show();
 			firstNameFromTicker = $( tickerDivId ).find('div.clickableFirstName').text();
@@ -494,7 +494,7 @@ input {
 							console.log("error");
 							}
 	     		});	
-		 });
+		 }/* ); */
 		 
 	</script>
 </body>

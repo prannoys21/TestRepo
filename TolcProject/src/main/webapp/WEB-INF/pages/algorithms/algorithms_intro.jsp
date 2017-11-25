@@ -25,13 +25,8 @@
 		<!-- Nav -->
 				
 				
-			<nav id="menu">
-				<ul class="links">
-				<li><jsp:include page="../ticker.jsp" /></li>
-					<!-- <li><a href="index.html">Home</a></li>
-					<li><a href="generic.html">Generic</a></li>
-					<li><a href="elements.html">Elements</a></li> -->
-				</ul>
+			<nav id="menu"  style="width: 400px;overflow-y: scroll;">
+			<jsp:include page="../ticker.jsp" />
 			</nav>
 
 		<!-- Banner -->
@@ -65,7 +60,15 @@
 								<hr />
 								<p> This tutorial is designed for Computer Science graduates as well as Software Professionals who are willing to learn data structures and algorithm programming in simple and easy steps.</p>
 								<p>After completing this tutorial you will be at intermediate level of expertise from where you can take yourself to higher level of expertise.</p>
-								
+								<form:form action="../sendNotification?id=${employee.id}" method="post" modelAttribute="ticker" name="notificationAddition" id="notificationAddition"> 
+									<input class="markAsComplete" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="Mark as Completed" style="margin-left: 43%"/>
+									<input class="completedCourse" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="You Completed This Topic" style="margin-left: 38%"/>
+									<input type="hidden" name="courseName" path="courseName" value="Algorithms" />
+									<input type="hidden" name="courseLevel" path="courseLevel" value='2' />
+									<input type="hidden" name="topicName" path="topicName" value="Greedy Approach" />
+									<input type="hidden" name="topicUrl" path="topicUrl" value="algorithms/greedyApproach" />
+					
+								</form:form>
 							</div>
 						</div>
 					</div>
@@ -87,6 +90,9 @@
 							<ul class="actions">
 								<li><a href="#" class="button alt">Next topic</a></li>
 							</ul>
+							<!-- <ul class="actions">
+								<li><a href="#" class="button alt">Previous topic</a></li>
+							</ul> -->
 						</div>
 						<div>
 							

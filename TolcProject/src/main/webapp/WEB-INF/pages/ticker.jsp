@@ -184,12 +184,13 @@ input {
 }
 
 .notification-history {
-	height: 919px;
-	padding: 5px 5px;
-	overflow: auto;
-	margin-top:56px;
-	margin-left: -281px;
+	height: 815px;
+    padding: 5px 5px;
+    overflow: auto;
+    margin-top: 56px;
+    margin-left: -27px;
     color: #fff;
+    width: 373px;
 }
 
 .notification-message {
@@ -228,12 +229,12 @@ input {
 }
 </style>
 <title></title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 </head>
 
 <body>
 
-	<div id="ticker-notification">
+	<!-- <div id="ticker-notification"> -->
 		
 		<!-- <header class="clearfix">
 			
@@ -256,8 +257,8 @@ input {
 				<div class="notification-message clearfix" id="tickerUpdate${tickerUpdate}">
 					<img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32">
 					<div class="notification-message-content clearfix">
-					<div class="clickableFirstName">${ticker.employee.firstName}</div>	&nbsp;completed ${ticker.topicName}  from the course  ${ticker.courseName}
-					<div class="getTickerUserId">${ticker.employee.id}</div>
+					<div class="clickableFirstName" onclick="clickableFirstName(this)">${ticker.employee.firstName}</div>	&nbsp;completed ${ticker.topicName}  from the course  ${ticker.courseName}
+					<div class="getTickerUserId" hidden="hidden">${ticker.employee.id}</div>
 					<span class="notification-time">${ticker.timeStamp}</span>
 					</div>
 					
@@ -275,7 +276,7 @@ input {
 			
 		</div> <!-- end notification -->
 
-	</div> <!-- end ticker-notification -->
+	<!-- </div>  --><!-- end ticker-notification -->
 
 	
 	<script type="text/javascript">
@@ -345,7 +346,7 @@ input {
 				if(objectData.courseName == courseNameObtainedHere){
 					if(courseLevelOfCurrentEmployee <= courseLevelOfTickerUpdate){
 					setTimeout(function(){
-					var newNotification = '<div class="notification-message clearfix animated" id="tickerUpdate' +counter +'"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="notification-message-content clearfix"><div class="clickableFirstName">'+ objectData.employee.firstName + "</div>	&nbsp;completed "+ objectData.topicName + " from the course "+ objectData.courseName +'</div><div class="getTickerUserId" style="display: none;">'+objectData.employee.id+'</div><span class="notification-time">'+ objectData.timeStamp +'</span></div><hr>'
+					var newNotification = '<div class="notification-message clearfix animated" id="tickerUpdate' +counter +'"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="notification-message-content clearfix"><div class="clickableFirstName" onclick="clickableFirstName(this)">'+ objectData.employee.firstName + "</div>	&nbsp;completed "+ objectData.topicName + " from the course "+ objectData.courseName +'<div class="getTickerUserId" hidden="hidden" style="display: none;">'+objectData.employee.id+'</div><span class="notification-time">'+ objectData.timeStamp +'</span></div></div><hr>'
 					counter++;
 					$(newNotification).prependTo('.notification-history').hide().slideDown(250);
 					}, 50);

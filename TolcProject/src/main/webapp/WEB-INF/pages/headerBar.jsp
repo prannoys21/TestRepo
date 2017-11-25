@@ -37,7 +37,7 @@ width: 90px;
 float:left;
 margin-right:0%;
 margin-top: 1.95%;
-margin-left: 14%;
+margin-left: 10%;
 cursor: pointer;
 }
 
@@ -69,7 +69,7 @@ cursor: pointer;
     padding: 0px 0px 4px 4px;
     /* position: fixed; */
     width: 340px;
-    margin-right: 10%;
+    margin-right: 22%;
     z-index: 10001;
     float: right;
     overflow: auto;
@@ -110,7 +110,7 @@ font-size:14px;
 text-align:left;
 }
 .iconAndName {
-    margin-left: 74%;
+    margin-left: 63%;
 }
 </style>
 <title></title>
@@ -126,7 +126,7 @@ text-align:left;
 	    <div id="message-request-icon" class="message-request-icon"><img id="messageRqstIcon"src="http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-2/48/new-message-icon.png" class="img_resize_fit"  alt="Learn"></div>
 	    <div class="headerInfo">${employee.firstName}</div>
 	    </div>
-	    <a href="#menu" class="toggle" style="margin-right: 2%;"><span>Menu</span></a>
+	    <a href="#menu" class="toggle" style="margin-right: 18%;"><span>Menu</span></a>
 	    <br>
 	    <!-- start chat-history -->
     <div class="message" id="message"> 

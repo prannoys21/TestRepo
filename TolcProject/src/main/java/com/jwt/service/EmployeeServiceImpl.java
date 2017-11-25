@@ -9,6 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.jwt.dao.EmployeeDAO;
 import com.jwt.model.Employee;
 
+/**
+ * @author  Prannoy Chandra
+ *
+ */
 @Service
 @Transactional
 public class EmployeeServiceImpl implements EmployeeService {

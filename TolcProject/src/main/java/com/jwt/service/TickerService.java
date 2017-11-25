@@ -4,6 +4,10 @@ import java.util.List;
 
 import com.jwt.model.Ticker;
 
+/**
+ * @author  Prannoy Chandra
+ *
+ */
 public interface TickerService {
 
 	public void addNotification(Ticker ticker);

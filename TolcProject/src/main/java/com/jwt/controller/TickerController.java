@@ -27,6 +27,10 @@ import com.jwt.model.Ticker;
 import com.jwt.service.EmployeeService;
 import com.jwt.service.TickerService;
 
+/**
+ * @author  Prannoy Chandra
+ *
+ */
 @RestController
 public class TickerController {
 

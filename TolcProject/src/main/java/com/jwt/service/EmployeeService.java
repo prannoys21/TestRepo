@@ -4,6 +4,10 @@ import java.util.List;
 
 import com.jwt.model.Employee;
 
+/**
+ * @author  Prannoy Chandra
+ *
+ */
 public interface EmployeeService {
 	
 	public void addEmployee(Employee employee);

@@ -11,6 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.jwt.dao.ChatDAO;
 import com.jwt.model.Chat;
 
+/**
+ * @author  Prannoy Chandra
+ *
+ */
 @Service
 @Transactional
 public class ChatServiceImpl implements ChatService {

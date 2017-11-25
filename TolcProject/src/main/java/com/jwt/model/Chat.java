@@ -12,6 +12,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+/**
+ * @author  Prannoy Chandra
+ *
+ */
 @Entity
 @Table(name = "CHAT")
 public class Chat implements Serializable {

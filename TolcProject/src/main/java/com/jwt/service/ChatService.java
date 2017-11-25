@@ -5,6 +5,10 @@ import java.util.Map;
 
 import com.jwt.model.Chat;
 
+/**
+ * @author  Prannoy Chandra
+ *
+ */
 public interface ChatService {
 
 	public void addMessage(Chat chat);

@@ -15,6 +15,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ * @author  Prannoy Chandra
+ *
+ */
 @Entity
 @Table(name = "EMPLOYEE")
 public class Employee implements Serializable {

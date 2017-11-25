@@ -9,6 +9,10 @@ import org.springframework.stereotype.Repository;
 
 import com.jwt.model.Employee;
 
+/**
+ * @author  Prannoy Chandra
+ *
+ */
 @Repository
 public class EmployeeDAOImpl implements EmployeeDAO {
 

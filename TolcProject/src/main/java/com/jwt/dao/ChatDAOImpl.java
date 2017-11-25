@@ -12,6 +12,10 @@ import org.springframework.stereotype.Repository;
 
 import com.jwt.model.Chat;
 
+/**
+ * @author  Prannoy Chandra
+ *
+ */
 @Repository
 public class ChatDAOImpl implements ChatDAO {
 

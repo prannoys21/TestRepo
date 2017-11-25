@@ -9,6 +9,10 @@ import org.springframework.stereotype.Repository;
 
 import com.jwt.model.Ticker;
 
+/**
+ * @author  Prannoy Chandra
+ *
+ */
 @Repository
 public class TickerDAOImpl implements TickerDAO {
 

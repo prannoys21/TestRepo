@@ -31,6 +31,10 @@ import com.jwt.service.ChatService;
 import com.jwt.service.EmployeeService;
 import com.jwt.service.TickerService;
 
+/**
+ * @author  Prannoy Chandra
+ *
+ */
 @RestController
 public class ChatController {
 

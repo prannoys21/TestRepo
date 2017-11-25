@@ -6,6 +6,10 @@ import org.springframework.stereotype.Repository;
 
 import com.jwt.model.Course;
 
+/**
+ * @author  Prannoy Chandra
+ *
+ */
 @Repository
 public class CourseDAOImpl implements CourseDAO {
 

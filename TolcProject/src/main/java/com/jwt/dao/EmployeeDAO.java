@@ -3,6 +3,10 @@ package com.jwt.dao;
 import java.util.List;
 import com.jwt.model.Employee;
 
+/**
+ * @author  Prannoy Chandra
+ *
+ */
 public interface EmployeeDAO {
 
 	public void addEmployee(Employee employee);

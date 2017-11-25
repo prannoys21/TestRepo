@@ -7,6 +7,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.jwt.dao.CourseDAO;
 import com.jwt.model.Course;
 
+/**
+ * @author  Prannoy Chandra
+ *
+ */
 @Service
 @Transactional
 public class CourseServiceImpl implements CourseService {

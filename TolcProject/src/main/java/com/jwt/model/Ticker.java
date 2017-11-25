@@ -12,6 +12,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+/**
+ * @author  Prannoy Chandra
+ *
+ */
 @Entity
 @Table(name = "TICKER")
 public class Ticker implements Serializable {

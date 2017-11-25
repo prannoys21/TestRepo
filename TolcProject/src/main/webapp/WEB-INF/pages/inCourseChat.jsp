@@ -72,13 +72,13 @@ input {
 /* ---------- LIVE-CHAT ---------- */
 
 #live-chat {
-	bottom: -35px;
-	font-size: 12px;
-	right: 24px;
-	position: fixed;
-	width: 290px;
-	margin-right: 20%;
-	z-index:99999;
+    bottom: -35px;
+    font-size: 12px;
+    right: 24px;
+    position: fixed;
+    width: 290px;
+    margin-right: 20%;
+    z-index: 999999;
 }
 
 #live-chat header {
@@ -198,9 +198,10 @@ input {
 
 	});
 
-	$(document).on('click', '.chat-close', function(e) {
-		//e.preventDefault();
-		$('#live-chat').hide();
+	$('.chat-close').on('click', function(e) {
+
+		e.preventDefault();
+		$('#live-chat').fadeOut(300);
 
 	});
 
@@ -420,7 +421,7 @@ input {
 				}
 				if((objectData.recipient.id == userId) && (objectData.sender.id != messageRequestSenderId  )){
 					setTimeout(function(){
-					var newMessageRequest = '<div class="message-request messagefix" id="message-request'+messageCounter+'"><div class="message-request-content messagefix"><div class="clickableMessageRequestName">'+ objectData.sender.firstName + '</div> &nbsp; wants to chat with you!<div class="getMessageRequestSenderId" style="display:none;">'+objectData.sender.id+'</div><span class="message-request-time">' +objectData.timeStamp + '</span></div><hr></div>'
+					var newMessageRequest = '<div class="message-request messagefix" id="message-request'+messageCounter+'"><div class="message-request-content messagefix"><div class="clickableMessageRequestName">'+ objectData.sender.firstName + '</div> wants to chat with you!<div class="getMessageRequestSenderId" style="display:none;">'+objectData.sender.id+'</div>&nbsp; &nbsp; <span class="message-request-time">' +objectData.timeStamp + '</span></div><hr></div>'
 					$(newMessageRequest).prependTo('.message-history').hide().slideDown(250);
 					$("#messageRqstIcon").attr("src","http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-2/48/message-already-read-icon.png");
 					messageRequestSenderId = objectData.sender.id;

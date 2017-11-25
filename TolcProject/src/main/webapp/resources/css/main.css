@@ -1909,11 +1909,11 @@
 		button:disabled,
 		.button.disabled,
 		.button:disabled {
-			-moz-pointer-events: none;
+			/* -moz-pointer-events: none;
 			-webkit-pointer-events: none;
 			-ms-pointer-events: none;
 			pointer-events: none;
-			opacity: 0.25;
+			opacity: 0.25; */
 		}
 
 		@media screen and (max-width: 480px) {
@@ -2099,7 +2099,7 @@
 			display: block;
 			height: 2.75rem;
 			line-height: 2.75rem;
-			pointer-events: none;
+			/* pointer-events: none; */
 			position: absolute;
 			right: 0;
 			text-align: center;
@@ -3082,7 +3082,7 @@
 			background-attachment: fixed;
 			background-position: center;
 			position: relative;
-			z-index:999;
+			z-index: 999;
 		}
 
 			.wrapper.style3 input, .wrapper.style3 select, .wrapper.style3 textarea {

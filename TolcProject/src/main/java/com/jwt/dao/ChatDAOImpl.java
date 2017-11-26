@@ -102,25 +102,25 @@ public class ChatDAOImpl implements ChatDAO {
 		Map<String,Integer> resultSetObtainedAlgo = new HashMap<String,Integer>();
 		Map<String,Integer> resultSetObtainedDb = new HashMap<String,Integer>();
 		Map<String,Integer> resultSetObtainedOs = new HashMap<String,Integer>();
-	/*	resultSetObtainedAlgo.put("Introduction to Algorithms", 0);
+		resultSetObtainedAlgo.put("Introduction to Algorithms", 0);
 		resultSetObtainedAlgo.put("Greedy Approach", 0);
 		resultSetObtainedAlgo.put("Divide And Conquer", 0);
 		resultSetObtainedAlgo.put("Dynamic Programming", 0);
 		
 		
-		Map<String,Integer> resultSetObtainedDb = new HashMap<String,Integer>();
+		/*Map<String,Integer> resultSetObtainedDb = new HashMap<String,Integer>();*/
 		resultSetObtainedDb.put("Introduction to Databases", 0);
 		resultSetObtainedDb.put("Architecture", 0);
 		resultSetObtainedDb.put("Models", 0);
 		resultSetObtainedDb.put("Schemas", 0);
 		
-		Map<String,Integer> resultSetObtainedOs = new HashMap<String,Integer>();
+		/*Map<String,Integer> resultSetObtainedOs = new HashMap<String,Integer>();*/
 		resultSetObtainedOs.put("Introduction to Operating Systems", 0);
 		resultSetObtainedOs.put("Secondary Storage", 0);
 		resultSetObtainedOs.put("Memory Management", 0);
 		resultSetObtainedOs.put("Cache", 0);
 		
-		*/
+		
 		if(!result.isEmpty()) {
 			for (Object[] sss : result) {
 				if(courseName.equals("Algorithms")) {

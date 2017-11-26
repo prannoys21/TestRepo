@@ -4,135 +4,118 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<head>
-<meta charset="utf-8">
-<title>Algorithms Tutorial</title>
-<meta name="Description" content="Data Structures and Algorithms (DSA) Tutorial for Beginners - Learn Data Structures and Algorithm using c, C++ and Java in simple and easy steps starting from basic to advanced concepts with examples including Overview, Environment Setup, Algorithm, Asymptotic Analysis, Greedy Algorithms, Divide and Conquer, Dynamic Programming, Data Structures, Array, Linked List, Doubly Linked List, Circular List, Stack, Parsing Expression, Queue, Priority queue, Linear, Binary, Interpolation Search, Tree, Tree Traversal, Binary Search Tree, B+, AVL, Spanning, Tower of Hanoi, Hash Table, Heap, Graph, Depth, Breadth First Traversal, Search techniques, Sorting techniques, Sorting Algorithm, Bubble, Merge Sort Algorithm, Insertion, Selection, Shell, Quick Sort, Recursion, Fibonacci Series." />
-<meta name="Keywords" content="Overview, Environment Setup, Algorithm, Asymptotic Analysis, Greedy Algorithms, Divide and Conquer, Dynamic Programming, Data Structures, Array, Linked List, Doubly Linked List, Circular List, Stack, Parsing Expression, Queue, Priority queue, Linear, Binary, Interpolation Search, Tree, Tree Traversal, Binary Search Tree, B+, AVL, Spanning, Tower of Hanoi, Hash Table, Heap, Graph, Depth, Breadth First Traversal, Search techniques, Sorting techniques, Sorting Algorithm, Bubble, Merge Sort Algorithm, Insertion, Selection, Shell, Quick Sort, Recursion, Fibonacci Series." />
-<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes">
-<meta name="robots" content="index, follow"/>
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="author" content="tutorialspoint.com">
-<script type="text/javascript" src=""></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-<style>
-body {
-	color: #000;
-}
-pre.prettyprint.tryit {min-height:37px; background: #eee url(data_structures_algorithms/images/try-it.jpg) top right no-repeat !important}select{ border:0 !important; outline: 1px inset black !important; outline-offset: -1px !important; }
-ul.nav-list.primary>li a.videolink{    background: none; margin: 0px; padding: 0px; border: 1px solid #d6d6d6;}
-div.feature-box div.feature-box-icon, .col-md-3 .course-box, li.heading, div.footer-copyright { background: #cd3300 url(/images/pattern.png) repeat center center !important;}
-.sub-main-menu .sub-menuu div:hover, .sub-main-menu .viewall, header nav ul.nav-main li a:hover, button.btn-responsive-nav, header div.search button.btn-default { background: #cd3300 !important;}
-.submenu-item{ border-bottom: 2px solid #cd3300 !important; border-top: 2px solid #cd3300 !important }
-.ace_scroller{overflow: auto!important;}
-/* header {background: #e9e9e9;} */
-input {border:2px;}
-.completedCourse {
-    background: #54278f;
-    width: 200px;
-    height: 39px;
-    border-radius: 4px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    color: white;
-    border: #756bb1 1px solid;
-    float: left;
-    font-weight: 800;
-    font-size: 12px;
-    margin: 50px 0px 0px 207px;
-}
-.middle-col {
-min-height: 1171px;
-}
+<html>
+	<head>
+		<title>Introduction to algorithms</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="<c:url value="/resources/css/main.css"/>" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+	</head>
+	<body>
 
+		<!-- Header -->
+			<div id="header" class="alt">
+				<div class="logo"><a href="http://localhost:7080/TolcProject/userHomepage?id=${employee.id}">welearn <span>by PAA</span></a></div>
+				<jsp:include page="../headerBar.jsp" />
+				
 
-/
-</style>
-<script>
-$(document).ready(function() {
-  $('input[name="q"]').keydown(function(event){
-    if(event.keyCode == 13) {
-      event.preventDefault();
-      return false;
-    }
-  });
-});
-</script>
-</head>
-<body>
-<jsp:include page="../headerBar.jsp" />
+			</div>
 
-<div role="main" class="main" style="padding: 92px 0px 0px 0px;">
-<div class="container"  style="margin-left:200px;margin-right: 736px;">
-<div class="row">
-<div class="col-md-2">
-<aside class="sidebar">
-<div class="mini-logo">
-<img src="http://www.geeksforgeeks.org/wp-content/uploads/Competitive-Programming-1.jpg" style="width: 50%;"alt="Data Structures & Algorithms Tutorial" />
-</div>
+		<!-- Nav -->
+				
+				
+			<nav id="menu"  style="width: 400px;overflow-y: scroll;">
+			<jsp:include page="../ticker.jsp" />
+			</nav>
 
+		<!-- Banner -->
+		<!--
+			To use a video as your background, set data-video to the name of your video without
+			its extension (eg. images/banner). Your video must be available in both .mp4 and .webm
+			formats to work correctly.
+		-->
+			<section id="banner" data-video="../resources/images/banner1">
+				<div class="inner">
+					<h1>The World of Algorithms</h1>
+					<p style="color:white;">Have you wondered how algorithms are designed?<br />
+					Learn more about <a href="https://templated.co/">Algorithms</a> and become a master at <a href="https://templated.co/license">Designing Algorithms</a>.</p>
+					<a href="#one" class="button special scrolly">Get Started</a>
+				</div>
+			</section>
 
-<ul class="nav nav-list primary left-menu">
-<li class="heading">Algorithm</li>   
-<li>Greedy</a></li>
-<li>Divide and Conquer</a></li>
-<li>Dynamic Programming</a></li>
-</ul>
-
-
-
-</aside>
-</div>
-<!-- PRINTING STARTS HERE -->
-<div class="row">
-<div class="content">
-<div class="col-md-7 middle-col">
-<div class="cover">
-<!-- <img class="img-responsive" src="" alt="Data Structures & Algorithms (DSA) Tutorial" /> -->
-</div>
-<hr />
-
-<hr />
-<h1>Dynamic Programming</h1>
-<div class="center-aligned tutorial-menu">
-<form action="/job_search.php" method="POST">
-<input type="hidden" name="search_string" value="Data Structures" />
-
-</form>
-</div>
-<p>Dynamic programming approach is similar to divide and conquer in breaking down the problem into smaller and yet smaller possible sub-problems. But unlike, divide and conquer, these sub-problems are not solved independently. Rather, results of these smaller sub-problems are remembered and used for similar or overlapping sub-problems.
-
-Dynamic programming is used where we have problems, which can be divided into similar sub-problems, so that their results can be re-used. Mostly, these algorithms are used for optimization. Before solving the in-hand sub-problem, dynamic algorithm will try to examine the results of the previously solved sub-problems. The solutions of sub-problems are combined in order to achieve the best solution.</p>
-<h1>Comparison</h1>
-<p> In contrast to greedy algorithms, where local optimization is addressed, dynamic algorithms are motivated for an overall optimization of the problem.
-
-In contrast to divide and conquer algorithms, where solutions are combined to achieve an overall solution, dynamic algorithms use the output of a smaller sub-problem and then try to optimize a bigger sub-problem. Dynamic algorithms use memorization to remember the output of already solved sub-problems.</p>
-
-
-
-
-
-<div class="pre-btn">
-<a href="http://localhost:7080/TolcProject/algorithms/divideAndConquer?id=${employee.id}"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
-</div>
-<div class="nxt-btn">
-<a href="">&nbsp;</a>
-</div>
-<form:form action="../sendNotification?id=${employee.id}" method="post" modelAttribute="ticker" name="notificationAddition" id="notificationAddition"> 
-
-					<input class="markAsComplete" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="Mark as Completed"/>
-					<input class="completedCourse" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="You Completed This Topic"/>
-					<input type="hidden" name="courseName" path="courseName" value="Algorithms" />
-					<input type="hidden" name="courseLevel" path="courseLevel" value='4' />
-					<input type="hidden" name="topicName" path="topicName" value="Dynamic Programming" />
-					<input type="hidden" name="topicUrl" path="topicUrl" value="algorithms/dynamicProgramming" />
+		<!-- One -->
+			<section id="one" class="wrapper style2">
+				<div class="inner">
+					<div>
+						<div class="box">
+							<div class="image fit">
+								<img src="../resources/images/pic01.jpg" alt="" width="42" height="400"/>
+							</div>
+							<div class="content">
+								<header class="align-center">
+									<h2>Algorithm Design</h2>
+									<p>Introduction to design and analysis of algorithms</p>
+								</header>
+								<hr />
+								<p> This tutorial is designed for Computer Science graduates as well as Software Professionals who are willing to learn data structures and algorithm programming in simple and easy steps.</p>
+								<p>After completing this tutorial you will be at intermediate level of expertise from where you can take yourself to higher level of expertise.</p>
+								<form:form action="../sendNotification?id=${employee.id}" method="post" modelAttribute="ticker" name="notificationAddition" id="notificationAddition"> 
+									<input class="markAsComplete" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="Mark as Completed" style="margin-left: 43%"/>
+									<input class="completedCourse" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="You Completed This Topic" style="margin-left: 38%"/>
+									<input type="hidden" name="courseName" path="courseName" value="Algorithms" />
+									<input type="hidden" name="courseLevel" path="courseLevel" value='4' />
+									<input type="hidden" name="topicName" path="topicName" value="Dynamic Programming" />
+									<input type="hidden" name="topicUrl" path="topicUrl" value="algorithms/dynamicProgramming" />
 					
-</form:form>
+								</form:form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 
-<jsp:include page="../backToCourses.jsp" />
-<jsp:include page="../ticker.jsp" />
+		<!-- Two -->
+			<section id="two" class="wrapper style3">
+				<div class="inner">
+					<div id="flexgrid">
+						<div>
+							
+						</div>
+						<div>
+							<header>
+								<h3>What to keep here?</h3>
+							</header>
+							<p>Sometimes, being greedy is not so bad at all, especially if you're solving optimization problems </p>
+							<!-- <ul class="actions">
+								<li><a href="#" class="button alt">Next topic</a></li>
+							</ul> -->
+							<ul class="actions">
+								<li><a href="http://localhost:7080/TolcProject/algorithms/divideAndConquer?id=${employee.id}" class="button alt">Previous topic</a></li>
+							</ul>
+							<ul class="actions">
+								<li><a class="button alt" href="http://localhost:7080/TolcProject/courseList?id=${employee.id}">Go back to courses list page</a></li><!-- End Btn2 -->
+							</ul>
+						</div>
+						<div>
+							
+						</div>
+					</div>
+				</div>
+			</section>
+
+		
+		
+
+		<!-- Scripts -->
+			<script src="<c:url value="/resources/js/jquery.min.js"/>"></script>
+			<script src="<c:url value="/resources/js/jquery.scrolly.min.js"/>"></script>
+			<script src="<c:url value="/resources/js/jquery.scrollex.min.js" />"></script>
+			<script src="<c:url value="/resources/js/skel.min.js" />"></script>
+			<script src="<c:url value="/resources/js/util.js" />"></script>
+			<script src="<c:url value="/resources/js/main.js" />"></script>
+			
+			
 <jsp:include page="../inCourseChat.jsp" />
 <script type="text/javascript">
 var thisPageUrl = "algorithms/dynamicProgramming";
@@ -140,6 +123,5 @@ var subTopic = true;
 var globalTopicName = "Dynamic Programming";
 var globalCourseName = "Algorithms";
 </script>
-</div></div></div></div></div></div>
-</body>
+	</body>
 </html>

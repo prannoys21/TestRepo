@@ -101,7 +101,7 @@ private List<SseEmitter> emitters = new CopyOnWriteArrayList<>();
 		for (SseEmitter emitter : emitters) {
 			try {
 				emitter.send(SseEmitter.event().name("tickNotifcication").data(tickerJSONString));
-			} catch (IOException e) {
+			} catch (IOException e) {	
 				e.printStackTrace();
 			}
 		}

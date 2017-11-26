@@ -77,7 +77,7 @@ input {
 }
 .clearfix:after { clear: both; }
 
-.markAsComplete{
+/* .markAsComplete{
     background: #2ecc71;
     width: 150px;
     height: 39px;
@@ -90,7 +90,7 @@ input {
     font-weight: 800;
     font-size: 12px;
     margin: 50px 0px 0px 230px;
-}
+} */
 
 /* ---------- ticker-notification ---------- */
 

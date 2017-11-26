@@ -16,7 +16,7 @@
 
 		<!-- Header -->
 			<div id="header" class="alt">
-				<div class="logo"><a href="algorithms_intro.jsp">welearn <span>by PAA</span></a></div>
+				<div class="logo"><a href="http://localhost:7080/TolcProject/userHomepage?id=${employee.id}">welearn <span>by PAA</span></a></div>
 				<jsp:include page="../headerBar.jsp" />
 				
 
@@ -88,11 +88,11 @@
 							</header>
 							<p>Sometimes, being greedy is not so bad at all, especially if you're solving optimization problems </p>
 							<ul class="actions">
-								<li><a href="#" class="button alt">Next topic</a></li>
+								<li><a href="http://localhost:7080/TolcProject/algorithms/greedyApproach?id=${employee.id}" class="button alt">Next topic</a></li>
 							</ul>
-							<!-- <ul class="actions">
-								<li><a href="#" class="button alt">Previous topic</a></li>
-							</ul> -->
+							<ul class="actions">
+								<li><a class="button alt" href="http://localhost:7080/TolcProject/courseList?id=${employee.id}">Go back to courses list page</a></li><!-- End Btn2 -->
+							</ul>
 						</div>
 						<div>
 							
@@ -114,5 +114,11 @@
 			
 			
 <jsp:include page="../inCourseChat.jsp" />
+<script type="text/javascript">
+var thisPageUrl = "algorithms/intro"
+	var subTopic = true;
+	var globalTopicName = "Introduction to Algorithms";
+	var globalCourseName = "Algorithms";
+</script>
 	</body>
 </html>

@@ -4,129 +4,121 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<head>
-<meta charset="utf-8">
-<title>Algorithms Tutorial</title>
-<meta name="Description" content="Data Structures and Algorithms (DSA) Tutorial for Beginners - Learn Data Structures and Algorithm using c, C++ and Java in simple and easy steps starting from basic to advanced concepts with examples including Overview, Environment Setup, Algorithm, Asymptotic Analysis, Greedy Algorithms, Divide and Conquer, Dynamic Programming, Data Structures, Array, Linked List, Doubly Linked List, Circular List, Stack, Parsing Expression, Queue, Priority queue, Linear, Binary, Interpolation Search, Tree, Tree Traversal, Binary Search Tree, B+, AVL, Spanning, Tower of Hanoi, Hash Table, Heap, Graph, Depth, Breadth First Traversal, Search techniques, Sorting techniques, Sorting Algorithm, Bubble, Merge Sort Algorithm, Insertion, Selection, Shell, Quick Sort, Recursion, Fibonacci Series." />
-<meta name="Keywords" content="Overview, Environment Setup, Algorithm, Asymptotic Analysis, Greedy Algorithms, Divide and Conquer, Dynamic Programming, Data Structures, Array, Linked List, Doubly Linked List, Circular List, Stack, Parsing Expression, Queue, Priority queue, Linear, Binary, Interpolation Search, Tree, Tree Traversal, Binary Search Tree, B+, AVL, Spanning, Tower of Hanoi, Hash Table, Heap, Graph, Depth, Breadth First Traversal, Search techniques, Sorting techniques, Sorting Algorithm, Bubble, Merge Sort Algorithm, Insertion, Selection, Shell, Quick Sort, Recursion, Fibonacci Series." />
-<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes">
-<meta name="robots" content="index, follow"/>
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="author" content="tutorialspoint.com">
-<script type="text/javascript" src=""></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-<style>
-body {
-	color: #000;
-}
-pre.prettyprint.tryit {min-height:37px; background: #eee url(data_structures_algorithms/images/try-it.jpg) top right no-repeat !important}select{ border:0 !important; outline: 1px inset black !important; outline-offset: -1px !important; }
-ul.nav-list.primary>li a.videolink{    background: none; margin: 0px; padding: 0px; border: 1px solid #d6d6d6;}
-div.feature-box div.feature-box-icon, .col-md-3 .course-box, li.heading, div.footer-copyright { background: #cd3300 url(/images/pattern.png) repeat center center !important;}
-.sub-main-menu .sub-menuu div:hover, .sub-main-menu .viewall, header nav ul.nav-main li a:hover, button.btn-responsive-nav, header div.search button.btn-default { background: #cd3300 !important;}
-.submenu-item{ border-bottom: 2px solid #cd3300 !important; border-top: 2px solid #cd3300 !important }
-.ace_scroller{overflow: auto!important;}
-/* header {background: #e9e9e9;} */
-input {border:2px;}
-.completedCourse {
-    background: #54278f;
-    width: 200px;
-    height: 39px;
-    border-radius: 4px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    color: white;
-    border: #756bb1 1px solid;
-    float: left;
-    font-weight: 800;
-    font-size: 12px;
-    margin: 50px 0px 0px 207px;
-}
-.middle-col {
-min-height: 1171px;
-}
+<html>
+	<head>
+		<title>Introduction to Database Schemas</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="<c:url value="/resources/css/main.css"/>" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+	</head>
+	<body>
 
+		<!-- Header -->
+			<div id="header" class="alt">
+				<div class="logo"><a href="../userHomepage?id=${employee.id}">welearn <span>by PAA</span></a></div>
+				<jsp:include page="../headerBar.jsp" />
+				
 
-/
-</style>
-<script>
-$(document).ready(function() {
-  $('input[name="q"]').keydown(function(event){
-    if(event.keyCode == 13) {
-      event.preventDefault();
-      return false;
-    }
-  });
-});
-</script>
-</head>
-<body>
-<jsp:include page="../headerBar.jsp" />
+			</div>
 
-<div role="main" class="main" style="padding: 92px 0px 0px 0px;">
-<div class="container" style="margin-left:200px;margin-right: 736px;">
-<div class="row">
-<div class="col-md-2">
-<aside class="sidebar">
-<div class="mini-logo">
-<img src="https://image.ibb.co/epH6bG/database.jpg" style="width: 50%;" alt="Databases" />
-</div>
+		<!-- Nav -->
+				
+				
+			<nav id="menu"  style="width: 400px;overflow-y: scroll;">
+			<jsp:include page="../ticker.jsp" />
+			</nav>
 
-<ul class="nav nav-list primary left-menu">
-<li class="heading">Databases</li>   
-<li>Architecture</a></li>
-<li>Data Models</a></li>
-<li>Data Schemas</a></li>
-</ul>
+		<!-- Banner -->
+		<!--
+			To use a video as your background, set data-video to the name of your video without
+			its extension (eg. images/banner). Your video must be available in both .mp4 and .webm
+			formats to work correctly.
+		-->
+			<section id="banner" data-video="../resources/images/db/bannerDb">
+				<div class="inner">
+					<h1>The World of Database Schemas</h1>
+					<p style="color:white;">Have you wondered how the design of a Database is determined?<br />
+					Learn more about <a href="https://templated.co/">Database Schemas</a> and become a master at <a href="https://templated.co/license">Database Schemas</a>.</p>
+					<a href="#one" class="button special scrolly">Get Started</a>
+				</div>
+			</section>
 
+		<!-- One -->
+			<section id="one" class="wrapper style2">
+				<div class="inner">
+					<div>
+						<div class="box">
+							<div class="image fit">
+								<img src="../resources/images/db/db4.png" alt="" width="42" height="400"/>
+							</div>
+							<div class="content">
+								<header class="align-center">
+									<h2>Database Models</h2>
+									<p>Introduction to Database Schemas</p>
+								</header>
+								<hr />
+								<p> A database schema is the skeleton structure that represents the logical view of the entire database. It defines how the data is organized and how the relations among them are associated. It formulates all the constraints that are to be applied on the data.</p>
 
+								<p>A database schema defines its entities and the relationship among them. It contains a descriptive detail of the database, which can be depicted by means of schema diagrams. It is the database designers who design the schema to help programmers understand the database and make it useful.</p>
 
-</aside>
-</div>
-<!-- PRINTING STARTS HERE -->
-<div class="row">
-<div class="content">
-<div class="col-md-7 middle-col">
-<div class="cover">
-<!-- <img class="img-responsive" src="https://image.ibb.co/jzUnWR/dbms.jpg" alt="Data Structures & Algorithms (DSA) Tutorial" /> -->
-</div>
-<hr />
+								<p>It is important that we distinguish these two terms individually. Database schema is the skeleton of database. It is designed when the database doesn't exist at all. Once the database is operational, it is very difficult to make any changes to it. A database schema does not contain any data or information.</p>
 
-<hr />
-<h1>Data Schemas</h1>
-<div class="center-aligned tutorial-menu">
-<form action="/job_search.php" method="POST">
-<input type="hidden" name="search_string" value="Data Structures" />
+								<p>A database instance is a state of operational database with data at any given time. It contains a snapshot of the database. Database instances tend to change with time. A DBMS ensures that its every instance (state) is in a valid state, by diligently following all the validations, constraints, and conditions that the database designers have imposed.</p>
 
-</form>
-</div>
-<p> A database schema is the skeleton structure that represents the logical view of the entire database. It defines how the data is organized and how the relations among them are associated. It formulates all the constraints that are to be applied on the data.
+								
+								<form:form action="../sendNotification?id=${employee.id}" method="post" modelAttribute="ticker" name="notificationAddition" id="notificationAddition"> 
+									<input class="markAsComplete" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="Mark as Completed" style="margin-left: 43%"/>
+									<input class="completedCourse" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="You Completed This Topic" style="margin-left: 38%"/>
+									<input type="hidden" name="courseName" path="courseName" value="Databases" />
+									<input type="hidden" name="courseLevel" path="courseLevel" value="4" />
+									<input type="hidden" name="topicName" path="topicName" value="Schemas" />
+									<input type="hidden" name="topicUrl" path="topicUrl" value="databases/schemas" />
+								</form:form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 
-A database schema defines its entities and the relationship among them. It contains a descriptive detail of the database, which can be depicted by means of schema diagrams. Itâs the database designers who design the schema to help programmers understand the database and make it useful.</p>
-<h1>Database Instance</h1>
-<p>It is important that we distinguish these two terms individually. Database schema is the skeleton of database. It is designed when the database doesn't exist at all. Once the database is operational, it is very difficult to make any changes to it. A database schema does not contain any data or information.
+		<!-- Two -->
+			<section id="two" class="wrapper style3">
+				<div class="inner">
+					<div id="flexgrid">
+						<div>
+							
+						</div>
+						<div>
+							<header>
+								<h3>Database Models</h3>
+							</header>
+							<p>It is essential to know how the database is modeled</p>
+							<ul class="actions">
+								<li><a href="models?id=${employee.id}" class="button alt">Previous topic</a></li>
+							</ul>
+							<ul class="actions">
+								<li><a class="button alt" href="../courseList?id=${employee.id}">Go back to courses list page</a></li><!-- End Btn2 -->
+							</ul>
+						</div>
+						<div>
+							
+						</div>
+					</div>
+				</div>
+			</section>
 
-A database instance is a state of operational database with data at any given time. It contains a snapshot of the database. Database instances tend to change with time. A DBMS ensures that its every instance (state) is in a valid state, by diligently following all the validations, constraints, and conditions that the database designers have imposed.</p>
+		
+		
 
-
-<form:form action="../sendNotification?id=${employee.id}" method="post" modelAttribute="ticker" name="notificationAddition" id="notificationAddition"> 
-
-					<input class="markAsComplete" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="Mark as Completed"/>
-					<input class="completedCourse" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="You Completed This Topic"/>
-					<input type="hidden" name="courseName" path="courseName" value="Databases" />
-					<input type="hidden" name="courseLevel" path="courseLevel" value="4" />
-					<input type="hidden" name="topicName" path="topicName" value="Schemas" />
-					<input type="hidden" name="topicUrl" path="topicUrl" value="databases/schemas" />
-					
-</form:form>
-
-<div class="pre-btn">
-<a href="http://localhost:7080/TolcProject/databases/models?id=${employee.id}"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
-</div>
-
-<jsp:include page="../backToCourses.jsp" />
-<jsp:include page="../ticker.jsp" />
+		<!-- Scripts -->
+			<script src="<c:url value="/resources/js/jquery.min.js"/>"></script>
+			<script src="<c:url value="/resources/js/jquery.scrolly.min.js"/>"></script>
+			<script src="<c:url value="/resources/js/jquery.scrollex.min.js" />"></script>
+			<script src="<c:url value="/resources/js/skel.min.js" />"></script>
+			<script src="<c:url value="/resources/js/util.js" />"></script>
+			<script src="<c:url value="/resources/js/main.js" />"></script>
+			
+			
 <jsp:include page="../inCourseChat.jsp" />
 <script type="text/javascript">
 var thisPageUrl = "databases/schemas";
@@ -134,6 +126,5 @@ var subTopic = true;
 var globalTopicName = "Schemas";
 var globalCourseName = "Databases";
 </script>
-</div></div></div></div></div></div>
-</body>
+	</body>
 </html>

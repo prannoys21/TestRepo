@@ -6,7 +6,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html>
 	<head>
-		<title>Introduction to algorithms</title>
+		<title>Dynamic Programming</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="<c:url value="/resources/css/main.css"/>" />
@@ -16,7 +16,7 @@
 
 		<!-- Header -->
 			<div id="header" class="alt">
-				<div class="logo"><a href="http://localhost:7080/TolcProject/userHomepage?id=${employee.id}">welearn <span>by PAA</span></a></div>
+				<div class="logo"><a href="../userHomepage?id=${employee.id}">welearn <span>by PAA</span></a></div>
 				<jsp:include page="../headerBar.jsp" />
 				
 
@@ -35,11 +35,11 @@
 			its extension (eg. images/banner). Your video must be available in both .mp4 and .webm
 			formats to work correctly.
 		-->
-			<section id="banner" data-video="../resources/images/banner1">
+			<section id="banner" data-video="../resources/images/algo/banner1">
 				<div class="inner">
-					<h1>The World of Algorithms</h1>
-					<p style="color:white;">Have you wondered how algorithms are designed?<br />
-					Learn more about <a href="https://templated.co/">Algorithms</a> and become a master at <a href="https://templated.co/license">Designing Algorithms</a>.</p>
+					<h1>The World of Dynamic Programming</h1>
+					<p style="color:white;">Have you wondered how Dynamic Programming algorithms are designed?<br />
+					Learn more about <a href="https://templated.co/">Dynamic Programming Algorithms</a> and become a master at <a href="https://templated.co/license">Designing Dynamic Programming Algorithms</a>.</p>
 					<a href="#one" class="button special scrolly">Get Started</a>
 				</div>
 			</section>
@@ -50,16 +50,20 @@
 					<div>
 						<div class="box">
 							<div class="image fit">
-								<img src="../resources/images/pic01.jpg" alt="" width="42" height="400"/>
+								<img src="../resources/images/algo/algo_04.png" alt="" width="42" height="400"/>
 							</div>
 							<div class="content">
 								<header class="align-center">
-									<h2>Algorithm Design</h2>
-									<p>Introduction to design and analysis of algorithms</p>
+									<h2>Dynamic Programming</h2>
+									<p>Introduction to Dynamic Programming algorithms</p>
 								</header>
 								<hr />
-								<p> This tutorial is designed for Computer Science graduates as well as Software Professionals who are willing to learn data structures and algorithm programming in simple and easy steps.</p>
-								<p>After completing this tutorial you will be at intermediate level of expertise from where you can take yourself to higher level of expertise.</p>
+								<p>Dynamic programming approach is similar to divide and conquer in breaking down the problem into smaller and yet smaller possible sub-problems. But unlike, divide and conquer, these sub-problems are not solved independently. Rather, results of these smaller sub-problems are remembered and used for similar or overlapping sub-problems.</p>
+
+								<p>Dynamic programming is used where we have problems, which can be divided into similar sub-problems, so that their results can be re-used. Mostly, these algorithms are used for optimization. Before solving the in-hand sub-problem, dynamic algorithm will try to examine the results of the previously solved sub-problems. The solutions of sub-problems are combined in order to achieve the best solution.</p>
+
+								
+								
 								<form:form action="../sendNotification?id=${employee.id}" method="post" modelAttribute="ticker" name="notificationAddition" id="notificationAddition"> 
 									<input class="markAsComplete" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="Mark as Completed" style="margin-left: 43%"/>
 									<input class="completedCourse" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="You Completed This Topic" style="margin-left: 38%"/>
@@ -84,17 +88,16 @@
 						</div>
 						<div>
 							<header>
-								<h3>What to keep here?</h3>
+								<h3>Divide and Conquer</h3>
 							</header>
-							<p>Sometimes, being greedy is not so bad at all, especially if you're solving optimization problems </p>
-							<!-- <ul class="actions">
-								<li><a href="#" class="button alt">Next topic</a></li>
-							</ul> -->
+							<p>Break problems into small subproblems and then solve them </p>
+							
 							<ul class="actions">
-								<li><a href="http://localhost:7080/TolcProject/algorithms/divideAndConquer?id=${employee.id}" class="button alt">Previous topic</a></li>
+								<li><a href="divideAndConquer?id=${employee.id}" class="button alt">Previous topic</a></li>
 							</ul>
+							
 							<ul class="actions">
-								<li><a class="button alt" href="http://localhost:7080/TolcProject/courseList?id=${employee.id}">Go back to courses list page</a></li><!-- End Btn2 -->
+								<li><a class="button alt" href="../courseList?id=${employee.id}">Go back to courses list page</a></li><!-- End Btn2 -->
 							</ul>
 						</div>
 						<div>

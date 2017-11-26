@@ -16,7 +16,7 @@
 
 		<!-- Header -->
 			<div id="header" class="alt">
-				<div class="logo"><a href="http://localhost:7080/TolcProject/userHomepage?id=${employee.id}">welearn <span>by PAA</span></a></div>
+				<div class="logo"><a href="../userHomepage?id=${employee.id}">welearn <span>by PAA</span></a></div>
 				<jsp:include page="../headerBar.jsp" />
 				
 
@@ -35,7 +35,7 @@
 			its extension (eg. images/banner). Your video must be available in both .mp4 and .webm
 			formats to work correctly.
 		-->
-			<section id="banner" data-video="../resources/images/banner1">
+			<section id="banner" data-video="../resources/images/algo/bannerAlgo">
 				<div class="inner">
 					<h1>The World of Algorithms</h1>
 					<p style="color:white;">Have you wondered how algorithms are designed?<br />
@@ -50,7 +50,7 @@
 					<div>
 						<div class="box">
 							<div class="image fit">
-								<img src="../resources/images/pic01.jpg" alt="" width="42" height="400"/>
+								<img src="../resources/images/algo/algo_01.jpg" alt="" width="42" height="400"/>
 							</div>
 							<div class="content">
 								<header class="align-center">
@@ -88,10 +88,10 @@
 							</header>
 							<p>Sometimes, being greedy is not so bad at all, especially if you're solving optimization problems </p>
 							<ul class="actions">
-								<li><a href="http://localhost:7080/TolcProject/algorithms/greedyApproach?id=${employee.id}" class="button alt">Next topic</a></li>
+								<li><a href="greedyApproach?id=${employee.id}" class="button alt">Next topic</a></li>
 							</ul>
 							<ul class="actions">
-								<li><a class="button alt" href="http://localhost:7080/TolcProject/courseList?id=${employee.id}">Go back to courses list page</a></li><!-- End Btn2 -->
+								<li><a class="button alt" href="../courseList?id=${employee.id}">Go back to courses list page</a></li><!-- End Btn2 -->
 							</ul>
 						</div>
 						<div>

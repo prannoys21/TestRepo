@@ -335,7 +335,7 @@ input {
          //$('.notification-history').scrollTop($('.notification-history')[0].scrollHeight);
 	 });
 	
-	var eventSource = new EventSource('http://localhost:7080/TolcProject/tickerNotification');
+	var eventSource = new EventSource('../tickerNotification');
 	eventSource.addEventListener('tickNotifcication',function(event){
 		console.log(event.data)
 		var objectData = JSON.parse(event.data);

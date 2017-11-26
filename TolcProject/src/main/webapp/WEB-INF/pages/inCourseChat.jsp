@@ -404,7 +404,7 @@ input {
 	 }
 	 
 	 var userId = ${employee.id};
-		var eventSource = new EventSource('http://localhost:7080/TolcProject/inCoursechatMessages');
+		var eventSource = new EventSource('../inCoursechatMessages');
 		eventSource.addEventListener('inCourseChatAdd',function(event){
 			//firstTime
 			console.log(event.data)

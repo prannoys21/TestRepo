@@ -35,7 +35,7 @@
 			its extension (eg. images/banner). Your video must be available in both .mp4 and .webm
 			formats to work correctly.
 		-->
-			<section id="banner" data-video="../resources/images/algo/bannerAlgo">
+			<section id="banner" data-video="../resources/images/algo/bannerAlgo2" >
 				<div class="inner">
 					<h1>The World of Algorithms</h1>
 					<p style="color:white;">Have you wondered how algorithms are designed?<br />
@@ -115,6 +115,8 @@
 			
 <jsp:include page="../inCourseChat.jsp" />
 <script type="text/javascript">
+var vid = $('#banner');
+vid.muted = true;
 var thisPageUrl = "algorithms/intro"
 	var subTopic = true;
 	var globalTopicName = "Introduction to Algorithms";

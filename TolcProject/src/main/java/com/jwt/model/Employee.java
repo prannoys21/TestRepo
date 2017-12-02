@@ -47,8 +47,19 @@ public class Employee implements Serializable {
 
 	@Column(name="PASSWORD")
 	private String password;
+	
+	@Column(name="CONTRIBUTION_COUNT")
+	private int contributionCount;
 
+	
 
+	public int getContributionCount() {
+		return contributionCount;
+	}
+
+	public void setContributionCount(int contributionCount) {
+		this.contributionCount = contributionCount;
+	}
 
 	public int getId() {
 		return id;

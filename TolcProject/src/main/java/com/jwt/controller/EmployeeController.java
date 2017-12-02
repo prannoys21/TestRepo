@@ -16,9 +16,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -268,7 +270,7 @@ public class EmployeeController {
 		}
 		overallProgress = (double)(algoLevel + dbLevel + osLevel)/12;
 		double socialLearningRate = (double) numberOfPeopleHelped/(algoLevel + dbLevel + osLevel);
-		
+		model.addObject("contributionCount",employee.getContributionCount());
 		model.addObject("algoLevel", algoLevel);
 		model.addObject("topicWiseHelpingCountAlgorithms", topicWiseHelpingCountAlgorithms);
 		model.addObject("topicWiseHelpingCountDatabases", topicWiseHelpingCountDatabases);
@@ -357,5 +359,21 @@ public class EmployeeController {
 		model.setViewName("customers");
 		return model;
 	}
-
+	
+	@RequestMapping(value = "/sendFeedbackFromChat/{empId}/{feedbackResponseValue}", method = RequestMethod.GET)
+	public void sendFeedbackFromChat(HttpServletRequest request, @PathVariable int empId, @PathVariable int feedbackResponseValue) {
+		Employee employee = employeeService.getEmployee(empId);
+		int empContributionCount = employee.getContributionCount();
+		if (feedbackResponseValue == 100) {
+			employee.setContributionCount(empContributionCount +1);
+			employeeService.updateEmployee(employee);
+		} else if (feedbackResponseValue == 101) {
+			employee.setContributionCount(empContributionCount-1);
+			employeeService.updateEmployee(employee);
+		}
+		/*return empContributionCount;*/
+		
+	}
+	
+	
 }

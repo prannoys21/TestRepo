@@ -33,7 +33,7 @@ h4, h5 {
 
 p {
     margin-left: 6px;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 hr {
@@ -171,7 +171,7 @@ input {
 }
 
 .chat-message-content {
-	margin-left: 15px;
+	margin-left: 12px;
 }
 
 .chat-time {
@@ -187,6 +187,20 @@ input {
 	 margin-left: 6px;
     font-size: 11px;
 }
+
+.feedbackYes {
+	float: left;
+	margin-right: 4%;
+	font-size: 17px;
+	cursor: pointer;
+}
+
+.feedbackNo {
+	float: right;
+	margin-right: 62%;
+	font-size: 17px;
+	cursor: pointer;
+}
 </style>
 <script type="text/javascript">
 (function() {
@@ -200,8 +214,9 @@ input {
 
 	$('.chat-close').on('click', function(e) {
 
-		e.preventDefault();
-		$('#live-chat').fadeOut(300);
+		/* e.preventDefault();
+		$('#live-chat').fadeOut(300); */
+		//this doesnt work$('#chat-history').append('<hr><div class="chat-message clearfix"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="chat-message-content clearfix">Did chatting with this person? <h5> Yes or No?</h5></div></div><hr>')
 
 	});
 
@@ -268,6 +283,13 @@ input {
 		</div> <!-- end chat -->
 
 	</div> <!-- end live-chat -->
+	
+<!-- //////////FeedBack///////////////////////////////////////////////////////////////////////////////////// -->
+<%-- 	<form:form action="../sendFeedbackFromChat?id=" method="post"  name="contributionFeedback" id="contributionFeedback"> 
+									<input type="hidden" name="feedbackResponse" path="feedbackResponse" value="" />
+					
+	</form:form> --%>
+<!-- //////////FeedBack///////////////////////////////////////////////////////////////////////////////////// -->	
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript">
@@ -334,8 +356,63 @@ input {
 		 $('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
 		 //5
 		$(".chat-close").click(function(){
-				$("#live-chat").hide();
-		 }); 
+			$('#chat-history').append('<hr><div class="chat-message clearfix"><div class="chat-message-content clearfix">Did chatting with this person help you? <br> <h5 class="feedbackYes" style="font-size:17px;"> Yes </h5> or <h5 class="feedbackNo" style="font-size:17px;"> No? </h5></div></div><hr>')
+			$('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
+				/* $("#live-chat").hide(); */
+		 });
+		
+		 $(document).on('click','.feedbackYes', function(){
+			 $('#chat-history').append('<hr><div class="chat-message clearfix"><div class="chat-message-content clearfix">Thank you for your feedback! </div></div><hr>');
+			 $('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
+			 //$("#feedbackResponse").val(1);
+			 if(idFromTicker != undefined){
+				 var formURL = "../sendFeedbackFromChat/"+idFromTicker+"/"+100;
+				 } else {
+				var formURL = "../sendFeedbackFromChat/"+idFromMessageRequestDiv+"/"+100;
+				 }
+	         $.ajax({
+	             url :  formURL,
+				 type: 'GET',
+	             data : null,
+				  success: function(data, textStatus, jqXHR){ 
+				  
+					},
+					error: function(jqXHR, textStatus, errorThrown){   
+							console.log("error");
+							}
+	     		});
+	         setTimeout(function (){
+				 $("#live-chat").hide();				 
+				}, 1000);  
+		 });
+		 
+		 $(document).on('click','.feedbackNo', function(){
+			 $('#chat-history').append('<hr><div class="chat-message clearfix"><div class="chat-message-content clearfix">Thank you for your feedback! </div></div><hr>');
+			 $('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
+			 $("#feedbackResponse").val(-1);
+			 if(idFromTicker != undefined){
+				 var formURL = "../sendFeedbackFromChat/"+idFromTicker+"/"+101;
+				 } else {
+				var formURL = "../sendFeedbackFromChat/"+idFromMessageRequestDiv+"/"+101;
+				 }
+	         $.ajax({
+	             url :  formURL,
+				 type: 'GET',
+	             data : null,
+				  success: function(data, textStatus, jqXHR){ 
+				  		console.log(data);
+					},
+					error: function(jqXHR, textStatus, errorThrown){   
+							console.log("error");
+							}
+	     		});
+			 setTimeout(function (){
+				 $("#live-chat").hide();				 
+				}, 1000);  
+			 
+		 });
+		 
+		 
 		 
 		 //6 
 		 $('#messageAddition').submit(function(e) {

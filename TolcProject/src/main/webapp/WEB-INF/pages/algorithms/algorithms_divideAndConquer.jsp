@@ -35,7 +35,7 @@
 			its extension (eg. images/banner). Your video must be available in both .mp4 and .webm
 			formats to work correctly.
 		-->
-			<section id="banner" data-video="../resources/images/algo/bannerAlgo">
+			<section id="banner" data-video="../resources/images/algo/bannerAlgo2">
 				<div class="inner">
 					<h1>The World of Divide and Conquer</h1>
 					<p style="color:white;">Have you wondered how Divide and Conquer works?<br />

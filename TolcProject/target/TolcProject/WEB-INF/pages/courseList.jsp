@@ -272,13 +272,13 @@ fbq('track', 'PageView');
 		</a> <a href="#feature-item3" class="item"> <span class="icon"
 			style="background-image: url(https://image.ibb.co/gAoewG/os.jpg); background-size: auto 70%"></span>
 			<span class="name">Operating Systems</span>
-		</a> <a href="#feature-item4" class="item"> <span class="icon"
+		</a> <!-- <a href="#feature-item4" class="item"> <span class="icon"
 			style="background-image: url(http://www.jobmail.co.za/blog/wp-content/uploads/2015/08/information-technology-jobs-software-engineer-blackboard.jpg); background-size: auto 70%"></span>
 			<span class="name">Software Engineering</span>
 		</a> <a href="#feature-item5" class="item"> <span class="icon"
 			style="background-image: url(https://cdn2.iconfinder.com/data/icons/health-care-5/512/electronic_brain-512.png); background-size: auto 70%"></span>
 			<span class="name">Machine Learning</span>
-		</a>
+		</a> -->
 	</div>
 
 	<div class="container" id="courseListContainer">
@@ -362,19 +362,19 @@ fbq('track', 'PageView');
 				</div>
 			</div>
 
-			<div id="feature-item4" class="feature">
+			<%-- <div id="feature-item4" class="feature">
 				<div class="title"
 					style="background-image: url(http://www.jobmail.co.za/blog/wp-content/uploads/2015/08/information-technology-jobs-software-engineer-blackboard.jpg);">
 					<span><a href="machineLearning?id=${employee.id}">Machine Learning</a></span>
 				</div>
 
 				<div class="text">
-			<%-- 	<form:form action="enrollUser" method="post">
+				<form:form action="enrollUser" method="post">
 						<input class="btnCrazy" style="float:right;" type="submit" value="Enroll"/>
 						<input type="hidden" name="courseName" value="Somename" class="email" />
 						<input type="hidden" name="id"  path="id"/>
 						<input type="hidden" name="employeeId" value='${employee.id}' class="email" />
-					</form:form> --%>
+					</form:form>
 					<ul>
 						<li><strong>Schema Definition </strong>– Emphasis on learning
 							through hands-on, applied project work</li>
@@ -395,11 +395,11 @@ fbq('track', 'PageView');
 				</div>
 
 				<div class="text">
-			<%-- 	<form:form action="enrollUser" method="post">
+				<form:form action="enrollUser" method="post">
 						<input class="btnCrazy" style="float:right;" type="submit" value="Enroll"/>
 						<input type="hidden" name="courseName" value="Somename2" class="email" />
 						<input type="hidden" name="id" value='${employee.id}' class="email" />
-					</form:form> --%>
+					</form:form>
 					<ul>
 						<li><strong>Schema Definition </strong>– Emphasis on learning
 							through hands-on, applied project work</li>
@@ -411,7 +411,7 @@ fbq('track', 'PageView');
 							and mentorship for formal and informal feedback</li>
 					</ul>
 				</div>
-			</div>
+			</div> --%>
 
 
 		</div>

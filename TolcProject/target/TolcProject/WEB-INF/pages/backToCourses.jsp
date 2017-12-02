@@ -28,6 +28,6 @@ color: #2b8cbe;
 </head>
 
 <body>
-<a class="aclass" href="http://localhost:7080/TolcProject/courseList?id=${employee.id}">Go back to courses list page</a><!-- End Btn2 -->
+<a class="aclass" href="../courseList?id=${employee.id}">Go back to courses list page</a><!-- End Btn2 -->
 </body>
 </html>

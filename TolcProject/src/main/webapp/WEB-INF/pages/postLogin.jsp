@@ -295,7 +295,7 @@ $(document).ready(function(){
 		    <li><a href="">Number of courses completed in Algorithms: ${algoLevel}</a></li>
 		    <li><a href="">Number of courses completed in Databases: ${dbLevel}</a></li>
 		    <li><a href="">Number of courses completed in Operating Systems: ${osLevel}</a></li>
-		    
+		    <li><a href="">Number of people who marked you as helpful: ${contributionCount}</a></li>
 		</ol>
 		
 		<%-- Number of messages sent: ${sentCount} <br>

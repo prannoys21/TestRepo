@@ -107,7 +107,7 @@ background:#3594D2;
 </style>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:700,600' rel='stylesheet' type='text/css'>
 
-<form:form action="loginPage" modelAttribute="employee" method="post" >
+<form:form action="userHomepage" modelAttribute="employee" method="post" >
 <div class="box">
 <h1>WeLearn</h1>
 <h1>Login</h1>

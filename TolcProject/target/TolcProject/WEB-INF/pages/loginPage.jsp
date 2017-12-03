@@ -107,29 +107,29 @@ background:#3594D2;
 </style>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:700,600' rel='stylesheet' type='text/css'>
 
-<form:form action="loginPage" modelAttribute="employee" method="post" >
-<div class="box">
-<h1>WeLearn</h1>
-<h1>Login</h1>
-
-<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-Username: <input type="text" name="userName" value="" class="email" />
-<br>
-<form:errors path="userName" cssClass="error" />
-<br>
-Passowrd: <input type="password" name="password" value="" class="email" />
-<br>
-<form:errors path="password" cssClass="error" />
-<br>
-
-
-<div style = "margin-left:200px">
-<input class="btn" type="submit" value="Sign In"/>
-<div id="btn2"><a href="newEmployee">Sign Up</a></div> <!-- End Btn2 --> 
-  </div>
-</div> <!-- End Box -->
-
-<%--  <form:errors path="loginError" cssClass="error" /> --%>
+<form:form action="userHomepage" modelAttribute="employee" method="post" >
+	<div class="box">
+	<h1>WeLearn</h1>
+	<h1>Login</h1>
+	
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+	Username: <input type="text" name="userName" value="" class="email" />
+	<br>
+	<form:errors path="userName" cssClass="error" />
+	<br>
+	Passowrd: <input type="password" name="password" value="" class="email" />
+	<br>
+	<form:errors path="password" cssClass="error" />
+	<br>
+	
+	
+	<div style = "margin-left:200px">
+	<input class="btn" type="submit" value="Sign In"/>
+	<div id="btn2"><a href="newEmployee">Sign Up</a></div> <!-- End Btn2 --> 
+	  </div>
+	</div> <!-- End Box -->
+	
+	<%--  <form:errors path="loginError" cssClass="error" /> --%>
 </form:form>
 
 

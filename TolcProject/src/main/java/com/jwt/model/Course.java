@@ -32,26 +32,17 @@ public class Course implements Serializable {
 	@Column(name="COURSE_NAME")
 	private String courseName;
 	
-	@Column(name="COURSE_TOPIC_NUMBER")
-	private int courseTopicNumber;
+	@Column(name="TOPIC_NAME")
+	private String topicName;
 	
-	@ManyToOne
-	@JoinColumn(name = "EMPLOYEE_ID")
-	private Employee employee;
-
+	@Column(name="TOPIC_LEVEL")
+	private String topicLevel;
 	
-	
-	public Employee getEmployee() {
-		return employee;
-	}
+	@Column(name="TOPIC_URL")
+	private String topicUrl;
 
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+	@Column(name="TOPIC_MENTION_COUNT")
+	private int topicCountChat;
 
 	public int getId() {
 		return id;
@@ -69,13 +60,41 @@ public class Course implements Serializable {
 		this.courseName = courseName;
 	}
 
-	public int getCourseTopicNumber() {
-		return courseTopicNumber;
+	public String getTopicName() {
+		return topicName;
 	}
 
-	public void setCourseTopicNumber(int courseTopicNumber) {
-		this.courseTopicNumber = courseTopicNumber;
+	public void setTopicName(String topicName) {
+		this.topicName = topicName;
 	}
 
+	public String getTopicLevel() {
+		return topicLevel;
+	}
+
+	public void setTopicLevel(String topicLevel) {
+		this.topicLevel = topicLevel;
+	}
+
+	public String getTopicUrl() {
+		return topicUrl;
+	}
+
+	public void setTopicUrl(String topicUrl) {
+		this.topicUrl = topicUrl;
+	}
+
+	public int getTopicCountChat() {
+		return topicCountChat;
+	}
+
+	public void setTopicCountChat(int topicCountChat) {
+		this.topicCountChat = topicCountChat;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	};
+	
 	
 }

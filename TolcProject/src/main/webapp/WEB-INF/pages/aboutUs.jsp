@@ -151,9 +151,10 @@ src="https://www.facebook.com/tr?id=678167132284607&ev=PageView
             </a>
         </div>
         <nav>
-            <ul id="menu-header-bar" class="menu"><li id="menu-item-3884" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-3720 current_page_item menu-item-3884"><a href="aboutUs">About us</a></li>
-<li id="menu-item-3885" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3885"><a href="customers">Customers</a></li>
-<li id="menu-item-3910" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3910"><a href="courseList">Courses</a></li>
+            <ul id="menu-header-bar" class="menu"><li id="menu-item-3884" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-3720 current_page_item menu-item-3884"><a href="aboutUs?id=${employee.id}">About us</a></li>
+<li id="menu-item-3885" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3885"><a href="customers?id=${employee.id}">Customers</a></li>
+<li id="menu-item-3910" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3910"><a href="courseList?id=${employee.id}">Courses</a></li>
+<li id="menu-item-3910" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3910"><a href="userHomepage?id=${employee.id}">User Homepage</a></li>
 
 </ul>                            <ul id="personal-menu">
                                             <li>

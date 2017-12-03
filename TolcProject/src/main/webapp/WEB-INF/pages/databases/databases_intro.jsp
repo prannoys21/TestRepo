@@ -69,7 +69,7 @@
 									<input type="hidden" name="courseName" path="courseName" value="Databases" />
 									<input type="hidden" name="courseLevel" path="courseLevel" value="1" />
 									<input type="hidden" name="topicName" path="topicName" value="Introduction to Databases" />
-									<input type="hidden" name="topicUrl" path="topicUrl" value="databases" />
+									<input type="hidden" name="topicUrl" path="topicUrl" value="databases/intro" />
 					
 								</form:form>
 							</div>

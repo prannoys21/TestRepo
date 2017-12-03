@@ -60,6 +60,8 @@ public class EmployeeController {
 	private TickerService tickerService;
 	
 	
+	
+	
 
 	@RequestMapping(value = "/")
 	public ModelAndView listEmployee(ModelAndView model) throws IOException {
@@ -120,7 +122,7 @@ public class EmployeeController {
 		return model;
 	}
 	
-	@RequestMapping(value = "/loginPage", method = RequestMethod.POST)
+	@RequestMapping(value = "/userHomepage", method = RequestMethod.POST)
 	public ModelAndView validateUser(HttpServletRequest request, @ModelAttribute Employee employee, BindingResult result, SessionStatus status) {
 		DecimalFormat df2 = new DecimalFormat(".##");
 		double overallProgress = 0.0;
@@ -196,18 +198,34 @@ public class EmployeeController {
 				receivedCount = receivedMessageList.size();
 			}
 			double socialLearningRate = (double) numberOfPeopleHelped/(algoLevel + dbLevel + osLevel);
-			model.addObject("employee", employee2);
-			model.addObject("peopleHelped", numberOfPeopleHelped);
+			model.addObject("employee",employee2);
+			model.addObject("contributionPos",employee.getContributionPos());
+			model.addObject("contributionNeg",employee.getContributionNeg());
+			model.addObject("algoLevel", algoLevel);
 			model.addObject("topicWiseHelpingCountAlgorithms", topicWiseHelpingCountAlgorithms);
 			model.addObject("topicWiseHelpingCountDatabases", topicWiseHelpingCountDatabases);
 			model.addObject("topicWiseHelpingCountOperatingSystems", topicWiseHelpingCountOperatingSystems);
-			model.addObject("socialLearningRate", df2.format(socialLearningRate));
-			model.addObject("sentCount", sentCount);
-			model.addObject("receivedCount", receivedCount);
-			model.addObject("algoLevel", algoLevel);
 			model.addObject("dbLevel", dbLevel);
 			model.addObject("osLevel", osLevel);
+			model.addObject("peopleHelped", numberOfPeopleHelped);
 			model.addObject("overallProgress", df2.format(overallProgress*100));
+			model.addObject("socialLearningRate", df2.format(socialLearningRate));
+			/*model.addObject("employee", employee);*/
+			model.addObject("sentCount", sentCount);
+			model.addObject("receivedCount", receivedCount);
+			model.addObject("algoIntroCount" , courseService.getCourse(1).getTopicCountChat());
+			model.addObject("greedy" , courseService.getCourse(2).getTopicCountChat());
+			model.addObject("divideAndConquer" , courseService.getCourse(3).getTopicCountChat());
+			model.addObject("dynamic" , courseService.getCourse(4).getTopicCountChat());
+			model.addObject("databasesCount" , courseService.getCourse(5).getTopicCountChat());
+			model.addObject("architecture" , courseService.getCourse(6).getTopicCountChat());
+			model.addObject("models" , courseService.getCourse(7).getTopicCountChat());
+			model.addObject("schemas" , courseService.getCourse(8).getTopicCountChat());
+			model.addObject("operatingSystemsCount" , courseService.getCourse(9).getTopicCountChat());
+			model.addObject("memMgmt" , courseService.getCourse(10).getTopicCountChat());
+			model.addObject("cache" , courseService.getCourse(11).getTopicCountChat());
+			model.addObject("secStorage" , courseService.getCourse(12).getTopicCountChat());
+			/*model.setViewName("postLogin");*/
 			status.setComplete();
 			return model;
 		}
@@ -270,7 +288,9 @@ public class EmployeeController {
 		}
 		overallProgress = (double)(algoLevel + dbLevel + osLevel)/12;
 		double socialLearningRate = (double) numberOfPeopleHelped/(algoLevel + dbLevel + osLevel);
-		model.addObject("contributionCount",employee.getContributionCount());
+		model.addObject("employee",employee);
+		model.addObject("contributionPos",employee.getContributionPos());
+		model.addObject("contributionNeg",employee.getContributionNeg());
 		model.addObject("algoLevel", algoLevel);
 		model.addObject("topicWiseHelpingCountAlgorithms", topicWiseHelpingCountAlgorithms);
 		model.addObject("topicWiseHelpingCountDatabases", topicWiseHelpingCountDatabases);
@@ -280,10 +300,23 @@ public class EmployeeController {
 		model.addObject("peopleHelped", numberOfPeopleHelped);
 		model.addObject("overallProgress", df2.format(overallProgress*100));
 		model.addObject("socialLearningRate", df2.format(socialLearningRate));
-		model.addObject("employee", employee);
+		/*model.addObject("employee", employee);*/
 		model.addObject("sentCount", sentCount);
 		model.addObject("receivedCount", receivedCount);
+		model.addObject("algoIntroCount" , courseService.getCourse(1).getTopicCountChat());
+		model.addObject("greedy" , courseService.getCourse(2).getTopicCountChat());
+		model.addObject("divideAndConquer" , courseService.getCourse(3).getTopicCountChat());
+		model.addObject("dynamic" , courseService.getCourse(4).getTopicCountChat());
+		model.addObject("databasesCount" , courseService.getCourse(5).getTopicCountChat());
+		model.addObject("architecture" , courseService.getCourse(6).getTopicCountChat());
+		model.addObject("models" , courseService.getCourse(7).getTopicCountChat());
+		model.addObject("schemas" , courseService.getCourse(8).getTopicCountChat());
+		model.addObject("operatingSystemsCount" , courseService.getCourse(9).getTopicCountChat());
+		model.addObject("memMgmt" , courseService.getCourse(10).getTopicCountChat());
+		model.addObject("cache" , courseService.getCourse(11).getTopicCountChat());
+		model.addObject("secStorage" , courseService.getCourse(12).getTopicCountChat());
 		model.setViewName("postLogin");
+		
 		return model;
 	}
 	
@@ -322,9 +355,7 @@ public class EmployeeController {
 		int empId = Integer.parseInt(request.getParameter("id"));
 		Employee employee = employeeService.getEmployee(empId);
 		Course  course = new Course();
-		course.setEmployee(employee);
 		course.setCourseName(courseName);
-		course.setCourseTopicNumber(0);
 		courseService.addCourse(course);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("courseList");
@@ -344,7 +375,8 @@ public class EmployeeController {
 	
 	@RequestMapping(value = "/aboutUs", method = RequestMethod.GET)
 	public ModelAndView aboutUs(HttpServletRequest request) {
-		Employee employee = new Employee();
+		int empId = Integer.parseInt(request.getParameter("id"));
+		Employee employee = employeeService.getEmployee(empId);
 		ModelAndView model = new ModelAndView();
 		model.addObject("employee", employee);
 		model.setViewName("aboutUs");
@@ -353,25 +385,25 @@ public class EmployeeController {
 	
 	@RequestMapping(value = "/customers", method = RequestMethod.GET)
 	public ModelAndView customers(HttpServletRequest request) {
-		Employee employee = new Employee();
+		int empId = Integer.parseInt(request.getParameter("id"));
+		Employee employee = employeeService.getEmployee(empId);
 		ModelAndView model = new ModelAndView();
 		model.addObject("employee", employee);
 		model.setViewName("customers");
 		return model;
 	}
 	
-	@RequestMapping(value = "/sendFeedbackFromChat/{empId}/{feedbackResponseValue}", method = RequestMethod.GET)
-	public void sendFeedbackFromChat(HttpServletRequest request, @PathVariable int empId, @PathVariable int feedbackResponseValue) {
+	@RequestMapping(value = "/sendFeedbackFromChat/{empId}/{feedbackResponseValue}", method = RequestMethod.POST)
+	public @ResponseBody int sendFeedbackFromChat(HttpServletRequest request, @PathVariable int empId, @PathVariable int feedbackResponseValue) {
 		Employee employee = employeeService.getEmployee(empId);
-		int empContributionCount = employee.getContributionCount();
 		if (feedbackResponseValue == 100) {
-			employee.setContributionCount(empContributionCount +1);
+			employee.setContributionPos(employee.getContributionPos() +1);
 			employeeService.updateEmployee(employee);
 		} else if (feedbackResponseValue == 101) {
-			employee.setContributionCount(empContributionCount-1);
+			employee.setContributionNeg(employee.getContributionNeg()+1);
 			employeeService.updateEmployee(employee);
 		}
-		/*return empContributionCount;*/
+		return employee.getContributionPos()/employee.getContributionNeg();
 		
 	}
 	

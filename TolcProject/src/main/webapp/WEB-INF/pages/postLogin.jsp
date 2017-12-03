@@ -222,10 +222,10 @@ src="https://www.facebook.com/tr?id=678167132284607&ev=PageView
         </div>
         <nav>
             <ul id="menu-header-bar" class="menu">
-<li id="menu-item-3884" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3884"><a href="aboutUs">About Us</a></li>
-<li id="menu-item-3885" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3885"><a href="customers">Customers</a></li>
+<li id="menu-item-3884" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3884"><a href="aboutUs?id=${employee.id}">About Us</a></li>
+<li id="menu-item-3885" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3885"><a href="customers?id=${employee.id}">Customers</a></li>
 <li id="menu-item-3910" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3910"><a href="courseList?id=${employee.id}">Courses</a></li>
-<li id="menu-item-3920" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3910"><a href="chatAndLearn?id=${employee.id}">Chat</a></li>
+<%-- <li id="menu-item-3920" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3910"><a href="chatAndLearn?id=${employee.id}">Chat</a></li> --%>
 <li id="menu-item-3920" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3910"><a href="editEmployee?id=${employee.id}">Edit Profile</a></li>
 <li id="menu-item-3920" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3910"><a href="initialPage">Logout</a></li>
 
@@ -282,7 +282,52 @@ $(document).ready(function(){
 		  arrows: true,
 		  adaptiveHeight: true
 	  });
+	  ${employee.id}
+	  var topicMentionArr = [${algoIntroCount}, ${greedy}, ${divideAndConquer}, ${dynamic}, ${databasesCount}, ${architecture}, ${models}, ${schemas}, ${operatingSystemsCount}, ${memMgmt}, ${cache}, ${secStorage}]
+		var maxMention = Math.max.apply(null, topicMentionArr);
+		var positionOfMax = topicMentionArr.indexOf(maxMention) + 1;
+		var topicNameFoundHighest;
+		//href's have to be changed and hence repetitive statements
+		if(positionOfMax == 1){
+			topicNameFoundHighest = "Introduction to Algorithms";
+			$('.rounded-list').append('<li><a href="algorithms/intro?id=${employee.id}">'+ topicNameFoundHighest +' &nbsp;  has been mentioned in chats &nbsp;'+ maxMention+' times. <br> Click on this bar to view its content. Check if it needs any modifications </a></li><hr> ');
+		} else if (positionOfMax == 2) {
+			topicNameFoundHighest = "Greedy Approach";
+			$('.rounded-list').append('<li><a href="algorithms/greedyApproach?id=${employee.id}">'+ topicNameFoundHighest +' has been mentioned in chats &nbsp;'+ maxMention+' times. <br> Click on this bar to view its content. Check if it needs any modifications </a></li><hr> ');
+		} else if (positionOfMax == 3) {
+			topicNameFoundHighest = "Divide and Conquer";
+			$('.rounded-list').append('<li><a href="algorithms/divideAndConquer?id=${employee.id}">'+ topicNameFoundHighest +' &nbsp;  has been mentioned in chats &nbsp;'+ maxMention+' times. <br> Click on this bar to view its content. Check if it needs any modifications </a></li><hr> ');
+		} else if (positionOfMax == 4) {
+			topicNameFoundHighest = "Dynamic Programming";
+			$('.rounded-list').append('<li><a href="algorithms/dynamicProgramming?id=${employee.id}">'+ topicNameFoundHighest +' &nbsp;  has been mentioned in chats &nbsp;'+ maxMention+' times. <br> Click on this bar to view its content. Check if it needs any modifications </a></li><hr> ');
+		} else if (positionOfMax == 5) {
+			topicNameFoundHighest = "Introduction to Databases";
+			$('.rounded-list').append('<li><a href="databases/intro?id=${employee.id}">'+ topicNameFoundHighest +' &nbsp;  has been mentioned in chats &nbsp;'+ maxMention+' times. <br> Click on this bar to view its content. Check if it needs any modifications </a></li><hr> ');
+		} else if (positionOfMax == 6) {
+			topicNameFoundHighest = "Architecture";
+			$('.rounded-list').append('<li><a href="databases/architecture?id=${employee.id}">'+ topicNameFoundHighest +' &nbsp;  has been mentioned in chats &nbsp;'+ maxMention+' times. <br> Click on this bar to view its content. Check if it needs any modifications </a></li><hr> ');
+		} else if (positionOfMax == 7) {
+			topicNameFoundHighest = "Models";
+			$('.rounded-list').append('<li><a href="databases/models?id=${employee.id}">'+ topicNameFoundHighest +' &nbsp;  has been mentioned in chats &nbsp;'+ maxMention+' times. <br> Click on this bar to view its content. Check if it needs any modifications </a></li><hr> ');
+		} else if (positionOfMax == 8) {
+			topicNameFoundHighest = "Schemas";
+			$('.rounded-list').append('<li><a href="databases/schemas?id=${employee.id}">'+ topicNameFoundHighest +' &nbsp;  has been mentioned in chats &nbsp;'+ maxMention+' times. <br> Click on this bar to view its content. Check if it needs any modifications </a></li><hr> ');
+		} else if (positionOfMax == 9) {
+			topicNameFoundHighest = "Introduction to Operating Systems";
+			$('.rounded-list').append('<li><a href="operatingSystems/intro?id=${employee.id}">'+ topicNameFoundHighest +' &nbsp;  has been mentioned in chats &nbsp;'+ maxMention+' times. <br> Click on this bar to view its content. Check if it needs any modifications </a></li><hr> ');
+		} else if (positionOfMax == 10) {
+			topicNameFoundHighest = "Memory Management";
+			$('.rounded-list').append('<li><a href="operatingSystems/memoryManagement?id=${employee.id}">'+ topicNameFoundHighest +' &nbsp;  has been mentioned in chats &nbsp;'+ maxMention+' times. <br> Click on this bar to view its content. Check if it needs any modifications </a></li><hr> ');
+		} else if (positionOfMax == 11) {
+			topicNameFoundHighest = "Cache";
+			$('.rounded-list').append('<li><a href="operatingSystems/cache?id=${employee.id}">'+ topicNameFoundHighest +' &nbsp;  has been mentioned in chats &nbsp;'+ maxMention+' times. <br> Click on this bar to view its content. Check if it needs any modifications </a></li><hr> ');
+		} else if (positionOfMax == 12) {
+			topicNameFoundHighest = "Secondary Storage";
+			$('.rounded-list').append('<li><a href="operatingSystems/secondaryStorage?id=${employee.id}">'+ topicNameFoundHighest +' &nbsp;  has been mentioned in chats &nbsp;'+ maxMention+' times. <br> Click on this bar to view its content. Check if it needs any modifications </a></li><hr> ');
+		}
+
 	});
+		
 </script>		
 				
 	<section id="solution-highlights" class="solution-highlights" style="">
@@ -295,7 +340,8 @@ $(document).ready(function(){
 		    <li><a href="">Number of courses completed in Algorithms: ${algoLevel}</a></li>
 		    <li><a href="">Number of courses completed in Databases: ${dbLevel}</a></li>
 		    <li><a href="">Number of courses completed in Operating Systems: ${osLevel}</a></li>
-		    <li><a href="">Number of people who marked you as helpful: ${contributionCount}</a></li>
+		    <li><a href="">Number of people who marked you as helpful: ${contributionPos}</a></li>
+		    <li><a href="">Number of people who marked you as not helpful: ${contributionNeg}</a></li>
 		</ol>
 		
 		<%-- Number of messages sent: ${sentCount} <br>
@@ -577,7 +623,7 @@ $(document).ready(function(){
 			
 		
 							
-	<section class="testimonial" style="background-image: url(https://novoed.com/wp-content/uploads/2016/10/Transformation-Cropped.jpg);">
+	<!-- <section class="testimonial" style="background-image: url(https://novoed.com/wp-content/uploads/2016/10/Transformation-Cropped.jpg);">
 		<div class="container">
 									<div class="row">
 				<div class="col-md-8 col-md-offset-2">
@@ -593,7 +639,7 @@ $(document).ready(function(){
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 	
 		
 			

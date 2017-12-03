@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.jwt.dao.CourseDAO;
 import com.jwt.model.Course;
+import com.jwt.model.Employee;
 
 /**
  * @author  Prannoy Chandra
@@ -23,14 +24,13 @@ public class CourseServiceImpl implements CourseService {
 	public Course getCourse(int courseId) {
 		return courseDAO.getCourse(courseId);
 	}
-
-
-
+	
 	@Override
 	public void addCourse(Course course) {
 		courseDAO.addCourse(course);
 		
 	}
+	
 
 	
 

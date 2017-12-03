@@ -64,9 +64,9 @@
 									<input class="markAsComplete" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="Mark as Completed" style="margin-left: 43%"/>
 									<input class="completedCourse" id="notificationgenerator" name="notificationgenerator" path="notificationgenerator" type="submit" value="You Completed This Topic" style="margin-left: 38%"/>
 									<input type="hidden" name="courseName" path="courseName" value="Algorithms" />
-									<input type="hidden" name="courseLevel" path="courseLevel" value='2' />
-									<input type="hidden" name="topicName" path="topicName" value="Greedy Approach" />
-									<input type="hidden" name="topicUrl" path="topicUrl" value="algorithms/greedyApproach" />
+									<input type="hidden" name="courseLevel" path="courseLevel" value='1' />
+									<input type="hidden" name="topicName" path="topicName" value="Introduction to Algorithms" />
+									<input type="hidden" name="topicUrl" path="topicUrl" value="algorithms/intro" />
 					
 								</form:form>
 							</div>

@@ -116,7 +116,8 @@ input {
 	border-radius: 3px;
 	padding: 8px;
 	outline: none;
-	width: 234px;
+	width: 254px;
+    height: 38px;
 }
 
 .chat-message-counter {
@@ -172,6 +173,7 @@ input {
 
 .chat-message-content {
 	margin-left: 12px;
+	margin-bottom: -14px;
 }
 
 .chat-time {
@@ -186,6 +188,7 @@ input {
 .chatMessageWindowText {
 	 margin-left: 6px;
     font-size: 11px;
+	margin-bottom: 25px;
 }
 
 .feedbackYes {
@@ -216,7 +219,7 @@ input {
 
 		/* e.preventDefault();
 		$('#live-chat').fadeOut(300); */
-		//this doesnt work$('#chat-history').append('<hr><div class="chat-message clearfix"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="chat-message-content clearfix">Did chatting with this person? <h5> Yes or No?</h5></div></div><hr>')
+		//this doesnt work$('#chat-history').append('<hr><div class="chat-message clearfix"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="chat-message-content clearfix">Did chatting with this person? <h5> Yes or No?</h5></div></div>')
 
 	});
 
@@ -256,16 +259,11 @@ input {
 					<c:set var = "finalMessageWithEmpId" value = "${fn:replace(messageWith999,999, empId)}" />
 
 						<p class="chatMessageWindowText">${finalMessageWithEmpId}</p>
-
 					</div> 
-					
 				</div>
-				 <hr>
 				 </c:if>
 				 </c:if>
 				</c:forEach>
-				
-				
 			</div> <!-- end chat-history -->
 
 <form:form action="sendMessageInCourse?id=${employee.id}" method="post" modelAttribute="chat" name="messageAddition" id="messageAddition"> 
@@ -340,7 +338,7 @@ input {
 				  				inCourseMessage[i].sender.firstName = "You";
 				  			}
 				        	 if(inCourseMessage[i].message != ""){
-				 				$('#chat-history').append('<div class="chat-message clearfix"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="chat-message-content clearfix"><span class="chat-time">'+ inCourseMessage[i].timeStamp +'</span><h5>'+ inCourseMessage[i].sender.firstName +'</h5><p class="chatMessageWindowText">'+ parsedMessage +'</p></div></div><hr>')
+				 				$('#chat-history').append('<div class="chat-message clearfix"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="chat-message-content clearfix"><span class="chat-time">'+ inCourseMessage[i].timeStamp +'</span><h5>'+ inCourseMessage[i].sender.firstName +'</h5><p class="chatMessageWindowText">'+ parsedMessage +'</p></div></div>')
 				 			}
 				 			$('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
 				 			$('input[type="text"], textarea').val('');
@@ -356,7 +354,7 @@ input {
 		 $('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
 		 //5
 		$(".chat-close").click(function(){
-			$('#chat-history').append('<hr><div class="chat-message clearfix"><div class="chat-message-content clearfix">Did chatting with this person help you? <br> <h5 class="feedbackYes" style="font-size:17px;"> Yes </h5> or <h5 class="feedbackNo" style="font-size:17px;"> No? </h5></div></div><hr>')
+			$('#chat-history').append('<hr><div class="chat-message clearfix"><div class="chat-message-content clearfix">Did chatting with this person help you? <br> <h5 class="feedbackYes" style="font-size:17px;"> Yes </h5> or <h5 class="feedbackNo" style="font-size:17px;"> No? </h5></div></div>')
 			$('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
 				/* $("#live-chat").hide(); */
 		 });
@@ -372,7 +370,7 @@ input {
 				 }
 	         $.ajax({
 	             url :  formURL,
-				 type: 'GET',
+				 type: 'POST',
 	             data : null,
 				  success: function(data, textStatus, jqXHR){ 
 				  
@@ -387,7 +385,7 @@ input {
 		 });
 		 
 		 $(document).on('click','.feedbackNo', function(){
-			 $('#chat-history').append('<hr><div class="chat-message clearfix"><div class="chat-message-content clearfix">Thank you for your feedback! </div></div><hr>');
+			 $('#chat-history').append('<hr><div class="chat-message clearfix"><div class="chat-message-content clearfix">Thank you for your feedback! </div></div>');
 			 $('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
 			 $("#feedbackResponse").val(-1);
 			 if(idFromTicker != undefined){
@@ -397,7 +395,7 @@ input {
 				 }
 	         $.ajax({
 	             url :  formURL,
-				 type: 'GET',
+				 type: 'POST',
 	             data : null,
 				  success: function(data, textStatus, jqXHR){ 
 				  		console.log(data);
@@ -468,7 +466,7 @@ input {
 				  				inCourseMessage[i].sender.firstName = "You";
 				  			}
 				        	 if(inCourseMessage[i].message != ""){
-				 				$('#chat-history').append('<hr><div class="chat-message clearfix"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="chat-message-content clearfix"><span class="chat-time">'+ inCourseMessage[i].timeStamp +'</span><h5>'+ inCourseMessage[i].sender.firstName +'</h5><p class="chatMessageWindowText">'+ parsedMessage +'</p></div></div><hr>')
+				 				$('#chat-history').append('<hr><div class="chat-message clearfix"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="chat-message-content clearfix"><span class="chat-time">'+ inCourseMessage[i].timeStamp +'</span><h5>'+ inCourseMessage[i].sender.firstName +'</h5><p class="chatMessageWindowText">'+ parsedMessage +'</p></div></div>')
 				 			}
 				 			$('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
 				 			$('input[type="text"], textarea').val('');
@@ -494,11 +492,11 @@ input {
 			$('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
 			if(objectData.message != ""){
 				if((objectData.sender.id == idFromTicker || objectData.sender.id == idFromMessageRequestDiv) && objectData.recipient.id == userId){
-					$('#chat-history').append('<hr><div class="chat-message clearfix"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="chat-message-content clearfix"><span class="chat-time">'+ objectData.timeStamp +'</span><h5>'+ objectData.sender.firstName +'</h5><p class="chatMessageWindowText">'+ parsedMessage +'</p></div></div><hr>')
+					$('#chat-history').append('<hr><div class="chat-message clearfix"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="chat-message-content clearfix"><span class="chat-time">'+ objectData.timeStamp +'</span><h5>'+ objectData.sender.firstName +'</h5><p class="chatMessageWindowText">'+ parsedMessage +'</p></div></div>')
 				}
 				if((objectData.recipient.id == userId) && (objectData.sender.id != messageRequestSenderId  )){
 					setTimeout(function(){
-					var newMessageRequest = '<div class="message-request messagefix" id="message-request'+messageCounter+'"><div class="message-request-content messagefix"><div class="clickableMessageRequestName">'+ objectData.sender.firstName + '</div> wants to chat with you!<div class="getMessageRequestSenderId" style="display:none;">'+objectData.sender.id+'</div>&nbsp; &nbsp; <span class="message-request-time">' +objectData.timeStamp + '</span></div><hr></div>'
+					var newMessageRequest = '<div class="message-request messagefix" id="message-request'+messageCounter+'"><div class="message-request-content messagefix"><div class="clickableMessageRequestName">'+ objectData.sender.firstName + '</div> wants to chat with you!<div class="getMessageRequestSenderId" style="display:none;">'+objectData.sender.id+'</div>&nbsp; &nbsp; <span class="message-request-time">' +objectData.timeStamp + '</span></div></div>'
 					$(newMessageRequest).prependTo('.message-history').hide().slideDown(250);
 					$("#messageRqstIcon").attr("src","http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-2/48/message-already-read-icon.png");
 					messageRequestSenderId = objectData.sender.id;
@@ -561,7 +559,7 @@ input {
 				  				inCourseMessage[i].sender.firstName = "You";
 				  			}
 				        	 if(inCourseMessage[i].message != ""){
-				 				$('#chat-history').append('<hr><div class="chat-message clearfix"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="chat-message-content clearfix"><span class="chat-time">'+ inCourseMessage[i].timeStamp +'</span><h5>'+ inCourseMessage[i].sender.firstName +'</h5><p class="chatMessageWindowText">'+ parsedMessage +'</p></div></div><hr>')
+				 				$('#chat-history').append('<hr><div class="chat-message clearfix"><img src="https://image.ibb.co/mhsTqb/anonymous.jpg" alt="" width="32" height="32"><div class="chat-message-content clearfix"><span class="chat-time">'+ inCourseMessage[i].timeStamp +'</span><h5>'+ inCourseMessage[i].sender.firstName +'</h5><p class="chatMessageWindowText">'+ parsedMessage +'</p></div></div>')
 				 			}
 				 			$('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
 				 			$('input[type="text"], textarea').val('');

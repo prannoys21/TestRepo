@@ -48,17 +48,28 @@ public class Employee implements Serializable {
 	@Column(name="PASSWORD")
 	private String password;
 	
-	@Column(name="CONTRIBUTION_COUNT")
-	private int contributionCount;
+	@Column(name="CONTRIBUTION_POS")
+	private int contributionPos;
+	
+	@Column(name="CONTRIBUTION_NEG")
+	private int contributionNeg;
 
 	
 
-	public int getContributionCount() {
-		return contributionCount;
+	public int getContributionPos() {
+		return contributionPos;
 	}
 
-	public void setContributionCount(int contributionCount) {
-		this.contributionCount = contributionCount;
+	public void setContributionPos(int contributionPos) {
+		this.contributionPos = contributionPos;
+	}
+
+	public int getContributionNeg() {
+		return contributionNeg;
+	}
+
+	public void setContributionNeg(int contributionNeg) {
+		this.contributionNeg = contributionNeg;
 	}
 
 	public int getId() {

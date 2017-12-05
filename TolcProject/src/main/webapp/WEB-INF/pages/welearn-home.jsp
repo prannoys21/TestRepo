@@ -152,8 +152,8 @@ src="https://www.facebook.com/tr?id=678167132284607&ev=PageView
             </a>
         </div>
         <nav>
-            <ul id="menu-header-bar" class="menu"><li id="menu-item-3884" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3884"><a href="aboutUs">About Us</a></li>
-<li id="menu-item-3885" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3885"><a href="customers">Customers</a></li>
+            <ul id="menu-header-bar" class="menu"><li id="menu-item-3884" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3884"><a href="aboutUs?id=0">About Us</a></li>
+<li id="menu-item-3885" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3885"><a href="customers?id=0">Customers</a></li>
 
 </ul>                           
 					<ul id="personal-menu">

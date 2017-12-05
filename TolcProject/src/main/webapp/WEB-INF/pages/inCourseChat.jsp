@@ -354,13 +354,13 @@ input {
 		 $('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
 		 //5
 		$(".chat-close").click(function(){
-			$('#chat-history').append('<hr><div class="chat-message clearfix"><div class="chat-message-content clearfix">Did chatting with this person help you? <br> <h5 class="feedbackYes" style="font-size:17px;"> Yes </h5> or <h5 class="feedbackNo" style="font-size:17px;"> No? </h5></div></div>')
+			$('#chat-history').append('<div class="chat-message clearfix"><div class="chat-message-content clearfix">Did chatting with this person help you? <br> <h5 class="feedbackYes" style="font-size:17px;"> Yes </h5> or <h5 class="feedbackNo" style="font-size:17px;"> No? </h5></div></div>')
 			$('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
 				/* $("#live-chat").hide(); */
 		 });
 		
 		 $(document).on('click','.feedbackYes', function(){
-			 $('#chat-history').append('<hr><div class="chat-message clearfix"><div class="chat-message-content clearfix">Thank you for your feedback! </div></div><hr>');
+			 $('#chat-history').append('<div class="chat-message clearfix"><div class="chat-message-content clearfix">Thank you for your feedback! </div></div>');
 			 $('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
 			 //$("#feedbackResponse").val(1);
 			 if(idFromTicker != undefined){
@@ -385,7 +385,7 @@ input {
 		 });
 		 
 		 $(document).on('click','.feedbackNo', function(){
-			 $('#chat-history').append('<hr><div class="chat-message clearfix"><div class="chat-message-content clearfix">Thank you for your feedback! </div></div>');
+			 $('#chat-history').append('<div class="chat-message clearfix"><div class="chat-message-content clearfix">Thank you for your feedback! </div></div>');
 			 $('.chat-history').scrollTop($('.chat-history')[0].scrollHeight);
 			 $("#feedbackResponse").val(-1);
 			 if(idFromTicker != undefined){

@@ -12,7 +12,7 @@ body{
   width:100%; 
   text-align:center;
   margin: 20px 0px 20px 0px;   
-  background-image: url("https://www.clipartsgram.com/image/1116146294-login-page-background-image-112.jpg");
+  background-image: url("http://biginja.com/wp-content/uploads/2016/10/MLseries-1.png");
 }
 
 p{
@@ -34,6 +34,7 @@ h1{
   margin: 0 auto 0 auto;
   padding:0px 0px 70px 0px;
   border: #2980b9 4px solid; 
+  margin-top: 4%;
 }
 
 .email{

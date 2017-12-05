@@ -26,26 +26,26 @@ h1{
 }
 
 .box{
-  background:white;
-  width:300px;
-  height: 450px;
-  border-radius:6px;
-  margin: 0 auto 0 auto;
-  padding:0px 0px 70px 0px;
-  border: #2980b9 4px solid; 
+    background: white;
+    width: 38%;
+    height: 500px;
+    border-radius: 6px;
+    margin: 0 auto 0 auto;
+    padding: 0px 0px 70px 0px;
+    border: #2980b9 4px solid;
 }
 
 .email{
-  background:#ecf0f1;
-  border: #ccc 1px solid;
-  border-bottom: #ccc 2px solid;
-  padding: 8px;
-  width:250px;
-  color:#AAAAAA;
-  margin-top:10px;
-  font-size:1em;
-  border-radius:4px;
-  margin-left:10px;
+    background: #ecf0f1;
+    border: #ccc 1px solid;
+    border-bottom: #ccc 2px solid;
+    padding: 63px;
+    width: 500px;
+    color: #AAAAAA;
+    margin-top: 10px;
+    font-size: 1em;
+    border-radius: 4px;
+    margin-left: 111px;
 }
 
 .password{

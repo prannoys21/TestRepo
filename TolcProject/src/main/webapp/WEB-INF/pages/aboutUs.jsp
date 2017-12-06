@@ -151,12 +151,20 @@ src="https://www.facebook.com/tr?id=678167132284607&ev=PageView
             </a>
         </div>
         <nav>
-            <ul id="menu-header-bar" class="menu"><li id="menu-item-3884" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-3720 current_page_item menu-item-3884"><a href="aboutUs?id=${employee.id}">About us</a></li>
-<li id="menu-item-3885" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3885"><a href="customers?id=${employee.id}">Customers</a></li>
-<li id="menu-item-3910" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3910"><a href="courseList?id=${employee.id}">Courses</a></li>
-<li id="menu-item-3910" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3910"><a href="userHomepage?id=${employee.id}">User Homepage</a></li>
-
-</ul>                            <ul id="personal-menu">
+        
+<ul id="menu-header-bar" class="menu">
+<c:set var="userIdOnThisPage" value="${employee.id}" scope="request"/>
+<c:if test="${empty userIdOnThisPage}">
+<c:set var="userIdOnThisPage" value="${0}" scope="request"/>
+</c:if>
+<li id="menu-item-3884" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-3720 current_page_item menu-item-3884"><a href="aboutUs?id=${userIdOnThisPage}">About us</a></li>
+<li id="menu-item-3885" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3885"><a href="customers?id=${userIdOnThisPage}">Customers</a></li>
+<c:if test="${userIdOnThisPage != 0}">
+<li id="menu-item-3910" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3910"><a href="courseList?id=${userIdOnThisPage}">Courses</a></li>
+<li id="menu-item-3910" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3910"><a href="userHomepage?id=${userIdOnThisPage}">User Homepage</a>
+</c:if>
+</ul>
+                            <ul id="personal-menu">
                                             <li>
                             <!-- <a href="loginPage" class="btn btn-transparent" >
                                 Log In                            </a> -->
@@ -262,6 +270,5 @@ src="https://www.facebook.com/tr?id=678167132284607&ev=PageView
 	</section>
 	
 </section>
-  
 </body>
 </html>

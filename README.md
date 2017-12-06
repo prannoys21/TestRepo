@@ -27,7 +27,7 @@ Password: 12345
 
 ### NOTE: For convenience purposes, we assume the user is the admin of the website
 
-Sample workflow
+##### Sample workflow
 
 Step1: Login as user using the above credentials
 
@@ -56,5 +56,8 @@ Step12: Click on 'welearn' on top left of the screen to navigate to the user hom
 # List of known bugs     
 ●	Once the users chatting click on the hyperlink and navigate to the appropriate page, the chat will disappear and once the user clicks on it again, it will be restored.   
 ●	When the ticker is open and the user clicks on ‘Mark as completed’, the completion is not updated. It has to be done only when the ticker is closed/hidden.
+●	When the user id of the current user is replaced with that of another user in the url, the website switches to the new user's profile. This is because "session handling" which takes care of these issues wasn't implemented as a part of this project. 
+Reason for this is that I felt it is beyond the scope of this project to handle session variables which involves a lot of extra coding. Development was focused more on promised features and we're happy to have implemented more (including two feedback mechanisms) than what we promised. 
 
-##### NOTE: Some of Amabrish's files and Abhiram's files were committed on Prannoy's system due to some issues with github in Ambarish and Abhiram's laptops. 
+
+#### NOTE: Some of Amabrish's files and Abhiram's files were committed on Prannoy's system due to some issues with github in Ambarish and Abhiram's laptops. 

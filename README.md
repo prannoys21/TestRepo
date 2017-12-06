@@ -1,4 +1,4 @@
-# TolcProject591
+# Adaptive and Innovative MOOC Framework: WeLearn
 This is the course project done in Spring MVC along with Hibernate and Maven. 
 
 Advanced Chat and Progress System for Collaborative Knowledge Building

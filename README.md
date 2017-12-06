@@ -47,3 +47,9 @@ Step5: Once done with the course, mark as complete to generate a ticker update t
 Step6: When you receive a message from other users, a text notification will be visible on top right and opens chat when you click on it
 
 Step7: After helping the person, you can check back the progress bar section for changes and feedback
+
+#List of known bugs
+●	The chat is a synchronous chat and thus does not allow for asynchronous messaging.        
+●	Once the users chatting click on the hyperlink and navigate to the appropriate page, the chat will disappear and once the user clicks on it again, it will be restored.   
+●	When the ticker is open and the user clicks on ‘Mark as completed’, the completion is not updated. It has to be done only when the ticker is closed/hidden.
+

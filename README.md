@@ -1,4 +1,4 @@
-# WeLearn: Adaptive and Innovative MOOC Framework
+# WeLearn: An Adaptive and an Innovative MOOC Framework
 This is the course project done in Spring MVC along with Hibernate with MySQL database and Maven for building. 
 
 The project consists of the files required to run an online learning platform with 

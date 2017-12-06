@@ -1,4 +1,4 @@
-# Adaptive and Innovative MOOC Framework: WeLearn
+# WeLearn: Adaptive and Innovative MOOC Framework
 This is the course project done in Spring MVC along with Hibernate and Maven. 
 
 Advanced Chat and Progress System for Collaborative Knowledge Building
